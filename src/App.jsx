@@ -10,6 +10,8 @@ const MAPA = '#donde';
 const WA_TXT = 'Hola, quiero información de El Baguetton Express.';
 const WA = `https://wa.me/523223706472?text=${encodeURIComponent(WA_TXT)}`;
 const WA_VISIBLE = '322 370 6472';
+const FB = 'https://facebook.com/baguettonbahia';
+const YT = 'https://www.youtube.com/@ElBaguettonExpress';
 
 const SERVICIOS = [
   {
@@ -222,7 +224,27 @@ export default function App() {
   const [bgSrc] = useState(() =>
     window.matchMedia('(max-width: 900px)').matches ? '/bg-mobile.mp4' : '/bg.mp4'
   );
+  const [esMovil] = useState(() => window.matchMedia('(max-width: 900px)').matches);
   const [pegado, setPegado] = useState(false);
+
+  /* en móvil el video se pide después del primer pintado, para que el texto salga antes */
+  useEffect(() => {
+    if (!esMovil) return;
+    const arrancar = () => {
+      const v = videoRef.current;
+      if (!v) return;
+      v.preload = 'auto';
+      v.load();
+      const p = v.play();
+      if (p && p.catch) p.catch(() => {});
+    };
+    if (document.readyState === 'complete') {
+      const t = setTimeout(arrancar, 350);
+      return () => clearTimeout(t);
+    }
+    window.addEventListener('load', arrancar, { once: true });
+    return () => window.removeEventListener('load', arrancar);
+  }, [esMovil]);
 
   useEffect(() => {
     const onScroll = () => setPegado(window.scrollY > 80);
@@ -342,7 +364,7 @@ export default function App() {
           poster="/img/hero.jpg"
           muted
           playsInline
-          preload="auto"
+          preload={esMovil ? 'none' : 'auto'}
           onLoadedMetadata={() => setVideoOk(true)}
           onError={() => setVideoOk(false)}
           style={{ display: videoOk ? 'block' : 'none' }}
@@ -505,6 +527,10 @@ export default function App() {
             <p className="wa-footer">
               WhatsApp <a href={WA} target="_blank" rel="noreferrer">{WA_VISIBLE}</a>
             </p>
+            <div className="social">
+              <a href={FB} target="_blank" rel="noreferrer">Facebook</a>
+              <a href={YT} target="_blank" rel="noreferrer">YouTube</a>
+            </div>
           </div>
         </footer>
       </main>

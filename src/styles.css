@@ -303,6 +303,17 @@ footer p{font-size:.85rem;color:rgba(244,238,226,.55)}
 .dato .v a:hover{opacity:.75}
 footer .wa-footer a{color:var(--crema);text-decoration:none;border-bottom:1px solid rgba(244,238,226,.4)}
 footer .wa-footer a:hover{opacity:.75}
+footer .social{
+  display:flex;gap:28px;justify-content:center;
+  margin-top:var(--s4);flex-wrap:wrap;
+}
+footer .social a{
+  font-family:var(--font-display);font-weight:700;font-size:.74rem;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(244,238,226,.72);text-decoration:none;
+  transition:color .25s ease;
+}
+footer .social a:hover{color:var(--crema)}
 
 /* ---------- responsive ---------- */
 /* tablets y celulares: la barra va pegada al borde, sin marco flotante */
