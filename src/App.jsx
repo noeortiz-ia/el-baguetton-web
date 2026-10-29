@@ -229,6 +229,20 @@ export default function App() {
   );
   const [esMovil] = useState(() => window.matchMedia('(max-width: 900px)').matches);
   const [pegado, setPegado] = useState(false);
+  const [menuAbierto, setMenuAbierto] = useState(false);
+  const cerrarMenu = () => setMenuAbierto(false);
+
+  useEffect(() => {
+    if (!menuAbierto) return;
+    const onKey = (e) => { if (e.key === 'Escape') setMenuAbierto(false); };
+    window.addEventListener('keydown', onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [menuAbierto]);
 
   /* en móvil el video se pide después del primer pintado, para que el texto salga antes */
   useEffect(() => {
@@ -272,6 +286,7 @@ export default function App() {
       const a = e.target.closest('a[href^="#"]');
       if (!a) return;
       const id = a.getAttribute('href');
+      if (id === '#top') { e.preventDefault(); lenis.scrollTo(0, { duration: 1.2 }); return; }
       const el = document.querySelector(id);
       if (!el) return;
       e.preventDefault();
@@ -378,12 +393,65 @@ export default function App() {
 
       <header className={`nav${pegado ? ' pegado' : ''}`}>
         <div className="nav-inner">
-          <img src={`/img/logo-white.png${AV}`} alt="El Baguetton Express" />
-          <a className="cta-mini" href={WA} target="_blank" rel="noreferrer">
-            WhatsApp
+          <a className="nav-logo" href="#top" aria-label="El Baguetton Express">
+            <img src={`/img/logo-white.png${AV}`} alt="El Baguetton Express" />
           </a>
+
+          <nav className="nav-links" aria-label="Secciones">
+            <a href="#que-servimos">Lo que servimos</a>
+            <a href="#aderezos">Los aderezos</a>
+            <a href="#galeria">Galería</a>
+            <a href="#donde">Dónde y cuándo</a>
+          </nav>
+
+          <div className="nav-acciones">
+            <div className="nav-redes">
+              <a href={FB} target="_blank" rel="noreferrer" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-8.2h2.8l.4-3.2h-3.2V7.6c0-.9.3-1.6 1.6-1.6h1.7V3.1C16.5 3.1 15.5 3 14.4 3c-2.3 0-3.9 1.4-3.9 4.1v2.5H7.7v3.2h2.8V21h3z"/></svg>
+              </a>
+              <a href={IG} target="_blank" rel="noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.6" y="3.6" width="16.8" height="16.8" rx="5" fill="none" stroke="currentColor" strokeWidth="1.9"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="1.9"/><circle cx="17.1" cy="6.9" r="1.15" fill="currentColor"/></svg>
+              </a>
+              <a href={YT} target="_blank" rel="noreferrer" aria-label="YouTube">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.6 7.6c-.2-1-1-1.8-2-2C17.8 5.2 12 5.2 12 5.2s-5.8 0-7.6.4c-1 .2-1.8 1-2 2C2 9.4 2 12 2 12s0 2.6.4 4.4c.2 1 1 1.8 2 2 1.8.4 7.6.4 7.6.4s5.8 0 7.6-.4c1-.2 1.8-1 2-2 .4-1.8.4-4.4.4-4.4s0-2.6-.4-4.4zM10.2 15.3V8.7l5.6 3.3-5.6 3.3z"/></svg>
+              </a>
+            </div>
+
+            <a className="cta-mini" href={WA} target="_blank" rel="noreferrer">
+              WhatsApp
+            </a>
+
+            <button
+              type="button"
+              className="burger"
+              aria-label="Abrir menú"
+              aria-expanded={menuAbierto}
+              onClick={() => setMenuAbierto((v) => !v)}
+            >
+              <span /><span /><span />
+            </button>
+          </div>
         </div>
       </header>
+
+      {menuAbierto && (
+        <div className="menu-movil" role="dialog" aria-label="Menú">
+          <nav>
+            <a href="#que-servimos" onClick={cerrarMenu}>Lo que servimos</a>
+            <a href="#aderezos" onClick={cerrarMenu}>Los aderezos</a>
+            <a href="#galeria" onClick={cerrarMenu}>Galería</a>
+            <a href="#donde" onClick={cerrarMenu}>Dónde y cuándo</a>
+          </nav>
+          <div className="menu-redes">
+            <a href={FB} target="_blank" rel="noreferrer" onClick={cerrarMenu}>Facebook</a>
+            <a href={IG} target="_blank" rel="noreferrer" onClick={cerrarMenu}>Instagram</a>
+            <a href={YT} target="_blank" rel="noreferrer" onClick={cerrarMenu}>YouTube</a>
+          </div>
+          <a className="btn btn-primario" href={WA} target="_blank" rel="noreferrer" onClick={cerrarMenu}>
+            Pedir por WhatsApp
+          </a>
+        </div>
+      )}
 
       <main>
         <section className="hero">
@@ -531,9 +599,9 @@ export default function App() {
               WhatsApp <a href={WA} target="_blank" rel="noreferrer">{WA_VISIBLE}</a>
             </p>
             <div className="social">
-              <a href={FB} target="_blank" rel="noreferrer">Facebook</a>
-              <a href={IG} target="_blank" rel="noreferrer">Instagram</a>
-              <a href={YT} target="_blank" rel="noreferrer">YouTube</a>
+              <a href={FB} target="_blank" rel="noreferrer" onClick={cerrarMenu}>Facebook</a>
+              <a href={IG} target="_blank" rel="noreferrer" onClick={cerrarMenu}>Instagram</a>
+              <a href={YT} target="_blank" rel="noreferrer" onClick={cerrarMenu}>YouTube</a>
             </div>
           </div>
         </footer>

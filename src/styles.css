@@ -70,6 +70,66 @@ main{position:relative;z-index:1}
   padding:var(--s2) clamp(12px,2vw,28px);
 }
 .nav img{width:132px;height:auto}
+.nav-logo{display:block;line-height:0}
+
+/* enlaces de sección */
+.nav-links{display:flex;align-items:center;gap:clamp(14px,1.8vw,30px)}
+.nav-links a{
+  position:relative;
+  font-family:var(--font-display);font-weight:700;font-size:.74rem;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(244,238,226,.78);text-decoration:none;
+  padding:6px 0;transition:color .25s ease;
+}
+.nav-links a::after{
+  content:'';position:absolute;left:0;bottom:0;height:1px;width:0;
+  background:var(--dorado);transition:width .3s ease;
+}
+.nav-links a:hover{color:var(--crema)}
+.nav-links a:hover::after{width:100%}
+
+/* acciones de la derecha */
+.nav-acciones{display:flex;align-items:center;gap:clamp(12px,1.4vw,20px)}
+.nav-redes{display:flex;align-items:center;gap:10px}
+.nav-redes a{
+  width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(244,238,226,.8);
+  border:1px solid rgba(244,238,226,.22);
+  transition:color .25s ease,border-color .25s ease,background .25s ease;
+}
+.nav-redes a:hover{color:var(--verde);background:var(--crema);border-color:var(--crema)}
+.nav-redes svg{width:16px;height:16px;display:block}
+
+/* botón hamburguesa */
+.burger{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  width:40px;height:40px;padding:0;border:0;background:transparent;cursor:pointer;
+}
+.burger span{display:block;height:2px;width:22px;background:var(--crema);margin-inline:auto;transition:transform .25s ease,opacity .25s ease}
+
+/* menú móvil */
+.menu-movil{
+  position:fixed;inset:0;z-index:60;
+  background:rgba(9,42,26,.98);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:clamp(24px,5vh,44px);padding:96px clamp(24px,8vw,64px) 48px;
+  text-align:center;
+}
+.menu-movil nav{display:flex;flex-direction:column;gap:22px}
+.menu-movil nav a{
+  font-family:var(--font-display);font-weight:900;font-size:clamp(1.5rem,6vw,2rem);
+  letter-spacing:-.01em;color:var(--crema);text-decoration:none;
+}
+.menu-movil nav a:hover{color:var(--crema-dorada)}
+.menu-movil .menu-redes{display:flex;gap:24px;flex-wrap:wrap;justify-content:center}
+.menu-movil .menu-redes a{
+  font-family:var(--font-display);font-weight:700;font-size:.74rem;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(244,238,226,.7);text-decoration:none;
+}
+.menu-movil .menu-redes a:hover{color:var(--crema)}
 .nav .cta-mini{
   font-family:var(--font-display);font-weight:700;font-size:.78rem;
   letter-spacing:.18em;text-transform:uppercase;
@@ -316,6 +376,15 @@ footer .social a{
 footer .social a:hover{color:var(--crema)}
 
 /* ---------- responsive ---------- */
+/* la barra completa solo cabe en pantallas grandes; debajo pasa a menú */
+@media (max-width:1099px){
+  .nav-links{display:none}
+  .nav-redes{display:none}
+  .burger{display:flex}
+}
+@media (min-width:1100px){
+  .menu-movil{display:none}
+}
 /* tablets y celulares: la barra va pegada al borde, sin marco flotante */
 @media (max-width:1199px){
   .nav{padding:0}
