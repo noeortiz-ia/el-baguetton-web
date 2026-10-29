@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
+import { avisarVista, escucharClics } from './pixel';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -231,6 +232,12 @@ export default function App() {
   const [pegado, setPegado] = useState(false);
   const [menuAbierto, setMenuAbierto] = useState(false);
   const cerrarMenu = () => setMenuAbierto(false);
+
+  /* seguimiento: vista de la ficha y clasificación de clics (WhatsApp / ubicación) */
+  useEffect(() => {
+    avisarVista();
+    return escucharClics();
+  }, []);
 
   useEffect(() => {
     if (!menuAbierto) return;
