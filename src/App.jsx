@@ -436,6 +436,14 @@ export default function App() {
 
       {menuAbierto && (
         <div className="menu-movil" role="dialog" aria-label="Menú">
+          <button
+            type="button"
+            className="menu-cerrar"
+            onClick={cerrarMenu}
+            aria-label="Cerrar menú"
+          >
+            <span /><span />
+          </button>
           <nav>
             <a href="#que-servimos" onClick={cerrarMenu}>Lo que servimos</a>
             <a href="#aderezos" onClick={cerrarMenu}>Los aderezos</a>

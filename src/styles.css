@@ -118,6 +118,18 @@ main{position:relative;z-index:1}
   text-align:center;
 }
 .menu-movil nav{display:flex;flex-direction:column;gap:22px}
+.menu-cerrar{
+  position:absolute;top:22px;right:22px;
+  width:46px;height:46px;border-radius:50%;
+  background:transparent;border:1px solid rgba(244,238,226,.28);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+}
+.menu-cerrar span{
+  position:absolute;width:20px;height:2px;background:var(--crema);border-radius:2px;
+}
+.menu-cerrar span:first-child{transform:rotate(45deg)}
+.menu-cerrar span:last-child{transform:rotate(-45deg)}
+.menu-cerrar:hover{background:rgba(244,238,226,.10);border-color:var(--crema)}
 .menu-movil nav a{
   font-family:var(--font-display);font-weight:900;font-size:clamp(1.5rem,6vw,2rem);
   letter-spacing:-.01em;color:var(--crema);text-decoration:none;
