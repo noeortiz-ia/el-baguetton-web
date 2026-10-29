@@ -13,6 +13,8 @@ const WA_VISIBLE = '322 370 6472';
 const FB = 'https://facebook.com/baguettonbahia';
 const YT = 'https://www.youtube.com/@ElBaguettonExpress';
 const IG = 'https://www.instagram.com/baguettonbahia/';
+/* sube esta versión cuando cambien video, póster o logo: evita la caché del CDN */
+const AV = '?v=3';
 
 const SERVICIOS = [
   {
@@ -223,7 +225,7 @@ export default function App() {
   const videoRef = useRef(null);
   const [videoOk, setVideoOk] = useState(false);
   const [bgSrc] = useState(() =>
-    window.matchMedia('(max-width: 900px)').matches ? '/bg-mobile.mp4' : '/bg.mp4'
+    window.matchMedia('(max-width: 900px)').matches ? `/bg-mobile.mp4${AV}` : `/bg.mp4${AV}`
   );
   const [esMovil] = useState(() => window.matchMedia('(max-width: 900px)').matches);
   const [pegado, setPegado] = useState(false);
@@ -362,7 +364,7 @@ export default function App() {
         <video
           ref={videoRef}
           src={bgSrc}
-          poster="/img/hero.jpg"
+          poster={`/img/hero.jpg${AV}`}
           muted
           playsInline
           preload={esMovil ? 'none' : 'auto'}
@@ -370,13 +372,13 @@ export default function App() {
           onError={() => setVideoOk(false)}
           style={{ display: videoOk ? 'block' : 'none' }}
         />
-        {!videoOk && <img className="poster" src="/img/hero.jpg" alt="" />}
+        {!videoOk && <img className="poster" src={`/img/hero.jpg${AV}`} alt="" />}
         <div className="bg-scrim" />
       </div>
 
       <header className={`nav${pegado ? ' pegado' : ''}`}>
         <div className="nav-inner">
-          <img src="/img/logo-white.png" alt="El Baguetton Express" />
+          <img src={`/img/logo-white.png${AV}`} alt="El Baguetton Express" />
           <a className="cta-mini" href={WA} target="_blank" rel="noreferrer">
             WhatsApp
           </a>
@@ -523,7 +525,7 @@ export default function App() {
 
         <footer>
           <div className="wrap">
-            <img src="/img/logo-white.png" alt="El Baguetton Express" />
+            <img src={`/img/logo-white.png${AV}`} alt="El Baguetton Express" />
             <p>Valle Nacional 106 · Valle Dorado, Mezcales, Nayarit</p>
             <p className="wa-footer">
               WhatsApp <a href={WA} target="_blank" rel="noreferrer">{WA_VISIBLE}</a>
