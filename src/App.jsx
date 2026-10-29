@@ -12,6 +12,7 @@ const WA = `https://wa.me/523223706472?text=${encodeURIComponent(WA_TXT)}`;
 const WA_VISIBLE = '322 370 6472';
 const FB = 'https://facebook.com/baguettonbahia';
 const YT = 'https://www.youtube.com/@ElBaguettonExpress';
+const IG = 'https://www.instagram.com/baguettonbahia/';
 
 const SERVICIOS = [
   {
@@ -529,6 +530,7 @@ export default function App() {
             </p>
             <div className="social">
               <a href={FB} target="_blank" rel="noreferrer">Facebook</a>
+              <a href={IG} target="_blank" rel="noreferrer">Instagram</a>
               <a href={YT} target="_blank" rel="noreferrer">YouTube</a>
             </div>
           </div>
