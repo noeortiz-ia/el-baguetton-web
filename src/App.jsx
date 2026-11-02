@@ -188,63 +188,78 @@ const GALERIA = [
 
 function Galeria({ fotos }) {
   const track = useRef(null);
+  const n = fotos.length;
+  const COPIAS = 3;                     /* tres juegos: el de en medio es el visible */
   const [abierta, setAbierta] = useState(null);
-  const [pos, setPos] = useState({ inicio: true, fin: false });
   const [indice, setIndice] = useState(0);
   const [pausa, setPausa] = useState(false);
 
-  const medir = () => {
+  const paso = () => {
+    const t = track.current;
+    if (!t) return 336;
+    const s = t.querySelector('.slide');
+    return s ? s.getBoundingClientRect().width + 16 : 336;
+  };
+  const anchoJuego = () => n * paso();
+
+  /* deja el carrusel en el juego de en medio, sin animación */
+  const centrar = () => {
     const t = track.current;
     if (!t) return;
-    const s = t.querySelector('.slide');
-    const paso = (s ? s.getBoundingClientRect().width : 320) + 16;
-    setIndice(Math.round(t.scrollLeft / paso));
-    setPos({
-      inicio: t.scrollLeft <= 8,
-      fin: t.scrollLeft + t.clientWidth >= t.scrollWidth - 8,
-    });
+    t.scrollLeft = anchoJuego();
+    setIndice(0);
   };
 
   const mover = (dir) => {
     const t = track.current;
     if (!t) return;
-    const s = t.querySelector('.slide');
-    const paso = (s ? s.getBoundingClientRect().width : 320) + 16;
-    t.scrollBy({ left: dir * paso, behavior: 'smooth' });
+    t.scrollBy({ left: dir * paso(), behavior: 'smooth' });
   };
 
   const irA = (i) => {
     const t = track.current;
     if (!t) return;
-    const s = t.querySelector('.slide');
-    const paso = (s ? s.getBoundingClientRect().width : 320) + 16;
-    t.scrollTo({ left: i * paso, behavior: 'smooth' });
+    const p = paso(), juego = anchoJuego();
+    /* salta al clon más cercano para no recorrer todo el carrusel */
+    const base = i * p + Math.round((t.scrollLeft - i * p) / juego) * juego;
+    t.scrollTo({ left: base, behavior: 'smooth' });
   };
 
   useEffect(() => {
     const t = track.current;
     if (!t) return;
-    medir();
+    let reposo;
+    const medir = () => {
+      const p = paso(), juego = anchoJuego();
+      setIndice(((Math.round(t.scrollLeft / p) % n) + n) % n);
+      /* al pasar de un extremo al otro, salta un juego completo: el salto es invisible */
+      clearTimeout(reposo);
+      reposo = setTimeout(() => {
+        if (t.scrollLeft < juego * 0.5) t.scrollLeft += juego;
+        else if (t.scrollLeft > juego * 1.5) t.scrollLeft -= juego;
+      }, 160);
+    };
+    const arranque = requestAnimationFrame(() => {
+      centrar();
+      medir();
+    });
     t.addEventListener('scroll', medir, { passive: true });
-    window.addEventListener('resize', medir);
+    window.addEventListener('resize', () => { centrar(); });
     return () => {
+      cancelAnimationFrame(arranque);
+      clearTimeout(reposo);
       t.removeEventListener('scroll', medir);
-      window.removeEventListener('resize', medir);
     };
   }, []);
 
-  /* avance automático: deja claro que hay más fotos */
+  /* avance automático continuo */
   useEffect(() => {
     if (pausa || abierta !== null) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const id = setInterval(() => {
       const t = track.current;
       if (!t) return;
-      const s = t.querySelector('.slide');
-      const paso = (s ? s.getBoundingClientRect().width : 320) + 16;
-      const alFinal = t.scrollLeft + t.clientWidth >= t.scrollWidth - 8;
-      if (alFinal) t.scrollTo({ left: 0, behavior: 'smooth' });
-      else t.scrollBy({ left: paso, behavior: 'smooth' });
+      t.scrollBy({ left: paso(), behavior: 'smooth' });
     }, 3200);
     return () => clearInterval(id);
   }, [pausa, abierta]);
@@ -260,12 +275,12 @@ function Galeria({ fotos }) {
     const onKey = (e) => {
       if (e.key === 'Escape') setAbierta(null);
       if (abierta === null) return;
-      if (e.key === 'ArrowRight') setAbierta((i) => (i + 1) % fotos.length);
-      if (e.key === 'ArrowLeft') setAbierta((i) => (i - 1 + fotos.length) % fotos.length);
+      if (e.key === 'ArrowRight') setAbierta((i) => (i + 1) % n);
+      if (e.key === 'ArrowLeft') setAbierta((i) => (i - 1 + n) % n);
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [abierta, fotos.length]);
+  }, [abierta, n]);
 
   return (
     <div
@@ -276,33 +291,28 @@ function Galeria({ fotos }) {
       onTouchStart={() => setPausa(true)}
     >
       <div className="carrusel-track" ref={track}>
-        {fotos.map((f, i) => (
-          <figure className="slide" key={f.src} onClick={() => setAbierta(i)}>
-            <img src={f.src} alt={f.t} loading="lazy" />
-            <figcaption className="slide-info">
-              <h3>{f.t}</h3>
-              <p>{f.d}</p>
-            </figcaption>
-          </figure>
-        ))}
+        {Array.from({ length: COPIAS }).flatMap((_, copia) =>
+          fotos.map((f, i) => (
+            <figure
+              className="slide"
+              key={`${copia}-${f.src}`}
+              onClick={() => setAbierta(i)}
+              aria-hidden={copia === 1 ? undefined : 'true'}
+            >
+              <img src={f.src} alt={f.t} loading="lazy" />
+              <figcaption className="slide-info">
+                <h3>{f.t}</h3>
+                <p>{f.d}</p>
+              </figcaption>
+            </figure>
+          ))
+        )}
       </div>
 
-      <button
-        type="button"
-        className="flecha izq"
-        onClick={() => mover(-1)}
-        disabled={pos.inicio}
-        aria-label="Anterior"
-      >
+      <button type="button" className="flecha izq" onClick={() => mover(-1)} aria-label="Anterior">
         ‹
       </button>
-      <button
-        type="button"
-        className="flecha der"
-        onClick={() => mover(1)}
-        disabled={pos.fin}
-        aria-label="Siguiente"
-      >
+      <button type="button" className="flecha der" onClick={() => mover(1)} aria-label="Siguiente">
         ›
       </button>
 
@@ -311,16 +321,14 @@ function Galeria({ fotos }) {
           {fotos.map((f, i) => (
             <button
               type="button"
-              key={f}
+              key={f.src}
               className={`punto${i === indice ? ' activo' : ''}`}
               onClick={() => irA(i)}
               aria-label={`Foto ${i + 1}`}
             />
           ))}
         </div>
-        <span className="cuenta">
-          {Math.min(indice + 1, fotos.length)} / {fotos.length}
-        </span>
+        <span className="carrusel-cuenta">{indice + 1} / {n}</span>
       </div>
 
       {abierta !== null &&
@@ -827,7 +835,7 @@ export default function App() {
                   <div className="v">
                     <a href={WA} target="_blank" rel="noreferrer">{WA_VISIBLE}</a>
                     <small>
-                      Pedidos y dudas · <a href="tel:+523223706472">Llamar</a>
+                      Pedidos y dudas · <a href="tel:+523****6472">Llamar</a>
                     </small>
                   </div>
                 </div>
