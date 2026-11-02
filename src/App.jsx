@@ -40,6 +40,102 @@ const SERVICIOS = [
   },
 ];
 
+const ADEREZOS = [
+  'Ranch eneldo',
+  'Miel mostaza',
+  'Vinagreta italiana',
+  'Tamarindo',
+  'Vinagreta de hierbas',
+];
+
+const MENU = [
+  {
+    t: 'Baguettones',
+    s: 'Nuestros sándwiches en baguette',
+    nota: 'Todos, con opción en bagel o cuernito.',
+    items: [
+      { n: 'Clásico', p: 52, d: 'Jamón viena, salami, manchego y aderezo de la casa.' },
+      { n: 'Plus', p: 85, d: 'Jamón de pierna de cerdo, manchego, salami, lechuga, jitomate y aderezo de la casa.' },
+      { n: 'Pechugón', p: 85, d: 'Jamón de pechuga de pavo, manchego, salami, lechuga, jitomate y aderezo de la casa.' },
+      { n: 'Pollero', p: 105, d: 'Fajitas de pollo, manchego, lechuga, jitomate y aderezo de la casa.' },
+      { n: 'Pizzero', p: 85, d: 'Salsa de pizza, pepperoni, queso gratinado y aderezo de la casa.' },
+      { n: 'Tunero', p: 105, d: 'Atún, manchego, lechuga, pepino, jitomate y aderezo de la casa.' },
+      { n: 'Quesero', p: 105, d: 'Manchego, panela y queso regianito, lechuga, jitomate y aderezo de la casa.' },
+      { n: 'Ensaladón', p: 85, d: 'Zetas y calabazas cocinadas, lechuga, jitomate, zanahoria, betabel, germen, pepino y aderezo de la casa.' },
+      { n: 'Chori-Vegano', p: 95, d: 'Chorizo vegano 100% sin gluten, queso manchego, lechuga y aderezo de la casa.' },
+    ],
+  },
+  {
+    t: 'Sin Prisas',
+    s: 'Para comer con calma',
+    items: [
+      { n: 'Bagel Huevón', p: 105, d: 'Huevito cocinado, queso manchego, espinaca, jitomate, lechuga y aderezo de la casa.' },
+      { n: 'Pizzero Tropical', p: 105, d: 'Salsa de pizza, piña, durazno, queso gratinado y aderezo de la casa.' },
+      { n: 'Molletón', p: 85, d: 'Frijolitos negros, queso gratinado, aderezo de la casa y pico de gallo.' },
+    ],
+  },
+  {
+    t: 'Ensaladas',
+    s: 'Con el aderezo que tú elijas',
+    items: [
+      { n: 'Baguetona', p: 120, d: 'Lechuga, fajitas de pollo salpimentadas, zanahoria, betabel, germen, jitomate cherry, pepino y croutones.' },
+      { n: 'Mexicana', p: 115, d: 'Lechuga, jitomate, aguacate, elote, queso panela y tortillitas horneadas con chile guajillo.' },
+      { n: 'La BBQ', p: 120, d: 'Lechuga, fajitas de pollo BBQ, brócoli, zanahoria, pepino, germen y tortillitas horneadas.' },
+      { n: 'Cacahuata', p: 130, d: 'Lechuga, fajitas de pollo al cacahuate, brócoli, zanahoria, pepino, germen y cacahuates.' },
+      { n: 'Remolacha Deli', p: 115, d: 'Betabel fileteado, vinagreta de hierbas, pistaches y requesón.' },
+      { n: 'La Primavera', p: 115, d: 'Lechuga, quinoa, fresa, cubos de panela y nuez caramelizada.' },
+    ],
+  },
+  {
+    t: 'Dulces bocados',
+    s: 'Los empalagosos',
+    items: [
+      { n: 'Rojo Pasión', p: 65, d: 'Cuernito calientito con compota casera de frutos rojos y queso doble crema.' },
+      { n: 'Panqué Mantequilla', p: 65, d: 'Panqué de mantequilla 100% con naranja.' },
+      { n: 'Cubilete Baguetton', p: 55, d: 'Panquesito de queso.' },
+    ],
+  },
+  {
+    t: 'Las bebidas',
+    s: '16 oz',
+    items: [
+      { n: 'Café de Olla', p: 55, d: 'Con auténtico piloncillo.' },
+      { n: 'Café Americano', p: 50, d: 'Café americano.' },
+    ],
+  },
+  {
+    t: 'Batidos y licuados',
+    s: 'Con leche entera, avena y canela',
+    nota: 'Jugos $65.',
+    items: [
+      { n: 'Fresón', p: 75, d: 'Fresa, azúcar, canela y avena.' },
+      { n: 'Chocobanana', p: 75, d: 'Plátano, cacao, azúcar, canela y avena.' },
+      { n: 'Frutos Rojos', p: 75, d: 'Frutos rojos, azúcar, canela y avena.' },
+      { n: 'Popeye', p: 75, d: 'Espinacas, azúcar, canela y avena.' },
+      { n: 'Mangazo', p: 75, d: 'Mango, azúcar, canela y avena.' },
+      { n: 'Hay Papaya de Celaya', p: 75, d: 'Papaya, azúcar, canela y avena.' },
+    ],
+  },
+  {
+    t: 'El picoteo',
+    s: 'Fresco, con limón y sal',
+    items: [
+      { n: 'Jícamas', p: 45, d: 'Jícama fresca, rodajita de limón y sal.' },
+      { n: 'Pepinos', p: 45, d: 'Pepino fresco, rodajita de limón y sal.' },
+      { n: 'Apio y Zanahoria', p: 45, d: 'Bastones con rodajita de limón y sal.' },
+    ],
+  },
+  {
+    t: 'Bionicos y frutas',
+    s: 'Escamochas',
+    items: [
+      { n: 'Biónico Baguetton', p: 80, d: 'Frutas varias con cremita dulce y granola.' },
+      { n: 'Coctel de Frutas', p: 70, d: 'Frutas varias con miel y granola.' },
+      { n: 'Escamochas', p: 80, d: 'Frutas varias batidas con yogur y cereales.' },
+    ],
+  },
+];
+
 const GALERIA = [
   '/img/real/gal-1.jpg',
   '/img/real/gal-2.jpg',
@@ -406,6 +502,7 @@ export default function App() {
 
           <nav className="nav-links" aria-label="Secciones">
             <a href="#que-servimos">Lo que servimos</a>
+            <a href="#menu">Menú</a>
             <a href="#aderezos">Los aderezos</a>
             <a href="#galeria">Galería</a>
             <a href="#donde">Dónde y cuándo</a>
@@ -453,6 +550,7 @@ export default function App() {
           </button>
           <nav>
             <a href="#que-servimos" onClick={cerrarMenu}>Lo que servimos</a>
+            <a href="#menu" onClick={cerrarMenu}>Menú</a>
             <a href="#aderezos" onClick={cerrarMenu}>Los aderezos</a>
             <a href="#galeria" onClick={cerrarMenu}>Galería</a>
             <a href="#donde" onClick={cerrarMenu}>Dónde y cuándo</a>
@@ -531,6 +629,45 @@ export default function App() {
                   Es lo que le cambia el sabor a todo: a la ensalada, al sándwich,
                   a lo que te lleves para la casa.
                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bloque menu-bloque" id="menu">
+          <div className="wrap">
+            <p className="eyebrow" data-reveal>El menú</p>
+            <h2 data-reveal>Todo lo que hay</h2>
+            <p className="menu-intro" data-reveal>
+              Sándwiches en baguette, ensaladas, dulce, café y batidos.
+              Todos los aderezos se hacen aquí.
+            </p>
+
+            <div className="menu-grid">
+              {MENU.map((g) => (
+                <div className="m-grupo" key={g.t}>
+                  <h3>{g.t}<span>{g.s}</span></h3>
+                  {g.items.map((it) => (
+                    <div className="m-it" key={it.n}>
+                      <div className="m-cab">
+                        <span className="m-nom">{it.n}</span>
+                        <span className="m-pun" aria-hidden="true" />
+                        <span className="m-pre">${it.p}</span>
+                      </div>
+                      {it.d && <p className="m-desc">{it.d}</p>}
+                    </div>
+                  ))}
+                  {g.nota && <p className="m-nota">{g.nota}</p>}
+                </div>
+              ))}
+            </div>
+
+            <div className="m-aderezos">
+              <span className="m-aderezos-k">Los aderezos, hechos aquí</span>
+              <div className="m-chips">
+                {ADEREZOS.map((a) => (
+                  <span className="m-chip" key={a}>{a}</span>
+                ))}
               </div>
             </div>
           </div>
