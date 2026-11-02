@@ -186,7 +186,7 @@ const GALERIA = [
   { src: '/img/real/gal-8.jpg', t: 'Escamocha', d: 'Fruta batida con yogur y cereales, servida bien fría.' },
 ];
 
-function Compartir() {
+function usarCompartir() {
   const [copiado, setCopiado] = useState(false);
   const url = 'https://elbaguettonexpress.com.mx/';
   /* el mensaje deja de anunciar la apertura en cuanto pasa la fecha */
@@ -194,8 +194,6 @@ function Compartir() {
   const texto = porAbrir
     ? 'El Baguetton Express abre el 6 de noviembre en Valle Dorado, Mezcales. Sándwiches en baguette, ensaladas, café y aderezos caseros.'
     : 'El Baguetton Express, en Valle Dorado, Mezcales. Sándwiches en baguette, ensaladas, café y aderezos caseros.';
-  const porWhatsApp = `https://wa.me/?text=${encodeURIComponent(`${texto} ${url}`)}`;
-  const porFacebook = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
 
   const copiar = async () => {
     try {
@@ -220,33 +218,41 @@ function Compartir() {
     }
   };
 
-  const hayNativo = typeof navigator !== 'undefined' && !!navigator.share;
+  return {
+    copiado,
+    copiar,
+    nativo,
+    hayNativo: typeof navigator !== 'undefined' && !!navigator.share,
+    wa: `https://wa.me/?text=${encodeURIComponent(`${texto} ${url}`)}`,
+    fb: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+    mail: `mailto:?subject=${encodeURIComponent('El Baguetton Express')}&body=${encodeURIComponent(`${texto}\n\n${url}`)}`,
+  };
+}
 
+function BotonesCompartir() {
+  const s = usarCompartir();
   return (
-    <div className="compartir" data-reveal>
-      <span className="compartir-lbl">Compártela</span>
+    <div className="compartir-set">
       <div className="compartir-btns">
-        <a href={porWhatsApp} target="_blank" rel="noreferrer" aria-label="Compartir por WhatsApp" title="WhatsApp">
+        <a href={s.wa} target="_blank" rel="noreferrer" aria-label="Compartir por WhatsApp" title="WhatsApp">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.4-.2-2.9.8.8-2.8-.2-.4A8 8 0 0 1 12 4zm-3 4.2c-.2 0-.5.1-.7.4-.3.3-.9.9-.9 2s.7 2.2 1 2.5c.3.4 1.6 2.4 3.9 3.3 1.9.8 2.3.6 2.7.6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3l-1.4-.7c-.2-.1-.4-.1-.5.1l-.6.8c-.1.2-.3.2-.5.1-.2-.1-.9-.3-1.7-1-.6-.6-1-1.3-1.2-1.5-.1-.2 0-.3.1-.4l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.3 0-.4l-.6-1.4c-.2-.4-.3-.4-.5-.4h-.4z"/>
           </svg>
         </a>
-        <a href={porFacebook} target="_blank" rel="noreferrer" aria-label="Compartir por Facebook" title="Facebook">
+        <a href={s.fb} target="_blank" rel="noreferrer" aria-label="Compartir por Facebook" title="Facebook">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path fill="currentColor" d="M13.5 21v-7h2.4l.4-2.9h-2.8V9.3c0-.8.2-1.4 1.4-1.4h1.5V5.2c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.2H8v2.9h2.5V21h3z"/>
           </svg>
         </a>
-        <a href={`mailto:?subject=${encodeURIComponent('El Baguetton Express')}&body=${encodeURIComponent(`${texto}\n\n${url}`)}`} aria-label="Compartir por correo" title="Correo">
+        <a href={s.mail} aria-label="Compartir por correo" title="Correo">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path fill="none" stroke="currentColor" strokeWidth="1.7" d="M3.5 6.5h17v11h-17z"/>
             <path fill="none" stroke="currentColor" strokeWidth="1.7" d="M3.5 7l8.5 6 8.5-6"/>
           </svg>
         </a>
-        <button type="button" onClick={copiar} aria-label="Copiar enlace" title="Copiar enlace" className={copiado ? 'copiado' : ''}>
-          {copiado ? (
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="none" stroke="currentColor" strokeWidth="2" d="M4.5 12.5l5 5 10-11"/>
-            </svg>
+        <button type="button" onClick={s.copiar} aria-label="Copiar enlace" title="Copiar enlace" className={s.copiado ? 'copiado' : ''}>
+          {s.copiado ? (
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" strokeWidth="2" d="M4.5 12.5l5 5 10-11"/></svg>
           ) : (
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path fill="none" stroke="currentColor" strokeWidth="1.7" d="M10 13.5a4 4 0 0 0 5.7 0l2.8-2.8a4 4 0 0 0-5.7-5.7L11.5 6.3"/>
@@ -254,15 +260,64 @@ function Compartir() {
             </svg>
           )}
         </button>
-        {hayNativo && (
-          <button type="button" onClick={nativo} aria-label="Más opciones para compartir" title="Compartir">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="none" stroke="currentColor" strokeWidth="1.7" d="M12 15V4m0 0L8.5 7.5M12 4l3.5 3.5M5 13v6.5h14V13"/>
-            </svg>
+        {s.hayNativo && (
+          <button type="button" onClick={s.nativo} aria-label="Más opciones para compartir" title="Compartir">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" strokeWidth="1.7" d="M12 15V4m0 0L8.5 7.5M12 4l3.5 3.5M5 13v6.5h14V13"/></svg>
           </button>
         )}
       </div>
-      <span className={`compartir-aviso${copiado ? ' visible' : ''}`}>Enlace copiado</span>
+      <span className={`compartir-aviso${s.copiado ? ' visible' : ''}`}>Enlace copiado</span>
+    </div>
+  );
+}
+
+/* bloque del cierre */
+function Compartir() {
+  return (
+    <div className="compartir" data-reveal>
+      <span className="compartir-lbl">Compártela</span>
+      <BotonesCompartir />
+    </div>
+  );
+}
+
+/* botón fijo en la barra: siempre a la vista */
+function CompartirNav() {
+  const [abierto, setAbierto] = useState(false);
+  const caja = useRef(null);
+
+  useEffect(() => {
+    if (!abierto) return;
+    const fuera = (e) => { if (caja.current && !caja.current.contains(e.target)) setAbierto(false); };
+    const esc = (e) => { if (e.key === 'Escape') setAbierto(false); };
+    document.addEventListener('mousedown', fuera);
+    document.addEventListener('keydown', esc);
+    return () => {
+      document.removeEventListener('mousedown', fuera);
+      document.removeEventListener('keydown', esc);
+    };
+  }, [abierto]);
+
+  return (
+    <div className="nav-share" ref={caja}>
+      <button
+        type="button"
+        className={`nav-share-btn${abierto ? ' abierto' : ''}`}
+        onClick={() => setAbierto((v) => !v)}
+        aria-expanded={abierto}
+        aria-label="Compartir el sitio"
+        title="Compartir el sitio"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="none" stroke="currentColor" strokeWidth="1.8" d="M12 15.5V3.6m0 0L8.6 7M12 3.6 15.4 7M5 13.6v6.8h14v-6.8"/>
+        </svg>
+      </button>
+      {abierto && (
+        <div className="nav-share-panel" role="dialog" aria-label="Compartir el sitio">
+          <span className="nav-share-tit">Comparte el sitio</span>
+          <BotonesCompartir />
+        </div>
+      )}
     </div>
   );
 }
@@ -684,6 +739,8 @@ export default function App() {
               </a>
             </div>
 
+            <CompartirNav />
+
             <a className="cta-mini" href={WA} target="_blank" rel="noreferrer">
               WhatsApp
             </a>
@@ -724,6 +781,10 @@ export default function App() {
             <a href={FB} target="_blank" rel="noreferrer" onClick={cerrarMenu}>Facebook</a>
             <a href={IG} target="_blank" rel="noreferrer" onClick={cerrarMenu}>Instagram</a>
             <a href={YT} target="_blank" rel="noreferrer" onClick={cerrarMenu}>YouTube</a>
+          </div>
+          <div className="menu-compartir">
+            <span>Comparte el sitio</span>
+            <BotonesCompartir />
           </div>
           <a className="btn btn-primario" href={WA} target="_blank" rel="noreferrer" onClick={cerrarMenu}>
             Pedir por WhatsApp
