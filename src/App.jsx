@@ -22,21 +22,25 @@ const SERVICIOS = [
     img: '/img/real/sandwich.jpg',
     t: 'Sándwiches',
     d: 'En baguette, armados al momento.',
+    ir: '#menu-baguettones',
   },
   {
     img: '/img/real/ensalada.jpg',
     t: 'Ensaladas',
     d: 'Frescas, con aderezo aparte.',
+    ir: '#menu-ensaladas',
   },
   {
     img: '/img/real/cafe.jpg',
     t: 'Café',
     d: 'Para acompañar o para llevar.',
+    ir: '#menu-bebidas',
   },
   {
     img: '/img/real/gal-4.jpg',
     t: 'Dulce',
     d: 'Croissants, panqué y postres.',
+    ir: '#menu-dulces',
   },
 ];
 
@@ -50,6 +54,7 @@ const ADEREZOS = [
 
 const MENU = [
   {
+    id: 'baguettones',
     t: 'Baguettones',
     s: 'Nuestros sándwiches en baguette',
     nota: 'Todos, con opción en bagel o cuernito.',
@@ -66,6 +71,7 @@ const MENU = [
     ],
   },
   {
+    id: 'sin-prisas',
     t: 'Sin Prisas',
     s: 'Para comer con calma',
     items: [
@@ -75,6 +81,7 @@ const MENU = [
     ],
   },
   {
+    id: 'ensaladas',
     t: 'Ensaladas',
     s: 'Con el aderezo que tú elijas',
     items: [
@@ -87,6 +94,7 @@ const MENU = [
     ],
   },
   {
+    id: 'dulces',
     t: 'Dulces bocados',
     s: 'Los empalagosos',
     items: [
@@ -96,6 +104,7 @@ const MENU = [
     ],
   },
   {
+    id: 'bebidas',
     t: 'Las bebidas',
     s: '16 oz',
     items: [
@@ -104,6 +113,7 @@ const MENU = [
     ],
   },
   {
+    id: 'batidos',
     t: 'Batidos y licuados',
     s: 'Con leche entera, avena y canela',
     nota: 'Jugos $65.',
@@ -117,6 +127,7 @@ const MENU = [
     ],
   },
   {
+    id: 'picoteo',
     t: 'El picoteo',
     s: 'Fresco, con limón y sal',
     items: [
@@ -126,6 +137,7 @@ const MENU = [
     ],
   },
   {
+    id: 'bionicos',
     t: 'Bionicos y frutas',
     s: 'Escamochas',
     items: [
@@ -393,7 +405,10 @@ export default function App() {
       const el = document.querySelector(id);
       if (!el) return;
       e.preventDefault();
-      lenis.scrollTo(el, { offset: -20, duration: 1.2 });
+      /* deja aire bajo la barra fija: sin esto el título de la sección queda tapado */
+      const nav = document.querySelector('.nav');
+      const aire = (nav ? nav.getBoundingClientRect().height : 0) + 24;
+      lenis.scrollTo(el, { offset: -aire, duration: 1.2 });
     };
     document.addEventListener('click', onAnchor);
 
@@ -594,15 +609,16 @@ export default function App() {
             <h2 data-reveal>Lo que se antoje</h2>
             <div className="grid">
               {SERVICIOS.map((s) => (
-                <article className="card" key={s.t} data-reveal>
+                <a className="card" key={s.t} href={s.ir} data-reveal aria-label={`Ver ${s.t} en el menú`}>
                   <figure>
                     <img src={s.img} alt={s.t} loading="lazy" />
                   </figure>
                   <div className="txt">
                     <h3>{s.t}</h3>
                     <p>{s.d}</p>
+                    <span className="card-ver">Ver en el menú <i aria-hidden="true">→</i></span>
                   </div>
-                </article>
+                </a>
               ))}
             </div>
           </div>
@@ -645,7 +661,7 @@ export default function App() {
 
             <div className="menu-grid">
               {MENU.map((g) => (
-                <div className="m-grupo" key={g.t}>
+                <div className="m-grupo" id={`menu-${g.id}`} key={g.t}>
                   <h3>{g.t}<span>{g.s}</span></h3>
                   {g.items.map((it) => (
                     <div className="m-it" key={it.n}>
