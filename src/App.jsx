@@ -64,12 +64,12 @@ const FAQ = [
 ];
 
 const MARQUESINA = [
-  '/img/real/sandwich.jpg',
-  '/img/real/ensalada.jpg',
-  '/img/real/gal-2.jpg',
-  '/img/real/gal-4.jpg',
-  '/img/real/cafe.jpg',
-  '/img/real/gal-5.jpg',
+  { src: '/img/real/sandwich.jpg', t: 'Baguetton en baguette' },
+  { src: '/img/real/ensalada.jpg', t: 'Ensalada con aderezo aparte' },
+  { src: '/img/real/gal-2.jpg', t: 'Remolacha Deli' },
+  { src: '/img/real/gal-4.jpg', t: 'Rojo Pasión' },
+  { src: '/img/real/cafe.jpg', t: 'Café de olla' },
+  { src: '/img/real/gal-5.jpg', t: 'Panqué de mantequilla' },
 ];
 
 const ADEREZOS = [
@@ -177,13 +177,13 @@ const MENU = [
 ];
 
 const GALERIA = [
-  '/img/real/gal-1.jpg',
-  '/img/real/gal-2.jpg',
-  '/img/real/gal-3.jpg',
-  '/img/real/gal-4.jpg',
-  '/img/real/gal-5.jpg',
-  '/img/real/gal-6.jpg',
-  '/img/real/gal-8.jpg',
+  { src: '/img/real/gal-1.jpg', t: 'Mexicana', d: 'Lechuga, jitomate, aguacate, elote, queso panela y tortillitas horneadas con chile guajillo.' },
+  { src: '/img/real/gal-2.jpg', t: 'Remolacha Deli', d: 'Betabel fileteado, vinagreta de hierbas, pistaches y requesón.' },
+  { src: '/img/real/gal-3.jpg', t: 'Ensalada de pollo', d: 'Pollo a la plancha, lechuga, brócoli, zanahoria, pepino y germen de alfalfa.' },
+  { src: '/img/real/gal-4.jpg', t: 'Rojo Pasión', d: 'Cuernito calientito con compota casera de frutos rojos y queso doble crema.' },
+  { src: '/img/real/gal-5.jpg', t: 'Dulce de la casa', d: 'Panqué de mantequilla y panquesito de queso, del tamaño justo para el café.' },
+  { src: '/img/real/gal-6.jpg', t: 'El pan de la casa', d: 'Baguette de corteza dorada y miga suave: la base de todos los baguettones.' },
+  { src: '/img/real/gal-8.jpg', t: 'Escamocha', d: 'Fruta batida con yogur y cereales, servida bien fría.' },
 ];
 
 function Galeria({ fotos }) {
@@ -276,9 +276,13 @@ function Galeria({ fotos }) {
       onTouchStart={() => setPausa(true)}
     >
       <div className="carrusel-track" ref={track}>
-        {fotos.map((src, i) => (
-          <figure className="slide" key={src} onClick={() => setAbierta(i)}>
-            <img src={src} alt="" loading="lazy" />
+        {fotos.map((f, i) => (
+          <figure className="slide" key={f.src} onClick={() => setAbierta(i)}>
+            <img src={f.src} alt={f.t} loading="lazy" />
+            <figcaption className="slide-info">
+              <h3>{f.t}</h3>
+              <p>{f.d}</p>
+            </figcaption>
           </figure>
         ))}
       </div>
@@ -322,11 +326,16 @@ function Galeria({ fotos }) {
       {abierta !== null &&
         createPortal(
           <div className="lightbox" onClick={() => setAbierta(null)}>
-            <img
-              src={fotos[abierta]}
-              alt=""
-              onClick={(e) => e.stopPropagation()}
-            />
+            <div className="lb-caja" onClick={(e) => e.stopPropagation()}>
+              <img src={fotos[abierta].src} alt={fotos[abierta].t} />
+              <div className="lb-info">
+                <div className="lb-txt">
+                  <h3>{fotos[abierta].t}</h3>
+                  <p>{fotos[abierta].d}</p>
+                </div>
+                <span className="lb-cuenta">{abierta + 1} / {fotos.length}</span>
+              </div>
+            </div>
             <button
               type="button"
               className="cerrar"
@@ -691,9 +700,10 @@ export default function App() {
 
         <section className="marquesina" aria-hidden="true">
           <div className="marquesina-track">
-            {[...MARQUESINA, ...MARQUESINA].map((src, i) => (
-              <figure key={`${src}-${i}`}>
-                <img src={src} alt="" loading="lazy" />
+            {[...MARQUESINA, ...MARQUESINA].map((f, i) => (
+              <figure key={`${f.src}-${i}`} title={f.t}>
+                <img src={f.src} alt={f.t} loading="lazy" />
+                <figcaption>{f.t}</figcaption>
               </figure>
             ))}
           </div>
