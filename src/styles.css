@@ -465,6 +465,115 @@ footer .social a:hover{color:var(--crema)}
   border-radius:2px;padding:8px 16px;
 }
 
+/* ---------- franja de cuenta regresiva ---------- */
+.cuenta{
+  position:fixed;top:0;left:0;right:0;z-index:26;height:40px;
+  display:flex;align-items:center;justify-content:center;gap:16px;
+  background:var(--dorado);color:#2A1B08;
+  font-family:var(--font-display);font-weight:700;font-size:.76rem;
+  letter-spacing:.14em;text-transform:uppercase;
+}
+.cuenta p{display:flex;gap:8px;align-items:baseline}
+.cuenta b{font-weight:900}
+.cuenta span{font-weight:500;letter-spacing:.08em;text-transform:none}
+.cuenta a{
+  color:inherit;text-decoration:none;border-bottom:1px solid currentColor;
+  padding-bottom:2px;
+}
+.cuenta a:hover{opacity:.7}
+.nav.con-cuenta{top:40px}
+
+/* ---------- WhatsApp flotante ---------- */
+.wa-flotante{
+  position:fixed;right:24px;bottom:24px;z-index:30;
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--crema);color:var(--verde);text-decoration:none;
+  font-family:var(--font-display);font-weight:700;font-size:.78rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  padding:16px 20px;border-radius:40px;
+  box-shadow:0 12px 34px rgba(0,0,0,.28);
+  transition:transform .3s ease,background .3s ease;
+}
+.wa-flotante:hover{transform:translateY(-3px);background:var(--crema-dorada)}
+.wa-flotante svg{width:22px;height:22px}
+
+/* ---------- marquesina de platillos ---------- */
+.marquesina{
+  overflow:hidden;background:var(--verde-profundo);
+  padding:var(--s4) 0;
+}
+.marquesina-track{
+  display:flex;gap:var(--s2);width:max-content;
+  animation:desliza 46s linear infinite;
+}
+.marquesina:hover .marquesina-track{animation-play-state:paused}
+.marquesina figure{
+  flex:0 0 auto;width:clamp(160px,17vw,230px);aspect-ratio:4/5;
+  overflow:hidden;background:#0A2A1A;
+}
+.marquesina img{width:100%;height:100%;object-fit:cover}
+@keyframes desliza{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- cómo pedir ---------- */
+.pedir{background:var(--verde-profundo)}
+.pedir h2{color:var(--crema);max-width:16ch}
+.pasos{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s5);
+  margin-top:var(--s6);
+}
+.paso{border-top:1px solid rgba(244,238,226,.22);padding-top:var(--s3)}
+.paso-n{
+  display:block;font-family:var(--font-display);font-weight:900;
+  font-size:.9rem;letter-spacing:.22em;color:var(--dorado-claro);
+}
+.paso h3{
+  font-family:var(--font-display);font-weight:900;font-size:1.24rem;
+  letter-spacing:-.01em;text-transform:uppercase;color:var(--crema);
+  margin-top:var(--s2);
+}
+.paso p{margin-top:8px;font-size:.98rem;line-height:1.55;color:rgba(244,238,226,.72)}
+.pedir-cta{margin-top:var(--s5)}
+
+/* ---------- estado de apertura ---------- */
+.estado{
+  display:inline-flex;align-items:center;gap:8px;margin-top:12px;
+  font-family:var(--font-display);font-weight:700;font-size:.7rem;
+  letter-spacing:.2em;text-transform:uppercase;
+  padding:6px 12px;border:1px solid currentColor;border-radius:2px;
+}
+.estado::before{content:'';width:7px;height:7px;border-radius:50%;background:currentColor}
+.estado.abierto{color:#7FD1A0}
+.estado.cerrado{color:rgba(244,238,226,.55)}
+.estado.pronto{color:var(--dorado-claro)}
+
+/* ---------- preguntas frecuentes ---------- */
+.faq{background:var(--crema);color:var(--verde)}
+.faq .eyebrow{color:var(--dorado)}
+.faq h2{color:var(--verde);max-width:20ch}
+.faq-lista{margin-top:var(--s5);max-width:860px}
+.faq-item{border-top:1px solid rgba(9,64,30,.18);padding:var(--s3) 0}
+.faq-item:last-child{border-bottom:1px solid rgba(9,64,30,.18)}
+.faq-item summary{
+  font-family:var(--font-display);font-weight:700;font-size:1.04rem;
+  letter-spacing:.01em;color:var(--verde);cursor:pointer;
+  list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{
+  content:'+';font-weight:700;font-size:1.3rem;color:var(--dorado);
+  transition:transform .25s ease;line-height:1;
+}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item p{
+  margin-top:12px;font-size:.98rem;line-height:1.6;color:var(--neutro);
+  max-width:64ch;
+}
+
+/* ---------- pie legal ---------- */
+.pie-legal a{font-size:.8rem;color:rgba(244,238,226,.55);text-decoration:none;
+  border-bottom:1px solid rgba(244,238,226,.28)}
+.pie-legal a:hover{color:var(--crema)}
+
 /* ---------- responsive ---------- */
 /* la barra completa solo cabe en pantallas grandes; debajo pasa a menú */
 @media (max-width:1099px){
@@ -490,6 +599,12 @@ footer .social a:hover{color:var(--crema)}
 
 @media (max-width:900px){
   .menu-grid{columns:2;column-gap:var(--s3);margin-top:var(--s5)}
+  .pasos{grid-template-columns:1fr;gap:var(--s4);margin-top:var(--s5)}
+  .cuenta{padding:0 16px;justify-content:space-between;font-size:.66rem;letter-spacing:.1em}
+  .cuenta span{display:none}
+  .wa-flotante{right:16px;bottom:16px;padding:14px 16px;border-radius:32px}
+  .wa-flotante span{display:none}
+  .wa-flotante svg{width:26px;height:26px}
   .hero{min-height:165svh}
   .grid{grid-template-columns:repeat(2,1fr);gap:var(--s2)}
   .donde .dos{grid-template-columns:1fr;gap:var(--s4)}

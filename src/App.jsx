@@ -44,6 +44,34 @@ const SERVICIOS = [
   },
 ];
 
+
+const CORREO = 'elbaguettonexpress@gmail.com';
+const APERTURA = new Date('2026-11-06T00:00:00-06:00');
+
+const PASOS = [
+  { n: '01', t: 'Pide por WhatsApp', d: 'Nos dices qué quieres del menú y te confirmamos.' },
+  { n: '02', t: 'Lo preparamos', d: 'Se arma al momento, con el aderezo que elijas.' },
+  { n: '03', t: 'Recoges o te quedas', d: 'Pasas por él a Valle Nacional 106, o te sientas aquí.' },
+];
+
+const FAQ = [
+  { q: '¿Cuándo abren?', a: 'El viernes 6 de noviembre de 2026, en Valle Nacional 106, Fracc. Valle Dorado, Mezcales, Nayarit.' },
+  { q: '¿Cuál es el horario?', a: 'De lunes a sábado, de 8:00 am a 8:00 pm. Los domingos permanecemos cerrados.' },
+  { q: '¿Puedo pedir para llevar?', a: 'Sí, todo el menú se puede pedir para llevar. Nos escribes por WhatsApp y lo recoges.' },
+  { q: '¿Puedo cambiar la baguette por bagel o cuernito?', a: 'Sí. Casi todos los baguettones se pueden pedir en bagel o en cuernito, solo avísanos al pedir.' },
+  { q: '¿Los aderezos son caseros?', a: 'Todos. Se preparan aquí: ranch eneldo, miel mostaza, vinagreta italiana, tamarindo y vinagreta de hierbas.' },
+  { q: '¿Hay opciones sin carne?', a: 'Sí: el Ensaladón, el Chori-Vegano (chorizo vegano 100% sin gluten), el Quesero y las ensaladas Remolacha Deli y La Primavera.' },
+];
+
+const MARQUESINA = [
+  '/img/real/sandwich.jpg',
+  '/img/real/ensalada.jpg',
+  '/img/real/gal-2.jpg',
+  '/img/real/gal-4.jpg',
+  '/img/real/cafe.jpg',
+  '/img/real/gal-5.jpg',
+];
+
 const ADEREZOS = [
   'Ranch eneldo',
   'Miel mostaza',
@@ -338,6 +366,8 @@ export default function App() {
   );
   const [esMovil] = useState(() => window.matchMedia('(max-width: 900px)').matches);
   const [pegado, setPegado] = useState(false);
+  const [dias, setDias] = useState(() => Math.ceil((APERTURA - new Date()) / 86400000));
+  const [estado, setEstado] = useState('cerrado');
   const [menuAbierto, setMenuAbierto] = useState(false);
   const cerrarMenu = () => setMenuAbierto(false);
 
@@ -377,6 +407,16 @@ export default function App() {
     window.addEventListener('load', arrancar, { once: true });
     return () => window.removeEventListener('load', arrancar);
   }, [esMovil]);
+
+  useEffect(() => {
+    const ahora = new Date();
+    const falta = Math.ceil((APERTURA - ahora) / 86400000);
+    setDias(falta);
+    if (falta > 0) { setEstado('pronto'); return; }
+    const dia = ahora.getDay();               /* 0 domingo */
+    const h = ahora.getHours() + ahora.getMinutes() / 60;
+    setEstado(dia === 0 || h < 8 || h >= 20 ? 'cerrado' : 'abierto');
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setPegado(window.scrollY > 80);
@@ -509,7 +549,17 @@ export default function App() {
         <div className="bg-scrim" />
       </div>
 
-      <header className={`nav${pegado ? ' pegado' : ''}`}>
+      {dias > 0 && (
+        <div className="cuenta">
+          <p>
+            <b>{dias === 1 ? 'Falta 1 día' : `Faltan ${dias} días`}</b>
+            <span> · Abrimos el viernes 6 de noviembre</span>
+          </p>
+          <a href="#menu">Ver el menú</a>
+        </div>
+      )}
+
+      <header className={`nav${pegado ? ' pegado' : ''}${dias > 0 ? ' con-cuenta' : ''}`}>
         <div className="nav-inner">
           <a className="nav-logo" href="#top" aria-label="El Baguetton Express">
             <img src={`/img/logo-white.png${AV}`} alt="El Baguetton Express" />
@@ -567,7 +617,9 @@ export default function App() {
             <a href="#que-servimos" onClick={cerrarMenu}>Lo que servimos</a>
             <a href="#menu" onClick={cerrarMenu}>Menú</a>
             <a href="#aderezos" onClick={cerrarMenu}>Los aderezos</a>
+            <a href="#como-pedir" onClick={cerrarMenu}>Cómo pedir</a>
             <a href="#galeria" onClick={cerrarMenu}>Galería</a>
+            <a href="#preguntas" onClick={cerrarMenu}>Preguntas</a>
             <a href="#donde" onClick={cerrarMenu}>Dónde y cuándo</a>
           </nav>
           <div className="menu-redes">
@@ -580,6 +632,19 @@ export default function App() {
           </a>
         </div>
       )}
+
+      <a
+        className="wa-flotante"
+        href={WA}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Escribir por WhatsApp"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.4-.2-2.9.8.8-2.8-.2-.4A8 8 0 0 1 12 4zm-3 4.2c-.2 0-.5.1-.7.4-.3.3-.9.9-.9 2s.7 2.2 1 2.5c.3.4 1.6 2.4 3.9 3.3 1.9.8 2.3.6 2.7.6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3l-1.4-.7c-.2-.1-.4-.1-.5.1l-.6.8c-.1.2-.3.2-.5.1-.2-.1-.9-.3-1.7-1-.6-.6-1-1.3-1.2-1.5-.1-.2 0-.3.1-.4l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.3 0-.4l-.6-1.4c-.2-.4-.3-.4-.5-.4h-.4z"/>
+        </svg>
+        <span>WhatsApp</span>
+      </a>
 
       <main>
         <section className="hero">
@@ -624,8 +689,14 @@ export default function App() {
           </div>
         </section>
 
-        <section className="banda" aria-hidden="true">
-          <img src="/img/real/gal-7.jpg" alt="" loading="lazy" />
+        <section className="marquesina" aria-hidden="true">
+          <div className="marquesina-track">
+            {[...MARQUESINA, ...MARQUESINA].map((src, i) => (
+              <figure key={`${src}-${i}`}>
+                <img src={src} alt="" loading="lazy" />
+              </figure>
+            ))}
+          </div>
         </section>
 
         <section className="bloque aderezos" id="aderezos">
@@ -689,6 +760,25 @@ export default function App() {
           </div>
         </section>
 
+        <section className="bloque pedir" id="como-pedir">
+          <div className="wrap">
+            <p className="eyebrow" data-reveal>Cómo pedir</p>
+            <h2 data-reveal>Así de fácil</h2>
+            <div className="pasos">
+              {PASOS.map((p) => (
+                <div className="paso" key={p.n} data-reveal>
+                  <span className="paso-n">{p.n}</span>
+                  <h3>{p.t}</h3>
+                  <p>{p.d}</p>
+                </div>
+              ))}
+            </div>
+            <a className="btn btn-primario pedir-cta" href={WA} target="_blank" rel="noreferrer" data-reveal>
+              Pedir por WhatsApp
+            </a>
+          </div>
+        </section>
+
         <section className="bloque galeria-bloque" id="galeria">
           <div className="wrap">
             <p className="eyebrow" data-reveal>De la cocina</p>
@@ -715,13 +805,20 @@ export default function App() {
                   <div className="v">
                     Lunes a sábado · 8:00 am a 8:00 pm
                     <small>Domingo cerrado</small>
+                    <span className={`estado ${estado}`}>
+                      {estado === 'abierto' && 'Abierto ahora'}
+                      {estado === 'cerrado' && 'Cerrado ahora'}
+                      {estado === 'pronto' && 'Aún no abrimos'}
+                    </span>
                   </div>
                 </div>
                 <div className="dato">
                   <div className="k">WhatsApp</div>
                   <div className="v">
                     <a href={WA} target="_blank" rel="noreferrer">{WA_VISIBLE}</a>
-                    <small>Pedidos y dudas</small>
+                    <small>
+                      Pedidos y dudas · <a href="tel:+523223706472">Llamar</a>
+                    </small>
                   </div>
                 </div>
                 <div className="dato">
@@ -740,6 +837,21 @@ export default function App() {
                   />
                 </div> 
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bloque faq" id="preguntas">
+          <div className="wrap">
+            <p className="eyebrow" data-reveal>Antes de venir</p>
+            <h2 data-reveal>Preguntas frecuentes</h2>
+            <div className="faq-lista" data-reveal>
+              {FAQ.map((f) => (
+                <details className="faq-item" key={f.q}>
+                  <summary>{f.q}</summary>
+                  <p>{f.a}</p>
+                </details>
+              ))}
             </div>
           </div>
         </section>
@@ -765,6 +877,11 @@ export default function App() {
             <p>Valle Nacional 106 · Valle Dorado, Mezcales, Nayarit</p>
             <p className="wa-footer">
               WhatsApp <a href={WA} target="_blank" rel="noreferrer">{WA_VISIBLE}</a>
+              {' · '}
+              <a href={`mailto:${CORREO}`}>{CORREO}</a>
+            </p>
+            <p className="pie-legal">
+              <a href="/privacidad.html">Aviso de privacidad</a>
             </p>
             <div className="social">
               <a href={FB} target="_blank" rel="noreferrer" onClick={cerrarMenu}>Facebook</a>
