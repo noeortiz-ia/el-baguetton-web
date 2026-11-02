@@ -275,7 +275,7 @@ function BotonesCompartir() {
 function Compartir() {
   return (
     <div className="compartir" data-reveal>
-      <span className="compartir-lbl">Compártela</span>
+      <span className="compartir-lbl">Compartir</span>
       <BotonesCompartir />
     </div>
   );
@@ -302,7 +302,7 @@ function CompartirFlotante() {
     <div className="share-flotante" ref={caja}>
       {abierto && (
         <div className="share-panel" role="dialog" aria-label="Compartir el sitio">
-          <span className="share-panel-tit">Compártela</span>
+          <span className="share-panel-tit">Compartir</span>
           <BotonesCompartir />
         </div>
       )}
