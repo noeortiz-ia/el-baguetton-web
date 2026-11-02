@@ -412,6 +412,34 @@ h2{
 .cierre p{margin-top:var(--s3);color:rgba(244,238,226,.82);font-size:var(--body)}
 .cierre .acciones{display:flex;justify-content:center;gap:var(--s2);margin-top:var(--s5);flex-wrap:wrap}
 
+/* ---------- compartir ---------- */
+.compartir{
+  margin-top:var(--s6);display:flex;flex-direction:column;align-items:center;gap:14px;
+}
+.compartir-lbl{
+  font-family:var(--font-display);font-weight:700;font-size:.68rem;
+  letter-spacing:.26em;text-transform:uppercase;color:rgba(244,238,226,.55);
+}
+.compartir-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.compartir-btns a,
+.compartir-btns button{
+  width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+  border:1px solid rgba(244,238,226,.26);background:transparent;color:var(--crema);
+  cursor:pointer;transition:background .28s ease,border-color .28s ease,transform .28s ease;
+}
+.compartir-btns a:hover,
+.compartir-btns button:hover{
+  background:rgba(244,238,226,.12);border-color:rgba(244,238,226,.6);transform:translateY(-2px);
+}
+.compartir-btns svg{width:20px;height:20px}
+.compartir-btns button.copiado{background:var(--dorado);border-color:var(--dorado);color:#2A1B08}
+.compartir-aviso{
+  font-family:var(--font-display);font-weight:700;font-size:.68rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--dorado-claro);
+  opacity:0;transform:translateY(-4px);transition:opacity .3s ease,transform .3s ease;
+}
+.compartir-aviso.visible{opacity:1;transform:none}
+
 footer{
   background:var(--verde-profundo);padding:var(--s5) 0 var(--s6);
   border-top:1px solid rgba(244,238,226,.12);
