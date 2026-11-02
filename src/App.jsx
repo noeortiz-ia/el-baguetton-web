@@ -281,8 +281,8 @@ function Compartir() {
   );
 }
 
-/* botón fijo en la barra: siempre a la vista */
-function CompartirNav() {
+/* botón flotante abajo a la izquierda: siempre a la vista */
+function CompartirFlotante() {
   const [abierto, setAbierto] = useState(false);
   const caja = useRef(null);
 
@@ -299,25 +299,25 @@ function CompartirNav() {
   }, [abierto]);
 
   return (
-    <div className="nav-share" ref={caja}>
-      <button
-        type="button"
-        className={`nav-share-btn${abierto ? ' abierto' : ''}`}
-        onClick={() => setAbierto((v) => !v)}
-        aria-expanded={abierto}
-        aria-label="Compartir el sitio"
-        title="Compartir el sitio"
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path fill="none" stroke="currentColor" strokeWidth="1.8" d="M12 15.5V3.6m0 0L8.6 7M12 3.6 15.4 7M5 13.6v6.8h14v-6.8"/>
-        </svg>
-      </button>
+    <div className="share-flotante" ref={caja}>
       {abierto && (
-        <div className="nav-share-panel" role="dialog" aria-label="Compartir el sitio">
-          <span className="nav-share-tit">Comparte el sitio</span>
+        <div className="share-panel" role="dialog" aria-label="Compartir el sitio">
+          <span className="share-panel-tit">Compártela</span>
           <BotonesCompartir />
         </div>
       )}
+      <button
+        type="button"
+        className={`share-btn${abierto ? ' abierto' : ''}`}
+        onClick={() => setAbierto((v) => !v)}
+        aria-expanded={abierto}
+        aria-label="Compartir el sitio"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="none" stroke="currentColor" strokeWidth="1.9" d="M12 15.6V3.6m0 0L8.4 7.2M12 3.6l3.6 3.6M4.8 13.4v7h14.4v-7"/>
+        </svg>
+        <span>Compartir</span>
+      </button>
     </div>
   );
 }
@@ -739,8 +739,6 @@ export default function App() {
               </a>
             </div>
 
-            <CompartirNav />
-
             <a className="cta-mini" href={WA} target="_blank" rel="noreferrer">
               WhatsApp
             </a>
@@ -782,10 +780,7 @@ export default function App() {
             <a href={IG} target="_blank" rel="noreferrer" onClick={cerrarMenu}>Instagram</a>
             <a href={YT} target="_blank" rel="noreferrer" onClick={cerrarMenu}>YouTube</a>
           </div>
-          <div className="menu-compartir">
-            <span>Comparte el sitio</span>
-            <BotonesCompartir />
-          </div>
+
           <a className="btn btn-primario" href={WA} target="_blank" rel="noreferrer" onClick={cerrarMenu}>
             Pedir por WhatsApp
           </a>
@@ -804,6 +799,8 @@ export default function App() {
         </svg>
         <span>WhatsApp</span>
       </a>
+
+      <CompartirFlotante />
 
       <main>
         <section className="hero">
