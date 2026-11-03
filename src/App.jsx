@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
-import { avisarVista, escucharClics } from './pixel';
+import { avisarVista, escucharClics, observarSecciones, avisarFoto, avisarCompartir, avisarPlatillo } from './pixel';
 import MENU from './data/menu.js';
 import FAQ from './data/faq.js';
 
@@ -147,23 +147,32 @@ function BotonesCompartir() {
   return (
     <div className="compartir-set">
       <div className="compartir-btns">
-        <a href={s.wa} target="_blank" rel="noreferrer" aria-label="Compartir por WhatsApp" title="WhatsApp">
+        <a href={s.wa} target="_blank" rel="noreferrer" aria-label="Compartir por WhatsApp" title="WhatsApp"
+          onClick={() => avisarCompartir('whatsapp')}>
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.4-.2-2.9.8.8-2.8-.2-.4A8 8 0 0 1 12 4zm-3 4.2c-.2 0-.5.1-.7.4-.3.3-.9.9-.9 2s.7 2.2 1 2.5c.3.4 1.6 2.4 3.9 3.3 1.9.8 2.3.6 2.7.6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3l-1.4-.7c-.2-.1-.4-.1-.5.1l-.6.8c-.1.2-.3.2-.5.1-.2-.1-.9-.3-1.7-1-.6-.6-1-1.3-1.2-1.5-.1-.2 0-.3.1-.4l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.3 0-.4l-.6-1.4c-.2-.4-.3-.4-.5-.4h-.4z"/>
           </svg>
         </a>
-        <a href={s.fb} target="_blank" rel="noreferrer" aria-label="Compartir por Facebook" title="Facebook">
+        <a href={s.fb} target="_blank" rel="noreferrer" aria-label="Compartir por Facebook" title="Facebook"
+          onClick={() => avisarCompartir('facebook')}>
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path fill="currentColor" d="M13.5 21v-7h2.4l.4-2.9h-2.8V9.3c0-.8.2-1.4 1.4-1.4h1.5V5.2c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.2H8v2.9h2.5V21h3z"/>
           </svg>
         </a>
-        <a href={s.mail} aria-label="Compartir por correo" title="Correo">
+        <a href={s.mail} aria-label="Compartir por correo" title="Correo"
+          onClick={() => avisarCompartir('correo')}>
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path fill="none" stroke="currentColor" strokeWidth="1.7" d="M3.5 6.5h17v11h-17z"/>
             <path fill="none" stroke="currentColor" strokeWidth="1.7" d="M3.5 7l8.5 6 8.5-6"/>
           </svg>
         </a>
-        <button type="button" onClick={s.copiar} aria-label="Copiar enlace" title="Copiar enlace" className={s.copiado ? 'copiado' : ''}>
+        <button
+          type="button"
+          onClick={() => { s.copiar(); avisarCompartir('enlace_copiado'); }}
+          aria-label="Copiar enlace"
+          title="Copiar enlace"
+          className={s.copiado ? 'copiado' : ''}
+        >
           {s.copiado ? (
             <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" strokeWidth="2" d="M4.5 12.5l5 5 10-11"/></svg>
           ) : (
@@ -344,7 +353,11 @@ function Galeria({ fotos }) {
             <figure
               className="slide"
               key={`${copia}-${f.src}`}
-              onClick={() => setAbierta(i)}
+              onClick={() => {
+                setAbierta(i);
+                /* se mide en las tres copias del bucle: la visible puede ser cualquiera */
+                avisarFoto(f.t, 'galeria');
+              }}
               aria-hidden={copia === 1 ? undefined : 'true'}
             >
               {/* solo la copia de en medio lleva encabezado y texto alternativo:
@@ -438,10 +451,15 @@ export default function App() {
   const [menuAbierto, setMenuAbierto] = useState(false);
   const cerrarMenu = () => setMenuAbierto(false);
 
-  /* seguimiento: vista de la ficha y clasificación de clics (WhatsApp / ubicación) */
+  /* seguimiento: vista de la ficha, recorrido por secciones y clics de conversión */
   useEffect(() => {
     avisarVista();
-    return escucharClics();
+    const dejarDeObservar = observarSecciones();
+    const dejarDeEscuchar = escucharClics();
+    return () => {
+      dejarDeObservar();
+      dejarDeEscuchar();
+    };
   }, []);
 
   useEffect(() => {
@@ -744,7 +762,14 @@ export default function App() {
             <h2 data-reveal>Lo que se antoje</h2>
             <div className="grid">
               {SERVICIOS.map((s) => (
-                <a className="card" key={s.t} href={s.ir} data-reveal aria-label={`Ver ${s.t} en el menú`}>
+                <a
+                  className="card"
+                  key={s.t}
+                  href={s.ir}
+                  data-reveal
+                  aria-label={`Ver ${s.t} en el menú`}
+                  onClick={() => avisarPlatillo(s.t, null, 'portada')}
+                >
                   <figure>
                     <img src={s.img} alt={s.t} loading="lazy" />
                   </figure>
