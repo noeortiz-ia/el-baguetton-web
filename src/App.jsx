@@ -4,6 +4,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import { avisarVista, escucharClics } from './pixel';
+import MENU from './data/menu.js';
+import FAQ from './data/faq.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -54,14 +56,7 @@ const PASOS = [
   { n: '03', t: 'Recoges o te quedas', d: 'Pasas por él a Valle Nacional 106, o te sientas aquí.' },
 ];
 
-const FAQ = [
-  { q: '¿Cuándo abren?', a: 'El viernes 6 de noviembre de 2026, en Valle Nacional 106, Fracc. Valle Dorado, Mezcales, Nayarit.' },
-  { q: '¿Cuál es el horario?', a: 'De lunes a sábado, de 8:00 am a 8:00 pm. Los domingos permanecemos cerrados.' },
-  { q: '¿Puedo pedir para llevar?', a: 'Sí, todo el menú se puede pedir para llevar. Nos escribes por WhatsApp y lo recoges.' },
-  { q: '¿Puedo cambiar la baguette por bagel o cuernito?', a: 'Sí. Casi todos los baguettones se pueden pedir en bagel o en cuernito, solo avísanos al pedir.' },
-  { q: '¿Los aderezos son caseros?', a: 'Todos. Se preparan aquí: ranch eneldo, miel mostaza, vinagreta italiana, tamarindo y vinagreta de hierbas.' },
-  { q: '¿Hay opciones sin carne?', a: 'Sí: el Ensaladón, el Chori-Vegano (chorizo vegano 100% sin gluten), el Quesero y las ensaladas Remolacha Deli y La Primavera.' },
-];
+
 
 const MARQUESINA = [
   { src: '/img/real/sandwich.jpg', t: 'Baguetton en baguette' },
@@ -88,101 +83,7 @@ const ADEREZOS = [
   'Vinagreta de hierbas',
 ];
 
-const MENU = [
-  {
-    id: 'baguettones',
-    t: 'Baguettones',
-    s: 'Nuestros sándwiches en baguette',
-    nota: 'Todos, con opción en bagel o cuernito.',
-    items: [
-      { n: 'Clásico', p: 52, d: 'Jamón viena, salami, manchego y aderezo de la casa.' },
-      { n: 'Plus', p: 85, d: 'Jamón de pierna de cerdo, manchego, salami, lechuga, jitomate y aderezo de la casa.' },
-      { n: 'Pechugón', p: 85, d: 'Jamón de pechuga de pavo, manchego, salami, lechuga, jitomate y aderezo de la casa.' },
-      { n: 'Pollero', p: 105, d: 'Fajitas de pollo, manchego, lechuga, jitomate y aderezo de la casa.' },
-      { n: 'Pizzero', p: 85, d: 'Salsa de pizza, pepperoni, queso gratinado y aderezo de la casa.' },
-      { n: 'Tunero', p: 105, d: 'Atún, manchego, lechuga, pepino, jitomate y aderezo de la casa.' },
-      { n: 'Quesero', p: 105, d: 'Manchego, panela y queso regianito, lechuga, jitomate y aderezo de la casa.' },
-      { n: 'Ensaladón', p: 85, d: 'Zetas y calabazas cocinadas, lechuga, jitomate, zanahoria, betabel, germen, pepino y aderezo de la casa.' },
-      { n: 'Chori-Vegano', p: 95, d: 'Chorizo vegano 100% sin gluten, queso manchego, lechuga y aderezo de la casa.' },
-    ],
-  },
-  {
-    id: 'sin-prisas',
-    t: 'Sin Prisas',
-    s: 'Para comer con calma',
-    items: [
-      { n: 'Bagel Huevón', p: 105, d: 'Huevito cocinado, queso manchego, espinaca, jitomate, lechuga y aderezo de la casa.' },
-      { n: 'Pizzero Tropical', p: 105, d: 'Salsa de pizza, piña, durazno, queso gratinado y aderezo de la casa.' },
-      { n: 'Molletón', p: 85, d: 'Frijolitos negros, queso gratinado, aderezo de la casa y pico de gallo.' },
-    ],
-  },
-  {
-    id: 'ensaladas',
-    t: 'Ensaladas',
-    s: 'Con el aderezo que tú elijas',
-    items: [
-      { n: 'Baguetona', p: 120, d: 'Lechuga, fajitas de pollo salpimentadas, zanahoria, betabel, germen, jitomate cherry, pepino y croutones.' },
-      { n: 'Mexicana', p: 115, d: 'Lechuga, jitomate, aguacate, elote, queso panela y tortillitas horneadas con chile guajillo.' },
-      { n: 'La BBQ', p: 120, d: 'Lechuga, fajitas de pollo BBQ, brócoli, zanahoria, pepino, germen y tortillitas horneadas.' },
-      { n: 'Cacahuata', p: 130, d: 'Lechuga, fajitas de pollo al cacahuate, brócoli, zanahoria, pepino, germen y cacahuates.' },
-      { n: 'Remolacha Deli', p: 115, d: 'Betabel fileteado, vinagreta de hierbas, pistaches y requesón.' },
-      { n: 'La Primavera', p: 115, d: 'Lechuga, quinoa, fresa, cubos de panela y nuez caramelizada.' },
-    ],
-  },
-  {
-    id: 'dulces',
-    t: 'Dulces bocados',
-    s: 'Los empalagosos',
-    items: [
-      { n: 'Rojo Pasión', p: 65, d: 'Cuernito calientito con compota casera de frutos rojos y queso doble crema.' },
-      { n: 'Panqué Mantequilla', p: 65, d: 'Panqué de mantequilla 100% con naranja.' },
-      { n: 'Cubilete Baguetton', p: 55, d: 'Panquesito de queso.' },
-    ],
-  },
-  {
-    id: 'bebidas',
-    t: 'Las bebidas',
-    s: '16 oz',
-    items: [
-      { n: 'Café de Olla', p: 55, d: 'Con auténtico piloncillo.' },
-      { n: 'Café Americano', p: 50, d: 'Café americano.' },
-    ],
-  },
-  {
-    id: 'batidos',
-    t: 'Batidos y licuados',
-    s: 'Con leche entera, avena y canela',
-    nota: 'Jugos $65.',
-    items: [
-      { n: 'Fresón', p: 75, d: 'Fresa, azúcar, canela y avena.' },
-      { n: 'Chocobanana', p: 75, d: 'Plátano, cacao, azúcar, canela y avena.' },
-      { n: 'Frutos Rojos', p: 75, d: 'Frutos rojos, azúcar, canela y avena.' },
-      { n: 'Popeye', p: 75, d: 'Espinacas, azúcar, canela y avena.' },
-      { n: 'Mangazo', p: 75, d: 'Mango, azúcar, canela y avena.' },
-      { n: 'Hay Papaya de Celaya', p: 75, d: 'Papaya, azúcar, canela y avena.' },
-    ],
-  },
-  {
-    id: 'picoteo',
-    t: 'El picoteo',
-    s: 'Fresco, con limón y sal',
-    items: [
-      { n: 'Jícamas', p: 45, d: 'Jícama fresca, rodajita de limón y sal.' },
-      { n: 'Pepinos', p: 45, d: 'Pepino fresco, rodajita de limón y sal.' },
-      { n: 'Apio y Zanahoria', p: 45, d: 'Bastones con rodajita de limón y sal.' },
-    ],
-  },
-  {
-    id: 'bionicos',
-    t: 'Bionicos y frutas',
-    s: 'Escamochas',
-    items: [
-      { n: 'Biónico Baguetton', p: 80, d: 'Frutas varias con cremita dulce y granola.' },
-      { n: 'Coctel de Frutas', p: 70, d: 'Frutas varias con miel y granola.' },
-      { n: 'Escamochas', p: 80, d: 'Frutas varias batidas con yogur y cereales.' },
-    ],
-  },
-];
+
 
 const GALERIA = [
   { src: '/img/real/gal-1.jpg', t: 'Mexicana', d: 'Lechuga, jitomate, aguacate, elote, queso panela y tortillitas horneadas con chile guajillo.' },
@@ -442,9 +343,11 @@ function Galeria({ fotos }) {
               onClick={() => setAbierta(i)}
               aria-hidden={copia === 1 ? undefined : 'true'}
             >
-              <img src={f.src} alt={f.t} loading="lazy" />
+              {/* solo la copia de en medio lleva encabezado y texto alternativo:
+                  las otras dos son clones para el bucle y no se indexan */}
+              <img src={f.src} alt={copia === 1 ? f.t : ''} loading="lazy" />
               <figcaption className="slide-info">
-                <h3>{f.t}</h3>
+                {copia === 1 ? <h3>{f.t}</h3> : <p className="slide-tit">{f.t}</p>}
                 <p>{f.d}</p>
               </figcaption>
             </figure>
@@ -856,7 +759,7 @@ export default function App() {
           <div className="marquesina-track">
             {[...MARQUESINA, ...MARQUESINA].map((f, i) => (
               <figure key={`${f.src}-${i}`} title={f.t}>
-                <img src={f.src} alt={f.t} loading="lazy" />
+                <img src={f.src} alt="" loading="lazy" />
                 <figcaption>{f.t}</figcaption>
               </figure>
             ))}
@@ -874,7 +777,8 @@ export default function App() {
                 <h2 data-reveal>Los aderezos se hacen aquí</h2>
                 <p className="cuerpo" data-reveal>
                   Todos. Se preparan en nuestra cocina, no llegan listos de ningún lado.
-                  Por eso una ensalada aquí no sabe como las demás.
+                  Por eso una ensalada aquí no sabe como las demás. Y con cualquiera
+                  de los <a className="link-int" href="#menu">baguettones de la carta</a> te los sirven.
                 </p>
                 <p className="cuerpo" data-reveal>
                   Es lo que le cambia el sabor a todo: a la ensalada, al sándwich,
@@ -901,8 +805,8 @@ export default function App() {
 
         <section className="bloque menu-bloque" id="menu">
           <div className="wrap">
-            <p className="eyebrow" data-reveal>El menú</p>
-            <h2 data-reveal>Todo lo que hay</h2>
+            <p className="eyebrow">El menú</p>
+            <h2>Todo lo que hay en la carta</h2>
             <p className="menu-intro" data-reveal>
               Sándwiches en baguette, ensaladas, dulce, café y batidos.
               Todos los aderezos se hacen aquí.
@@ -911,7 +815,8 @@ export default function App() {
             <div className="menu-grid">
               {MENU.map((g) => (
                 <div className="m-grupo" id={`menu-${g.id}`} key={g.t}>
-                  <h3>{g.t}<span>{g.s}</span></h3>
+                  <h3>{g.t}</h3>
+                  {g.s && <p className="m-sub">{g.s}</p>}
                   {g.items.map((it) => (
                     <div className="m-it" key={it.n}>
                       <div className="m-cab">
@@ -940,8 +845,8 @@ export default function App() {
 
         <section className="bloque pedir" id="como-pedir">
           <div className="wrap">
-            <p className="eyebrow" data-reveal>Cómo pedir</p>
-            <h2 data-reveal>Así de fácil</h2>
+            <p className="eyebrow" data-reveal>Pedidos</p>
+            <h2 data-reveal>Cómo pedir</h2>
             <div className="pasos">
               {PASOS.map((p) => (
                 <div className="paso" key={p.n} data-reveal>
@@ -968,18 +873,18 @@ export default function App() {
         <section className="bloque donde" id="donde">
           <div className="wrap">
             <p className="eyebrow" data-reveal>Dónde y cuándo</p>
-            <h2 data-reveal>Valle Dorado</h2>
+            <h2 data-reveal>Dónde estamos</h2>
             <div className="dos">
               <div data-reveal>
                 <div className="dato">
-                  <div className="k">Dirección</div>
+                  <h3 className="k">Dirección</h3>
                   <div className="v">
                     Valle Nacional 106
                     <small>Fracc. Valle Dorado, Mezcales, Nayarit · C.P. 63735</small>
                   </div>
                 </div>
                 <div className="dato">
-                  <div className="k">Horario</div>
+                  <h3 className="k">Horario</h3>
                   <div className="v">
                     Lunes a sábado · 8:00 am a 8:00 pm
                     <small>Domingo cerrado</small>
@@ -991,7 +896,7 @@ export default function App() {
                   </div>
                 </div>
                 <div className="dato">
-                  <div className="k">WhatsApp</div>
+                  <h3 className="k">WhatsApp</h3>
                   <div className="v">
                     <a href={WA} target="_blank" rel="noreferrer">{WA_VISIBLE}</a>
                     <small>
@@ -1000,7 +905,7 @@ export default function App() {
                   </div>
                 </div>
                 <div className="dato">
-                  <div className="k">Apertura</div>
+                  <h3 className="k">Apertura</h3>
                   <div className="v">6 de noviembre</div>
                 </div>
               </div>
@@ -1026,7 +931,7 @@ export default function App() {
             <div className="faq-lista" data-reveal>
               {FAQ.map((f) => (
                 <details className="faq-item" key={f.q}>
-                  <summary>{f.q}</summary>
+                  <summary><h3>{f.q}</h3></summary>
                   <p>{f.a}</p>
                 </details>
               ))}
@@ -1036,7 +941,7 @@ export default function App() {
 
         <section className="cierre">
           <div className="wrap">
-            <h2 data-reveal>Nos vemos el 6 de noviembre</h2>
+            <h2 data-reveal>{dias > 0 ? 'Nos vemos el 6 de noviembre' : 'Nos vemos en Valle Dorado'}</h2>
             <p data-reveal>Valle Nacional 106, Valle Dorado. De lunes a sábado.</p>
             <div className="acciones" data-reveal>
               <a className="btn btn-primario" href={WA} target="_blank" rel="noreferrer">
@@ -1059,6 +964,15 @@ export default function App() {
               {' · '}
               <a href={`mailto:${CORREO}`}>{CORREO}</a>
             </p>
+            <nav className="pie-nav" aria-label="Secciones del sitio">
+              <a href="#que-servimos">Lo que servimos</a>
+              <a href="#menu">Carta completa</a>
+              <a href="#aderezos">Los aderezos</a>
+              <a href="#como-pedir">Cómo pedir</a>
+              <a href="#galeria">Galería</a>
+              <a href="#preguntas">Preguntas</a>
+              <a href="#donde">Dónde estamos</a>
+            </nav>
             <p className="pie-legal">
               <a href="/privacidad.html">Aviso de privacidad</a>
             </p>
