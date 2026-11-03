@@ -72,6 +72,14 @@ const MARQUESINA = [
   { src: '/img/real/gal-5.jpg', t: 'Panqué de mantequilla' },
 ];
 
+const ADEREZOS_FICHA = [
+  { n: 'Ranch eneldo', d: 'Cremoso y con el eneldo bien marcado, de esos que se quedan en la hoja. El que va con casi todo.', par: 'Con el Clásico, el Pollero y cualquier ensalada.' },
+  { n: 'Miel mostaza', d: 'Dulce de miel con el filo de la mostaza al final. No empalaga.', par: 'Con lo que lleva pollo o queso.' },
+  { n: 'Vinagreta italiana', d: 'Ligera, ácida y con hierbas secas. La que no se siente pesada.', par: 'Para ensaladas y para quien no quiere crema.' },
+  { n: 'Tamarindo', d: 'Agridulce y tropical, con más acidez que dulzor.', par: 'Para el que quiere probar algo distinto.' },
+  { n: 'Vinagreta de hierbas', d: 'Verde y fresca, con el amargor justo de la hierba.', par: 'Con hojas verdes y betabel.' },
+];
+
 const ADEREZOS = [
   'Ranch eneldo',
   'Miel mostaza',
@@ -872,6 +880,20 @@ export default function App() {
                   Es lo que le cambia el sabor a todo: a la ensalada, al sándwich,
                   a lo que te lleves para la casa.
                 </p>
+              </div>
+            </div>
+
+            <div className="aderezos-banda">
+              <p className="aderezos-lead" data-reveal>Cinco, y tienes que escoger con cuál:</p>
+              <div className="aderezos-lista">
+                {ADEREZOS_FICHA.map((a, i) => (
+                  <article className="aderezo" key={a.n} data-reveal>
+                    <span className="aderezo-n">{String(i + 1).padStart(2, '0')}</span>
+                    <h3>{a.n}</h3>
+                    <p>{a.d}</p>
+                    <span className="aderezo-par">{a.par}</span>
+                  </article>
+                ))}
               </div>
             </div>
           </div>

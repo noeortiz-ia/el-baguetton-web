@@ -257,6 +257,42 @@ h2{
 }
 .aderezos .cuerpo:last-child{margin-bottom:0;color:rgba(244,238,226,.66)}
 
+/* los cinco aderezos, uno por uno */
+.aderezos-banda{
+  margin-top:clamp(48px,7vw,88px);padding-top:clamp(32px,4vw,48px);
+  border-top:1px solid rgba(244,238,226,.18);
+}
+.aderezos-lead{
+  font-family:var(--font-display);font-weight:700;font-size:.74rem;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--dorado-claro);
+}
+.aderezos-lista{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:clamp(20px,2.4vw,34px);margin-top:var(--s5);
+}
+.aderezo{border-top:2px solid rgba(244,238,226,.2);padding-top:16px}
+.aderezo-n{
+  display:block;font-family:var(--font-display);font-weight:900;
+  font-size:.72rem;letter-spacing:.26em;color:var(--dorado-claro);
+}
+.aderezo h3{
+  font-family:var(--font-display);font-weight:900;font-size:1.02rem;
+  letter-spacing:-.01em;text-transform:uppercase;color:var(--crema);
+  margin-top:10px;line-height:1.15;
+}
+.aderezo p{margin-top:10px;font-size:.9rem;line-height:1.55;color:rgba(244,238,226,.76)}
+.aderezo-par{
+  display:block;margin-top:12px;font-size:.78rem;line-height:1.45;
+  color:var(--dorado-claro);font-weight:500;
+}
+@media (max-width:1100px){
+  .aderezos-lista{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:620px){
+  .aderezos-lista{grid-template-columns:1fr;gap:var(--s4)}
+  .aderezo{border-top-width:1px}
+}
+
 /* galeria real — carrusel */
 .galeria-bloque{background:var(--crema)}
 .galeria-bloque .eyebrow{color:var(--dorado)}
