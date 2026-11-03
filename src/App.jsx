@@ -67,6 +67,7 @@ const MARQUESINA = [
   { src: '/img/real/gal-4.jpg', t: 'Rojo Pasión' },
   { src: '/img/real/cafe.jpg', t: 'Café de olla' },
   { src: '/img/real/gal-5.jpg', t: 'Panqué de mantequilla' },
+  { src: '/img/real/licuado-mango.jpg', t: 'Licuado de mango' },
 ];
 
 const ADEREZOS_FICHA = [
@@ -95,6 +96,7 @@ const GALERIA = [
   { src: '/img/real/gal-5.jpg', t: 'Dulce de la casa', d: 'Panqué de mantequilla y panquesito de queso, del tamaño justo para el café.' },
   { src: '/img/real/gal-6.jpg', t: 'El pan de la casa', d: 'Baguette de corteza dorada y miga suave: la base de todos los baguettones.' },
   { src: '/img/real/gal-8.jpg', t: 'Escamocha', d: 'Fruta batida con yogur y cereales, servida bien fría.' },
+  { src: '/img/real/licuado-mango.jpg', t: 'Licuado de mango', d: 'Mango con canela y avena, servido con trocitos de mango encima.' },
 ];
 
 function usarCompartir() {
