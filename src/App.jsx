@@ -13,6 +13,8 @@ const MAPA = '#donde';
 const WA_TXT = 'Hola, quiero información de El Baguetton Express.';
 const WA = `https://wa.me/523223706472?text=${encodeURIComponent(WA_TXT)}`;
 const WA_VISIBLE = '322 370 6472';
+/* mismo número, en formato para marcar */
+const TEL = `+52${WA_VISIBLE.split(' ').join('')}`;
 const FB = 'https://facebook.com/baguettonbahia';
 const YT = 'https://www.youtube.com/@ElBaguettonExpress';
 const IG = 'https://www.instagram.com/baguettonbahia/';
@@ -900,7 +902,7 @@ export default function App() {
                   <div className="v">
                     <a href={WA} target="_blank" rel="noreferrer">{WA_VISIBLE}</a>
                     <small>
-                      Pedidos y dudas · <a href="tel:+523****6472">Llamar</a>
+                      Pedidos y dudas · <a href={`tel:${TEL}`}>Llamar</a>
                     </small>
                   </div>
                 </div>
