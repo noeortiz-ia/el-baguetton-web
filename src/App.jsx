@@ -651,12 +651,12 @@ export default function App() {
           </a>
 
           <nav className="nav-links" aria-label="Secciones">
-            <a href="#que-servimos">Lo que servimos</a>
+            <a href="#que-servimos">Menú</a>
             <a href="#promos">Promociones</a>
-            <a href="#menu">Menú</a>
-            <a href="#aderezos">Los aderezos</a>
+            <a href="#menu">Precios</a>
+            <a href="#aderezos">Aderezos</a>
             <a href="#galeria">Galería</a>
-            <a href="#donde">Dónde y cuándo</a>
+            <a href="#donde">Ubicación</a>
           </nav>
 
           <div className="nav-acciones">
@@ -700,14 +700,14 @@ export default function App() {
             <span /><span />
           </button>
           <nav>
-            <a href="#que-servimos" onClick={cerrarMenu}>Lo que servimos</a>
+            <a href="#que-servimos" onClick={cerrarMenu}>Menú</a>
             <a href="#promos" onClick={cerrarMenu}>Promociones</a>
-            <a href="#menu" onClick={cerrarMenu}>Menú</a>
-            <a href="#aderezos" onClick={cerrarMenu}>Los aderezos</a>
+            <a href="#menu" onClick={cerrarMenu}>Precios</a>
+            <a href="#aderezos" onClick={cerrarMenu}>Aderezos</a>
             <a href="#como-pedir" onClick={cerrarMenu}>Cómo pedir</a>
             <a href="#galeria" onClick={cerrarMenu}>Galería</a>
             <a href="#preguntas" onClick={cerrarMenu}>Preguntas</a>
-            <a href="#donde" onClick={cerrarMenu}>Dónde y cuándo</a>
+            <a href="#donde" onClick={cerrarMenu}>Ubicación</a>
           </nav>
           <div className="menu-redes">
             <a href={FB} target="_blank" rel="noreferrer" onClick={cerrarMenu}>Facebook</a>
@@ -741,10 +741,10 @@ export default function App() {
           <div className="hero-sticky">
             <div className="hero-inner">
             <p className="kicker">Valle Dorado · Mezcales, Nayarit</p>
-            <h1>Rápido, ligero y delicioso</h1>
+            <h1>Sándwiches en baguette, ensaladas y café</h1>
             <p className="sub">
-              Sándwiches, ensaladas y café, con los aderezos hechos en casa.
-              Abrimos el 6 de noviembre, de lunes a sábado.
+              En Valle Dorado, Mezcales. Aderezos hechos en casa.
+              Lun a vie de 8 am a 8 pm · sábado de 8 am a 2 pm.
             </p>
             <div className="acciones">
               <a className="btn btn-primario" href={WA} target="_blank" rel="noreferrer">
@@ -760,8 +760,7 @@ export default function App() {
 
         <section className="bloque servimos" id="que-servimos">
           <div className="wrap">
-            <p className="eyebrow" data-reveal>Qué servimos</p>
-            <h2 data-reveal>Lo que se antoje</h2>
+            <h2 data-reveal>Qué hay en el menú</h2>
             <div className="grid">
               {SERVICIOS.map((s) => (
                 <a
@@ -804,7 +803,7 @@ export default function App() {
                 <img src="/img/real/ensalada.jpg" alt="Ensalada servida en bowl" loading="lazy" />
               </figure>
               <div className="aderezos-txt">
-                <p className="eyebrow" data-reveal>La diferencia</p>
+                <p className="eyebrow" data-reveal>Aderezos</p>
                 <h2 data-reveal>Los aderezos se hacen aquí</h2>
                 <p className="cuerpo" data-reveal>
                   Todos. Se preparan en nuestra cocina, no llegan listos de ningún lado.
@@ -836,10 +835,10 @@ export default function App() {
 
         <section className="bloque promos" id="promos">
           <div className="wrap">
-            <p className="eyebrow" data-reveal>Promociones</p>
-            <h2 data-reveal>Días que valen la pena</h2>
+            <p className="eyebrow" data-reveal>Lunes y viernes</p>
+            <h2 data-reveal>Promociones</h2>
             <p className="promos-intro" data-reveal>
-              Dos días a la semana tenemos algo especial. Aplica en el local y por WhatsApp.
+              Lunes 3x2 en ensaladas y viernes café americano de regalo. En el local o por WhatsApp.
             </p>
 
             <div className="promo-grid">
@@ -870,15 +869,15 @@ export default function App() {
             </div>
 
             <p className="promo-pie" data-reveal>
-              Pregunta por las promociones del día por WhatsApp y con gusto te decimos qué hay.
+              Pregunta por WhatsApp qué promoción hay hoy.
             </p>
           </div>
         </section>
 
         <section className="bloque menu-bloque" id="menu">
           <div className="wrap">
-            <p className="eyebrow">El menú</p>
-            <h2>Todo lo que hay en la carta</h2>
+            <p className="eyebrow">Precios</p>
+            <h2>Carta y precios</h2>
             <p className="menu-intro" data-reveal>
               Sándwiches en baguette, ensaladas, dulce, café y batidos.
               Todos los aderezos se hacen aquí.
@@ -936,15 +935,15 @@ export default function App() {
 
         <section className="bloque galeria-bloque" id="galeria">
           <div className="wrap">
-            <p className="eyebrow" data-reveal>De la cocina</p>
-            <h2 data-reveal>Así se ve lo que hacemos</h2>
+            <p className="eyebrow" data-reveal>Galería</p>
+            <h2 data-reveal>Fotos del local y los platillos</h2>
             <Galeria fotos={GALERIA} />
           </div>
         </section>
 
         <section className="bloque donde" id="donde">
           <div className="wrap">
-            <p className="eyebrow" data-reveal>Dónde y cuándo</p>
+            <p className="eyebrow" data-reveal>Ubicación</p>
             <h2 data-reveal>Dónde estamos</h2>
             <div className="dos">
               <div data-reveal>
@@ -996,7 +995,7 @@ export default function App() {
 
         <section className="bloque faq" id="preguntas">
           <div className="wrap">
-            <p className="eyebrow" data-reveal>Antes de venir</p>
+            <p className="eyebrow" data-reveal>Preguntas</p>
             <h2 data-reveal>Preguntas frecuentes</h2>
             <div className="faq-lista" data-reveal>
               {FAQ.map((f) => (
@@ -1012,7 +1011,7 @@ export default function App() {
         <section className="cierre">
           <div className="wrap">
             <h2 data-reveal>{dias > 0 ? 'Nos vemos el 6 de noviembre' : 'Nos vemos en Valle Dorado'}</h2>
-            <p data-reveal>Valle Nacional 106, Valle Dorado. De lunes a sábado.</p>
+            <p data-reveal>Valle Nacional 106, Valle Dorado. Lun a vie de 8 am a 8 pm · sábado de 8 am a 2 pm.</p>
             <div className="acciones" data-reveal>
               <a className="btn btn-primario" href={WA} target="_blank" rel="noreferrer">
                 Pedir por WhatsApp
@@ -1035,9 +1034,9 @@ export default function App() {
               <a href={`mailto:${CORREO}`}>{CORREO}</a>
             </p>
             <nav className="pie-nav" aria-label="Secciones del sitio">
-              <a href="#que-servimos">Lo que servimos</a>
+              <a href="#que-servimos">Menú</a>
               <a href="#menu">Carta completa</a>
-              <a href="#aderezos">Los aderezos</a>
+              <a href="#aderezos">Aderezos</a>
               <a href="#como-pedir">Cómo pedir</a>
               <a href="#galeria">Galería</a>
               <a href="#preguntas">Preguntas</a>
