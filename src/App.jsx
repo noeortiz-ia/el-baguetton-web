@@ -14,7 +14,6 @@ const WA_TXT = 'Hola, quiero información de El Baguetton Express.';
 const WA = `https://wa.me/523223706472?text=${encodeURIComponent(WA_TXT)}`;
 const WA_VISIBLE = '322 370 6472';
 /* mismo número, en formato para marcar */
-const TEL = `+52${WA_VISIBLE.split(' ').join('')}`;
 const FB = 'https://facebook.com/baguettonbahia';
 const YT = 'https://www.youtube.com/@ElBaguettonExpress';
 const IG = 'https://www.instagram.com/baguettonbahia/';
@@ -500,7 +499,8 @@ export default function App() {
     if (falta > 0) { setEstado('pronto'); return; }
     const dia = ahora.getDay();               /* 0 domingo */
     const h = ahora.getHours() + ahora.getMinutes() / 60;
-    setEstado(dia === 0 || h < 8 || h >= 20 ? 'cerrado' : 'abierto');
+    const cierra = dia === 6 ? 14 : 20;      /* el sábado cerramos a las 2 pm */
+    setEstado(dia === 0 || h < 8 || h >= cierra ? 'cerrado' : 'abierto');
   }, []);
 
   useEffect(() => {
@@ -652,6 +652,7 @@ export default function App() {
 
           <nav className="nav-links" aria-label="Secciones">
             <a href="#que-servimos">Lo que servimos</a>
+            <a href="#promos">Promociones</a>
             <a href="#menu">Menú</a>
             <a href="#aderezos">Los aderezos</a>
             <a href="#galeria">Galería</a>
@@ -700,6 +701,7 @@ export default function App() {
           </button>
           <nav>
             <a href="#que-servimos" onClick={cerrarMenu}>Lo que servimos</a>
+            <a href="#promos" onClick={cerrarMenu}>Promociones</a>
             <a href="#menu" onClick={cerrarMenu}>Menú</a>
             <a href="#aderezos" onClick={cerrarMenu}>Los aderezos</a>
             <a href="#como-pedir" onClick={cerrarMenu}>Cómo pedir</a>
@@ -832,6 +834,47 @@ export default function App() {
           </div>
         </section>
 
+        <section className="bloque promos" id="promos">
+          <div className="wrap">
+            <p className="eyebrow" data-reveal>Promociones</p>
+            <h2 data-reveal>Días que valen la pena</h2>
+            <p className="promos-intro" data-reveal>
+              Dos días a la semana tenemos algo especial. Aplica en el local y por WhatsApp.
+            </p>
+
+            <div className="promo-grid">
+              <article className="promo-card" data-reveal>
+                <div className="promo-foto">
+                  <img src="/img/real/ensalada.jpg" alt="Ensalada fresca de El Baguetton Express" loading="lazy" />
+                  <span className="promo-dia">Lunes</span>
+                </div>
+                <div className="promo-cuerpo">
+                  <p className="promo-kicker">3 x 2</p>
+                  <h3>Ensaladas</h3>
+                  <p className="promo-linea">Pides tres, pagas dos. Todo el día.</p>
+                </div>
+              </article>
+
+              <article className="promo-card" data-reveal>
+                <div className="promo-foto">
+                  <img src="/img/real/sandwich.jpg" alt="Baguette y café de El Baguetton Express" loading="lazy" />
+                  <span className="promo-dia">Viernes</span>
+                </div>
+                <div className="promo-cuerpo">
+                  <p className="promo-kicker">De regalo</p>
+                  <h3>Café americano</h3>
+                  <p className="promo-linea">En la compra de tu baguette.</p>
+                  <p className="promo-nota">No aplica en Baguette Clásico.</p>
+                </div>
+              </article>
+            </div>
+
+            <p className="promo-pie" data-reveal>
+              Pregunta por las promociones del día por WhatsApp y con gusto te decimos qué hay.
+            </p>
+          </div>
+        </section>
+
         <section className="bloque menu-bloque" id="menu">
           <div className="wrap">
             <p className="eyebrow">El menú</p>
@@ -915,7 +958,7 @@ export default function App() {
                 <div className="dato">
                   <h3 className="k">Horario</h3>
                   <div className="v">
-                    Lunes a sábado · 8:00 am a 8:00 pm
+                    Lun a vie · 8:00 am a 8:00 pm<br />Sábado · 8:00 am a 2:00 pm
                     <small>Domingo cerrado</small>
                     <span className={`estado ${estado}`}>
                       {estado === 'abierto' && 'Abierto ahora'}
@@ -928,9 +971,7 @@ export default function App() {
                   <h3 className="k">WhatsApp</h3>
                   <div className="v">
                     <a href={WA} target="_blank" rel="noreferrer">{WA_VISIBLE}</a>
-                    <small>
-                      Pedidos y dudas · <a href={`tel:${TEL}`}>Llamar</a>
-                    </small>
+                    <small>Pedidos y dudas · solo por WhatsApp</small>
                   </div>
                 </div>
                 <div className="dato">
@@ -942,7 +983,7 @@ export default function App() {
                 <div className="mapa">
                   <iframe
                     title="Ubicación de El Baguetton Express en Valle Dorado"
-                    src="https://www.google.com/maps?q=Valle+Nacional+106,+Valle+Dorado,+Mezcales,+Nayarit&output=embed"
+                    src="https://www.google.com/maps?q=El+Baguetton+Express,+Valle+Nacional+106,+Valle+Dorado,+Mezcales,+Nayarit&output=embed"
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     allowFullScreen

@@ -126,16 +126,15 @@ const RESTAURANTE = {
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: [
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-      ],
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
       opens: '08:00',
       closes: '20:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Saturday'],
+      opens: '08:00',
+      closes: '14:00',
     },
   ],
   areaServed: [
@@ -184,7 +183,7 @@ const PAGINA = {
   url: BASE,
   name: 'El Baguetton Express | Sándwiches y café en Valle Dorado',
   description:
-    'Sándwiches, ensaladas y café con aderezos hechos en casa, en Valle Dorado, Mezcales. Lunes a sábado, de 8 am a 8 pm.',
+    'Sándwiches, ensaladas y café con aderezos hechos en casa, en Valle Dorado, Mezcales. De lunes a viernes de 8 am a 8 pm y sábados de 8 am a 2 pm.',
   inLanguage: 'es-MX',
   isPartOf: { '@id': `${BASE}#sitio` },
   about: { '@id': `${BASE}#restaurante` },

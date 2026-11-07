@@ -698,6 +698,29 @@ footer .social a:hover{color:var(--crema)}
 .paso p{margin-top:8px;font-size:.98rem;line-height:1.55;color:rgba(244,238,226,.72)}
 .pedir-cta{margin-top:var(--s5)}
 
+/* ---------- promociones ---------- */
+.promos{background:var(--verde);color:var(--crema);position:relative}
+.promos .eyebrow{color:var(--crema-dorada)}
+.promos h2{color:var(--crema);max-width:18ch}
+.promos-intro{margin-top:var(--s3);max-width:56ch;line-height:1.6;color:rgba(244,238,226,.72);font-size:var(--body)}
+.promo-grid{margin-top:var(--s6);display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s4)}
+.promo-card{background:var(--crema);color:var(--verde);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 48px rgba(0,0,0,.24);transition:transform .35s ease,box-shadow .35s ease}
+.promo-card:hover{transform:translateY(-4px);box-shadow:0 28px 56px rgba(0,0,0,.3)}
+.promo-foto{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--verde-profundo)}
+.promo-foto img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.promo-card:hover .promo-foto img{transform:scale(1.05)}
+.promo-dia{position:absolute;left:var(--s2);bottom:var(--s2);background:var(--dorado);color:#fff;font-family:var(--font-display);font-weight:700;font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;padding:10px 18px;border-radius:4px}
+.promo-cuerpo{padding:var(--s4) var(--s4) var(--s5);display:flex;flex-direction:column;gap:var(--s1)}
+.promo-kicker{font-family:var(--font-display);font-weight:700;font-size:.8rem;letter-spacing:.28em;text-transform:uppercase;color:var(--dorado)}
+.promo-cuerpo h3{font-family:var(--font-display);font-weight:900;font-size:clamp(1.6rem,2.4vw,2.1rem);line-height:1.05;color:var(--verde);margin-top:2px}
+.promo-linea{color:var(--neutro);line-height:1.55;font-size:1rem;margin-top:var(--s1)}
+.promo-nota{color:var(--dorado);font-family:var(--font-display);font-weight:600;font-size:.82rem;letter-spacing:.06em;margin-top:var(--s2)}
+.promo-pie{margin-top:var(--s5);max-width:60ch;font-size:.95rem;line-height:1.6;color:rgba(244,238,226,.62)}
+@media (max-width:860px){
+  .promo-grid{grid-template-columns:1fr;gap:var(--s3)}
+  .promo-cuerpo{padding:var(--s3) var(--s3) var(--s4)}
+}
+
 /* ---------- estado de apertura ---------- */
 .estado{
   display:inline-flex;align-items:center;gap:8px;margin-top:12px;
