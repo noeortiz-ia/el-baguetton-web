@@ -844,19 +844,20 @@ export default function App() {
             <div className="promo-grid">
               <article className="promo-card" data-reveal>
                 <div className="promo-foto">
-                  <img src="/img/real/ensalada.jpg" alt="Ensalada fresca de El Baguetton Express" loading="lazy" />
+                  <img src="/img/real/promo-lunes-ensaladas.jpg" alt="Tres ensaladas de El Baguetton Express" loading="lazy" />
                   <span className="promo-dia">Lunes</span>
                 </div>
                 <div className="promo-cuerpo">
                   <p className="promo-kicker">3 x 2</p>
                   <h3>Ensaladas</h3>
                   <p className="promo-linea">Pides tres, pagas dos. Todo el día.</p>
+                  <p className="promo-nota">Hasta agotar existencias.</p>
                 </div>
               </article>
 
               <article className="promo-card" data-reveal>
                 <div className="promo-foto">
-                  <img src="/img/real/sandwich.jpg" alt="Baguette y café de El Baguetton Express" loading="lazy" />
+                  <img src="/img/real/promo-viernes-cafe.jpg" alt="Baguette y café americano de El Baguetton Express" loading="lazy" />
                   <span className="promo-dia">Viernes</span>
                 </div>
                 <div className="promo-cuerpo">
