@@ -18,7 +18,6 @@ const HTML = path.join(raiz, 'index.html');
 
 const BASE = 'https://elbaguettonexpress.com.mx/';
 const NOMBRE = 'El Baguetton Express';
-const TEL = '+523223706472';
 const CORREO = 'elbaguettonexpress@gmail.com';
 const GEO = { lat: 20.7159547, lng: -105.2737517 };
 
@@ -32,6 +31,7 @@ const IMAGENES = [
   `${BASE}img/og-image.png`,
   `${BASE}img/real/sandwich.jpg`,
   `${BASE}img/real/ensalada.jpg`,
+  `${BASE}img/real/promo-lunes-ensaladas.jpg`,
   `${BASE}img/real/cafe.jpg`,
   `${BASE}img/real/gal-1.jpg`,
   `${BASE}img/real/gal-4.jpg`,
@@ -61,12 +61,11 @@ const ORGANIZACION = {
   sameAs: REDES,
   address: DIRECCION,
   email: CORREO,
-  telephone: TEL,
   contactPoint: [
     {
       '@type': 'ContactPoint',
       contactType: 'customer service',
-      telephone: TEL,
+      url: 'https://wa.me/523223706472',
       email: CORREO,
       availableLanguage: ['es-MX'],
       areaServed: 'MX',
@@ -109,7 +108,6 @@ const RESTAURANTE = {
   url: BASE,
   image: IMAGENES,
   logo: { '@id': `${BASE}#logo` },
-  telephone: TEL,
   email: CORREO,
   address: DIRECCION,
   geo: {
@@ -117,12 +115,13 @@ const RESTAURANTE = {
     latitude: GEO.lat,
     longitude: GEO.lng,
   },
-  hasMap: 'https://www.google.com/maps?q=Valle+Nacional+106,+Valle+Dorado,+Mezcales,+Nayarit',
+  hasMap: 'https://www.google.com/maps?q=El+Baguetton+Express,+Valle+Nacional+106,+Valle+Dorado,+Mezcales,+Nayarit',
   servesCuisine: ['Sándwiches', 'Baguettes', 'Ensaladas', 'Café'],
   priceRange: '$',
   currenciesAccepted: 'MXN',
   menu: { '@id': `${BASE}#carta` },
   hasMenu: { '@id': `${BASE}#carta` },
+  hasOfferCatalog: { '@id': `${BASE}#promociones` },
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
@@ -155,6 +154,39 @@ const RESTAURANTE = {
     },
     deliveryMethod: 'http://purl.org/goodrelations/v1#DeliveryModePickUp',
   },
+};
+
+/* Promociones vigentes: los días y la condición salen de aquí, igual que en la página. */
+const PROMOS = [
+  {
+    '@type': 'Offer',
+    name: 'Lunes 3x2 en ensaladas',
+    description:
+      'Los lunes, en la compra de tres ensaladas pagas dos. Aplica en el local y por WhatsApp, todo el día, hasta agotar existencias.',
+    category: 'Promoción de lunes',
+    priceCurrency: 'MXN',
+    availability: 'https://schema.org/InStock',
+    itemOffered: { '@id': `${BASE}#carta` },
+  },
+  {
+    '@type': 'Offer',
+    name: 'Viernes café americano de regalo',
+    description:
+      'Los viernes, en la compra de tu baguette te regalamos el café americano. No aplica en Baguette Clásico.',
+    category: 'Promoción de viernes',
+    priceCurrency: 'MXN',
+    availability: 'https://schema.org/InStock',
+    itemOffered: { '@id': `${BASE}#carta` },
+  },
+];
+
+const PROMOCIONES = {
+  '@type': 'OfferCatalog',
+  '@id': `${BASE}#promociones`,
+  name: `Promociones de ${NOMBRE}`,
+  url: `${BASE}#promos`,
+  numberOfItems: PROMOS.length,
+  itemListElement: PROMOS,
 };
 
 const FAQPAGE = {
@@ -190,6 +222,7 @@ const PAGINA = {
   primaryImageOfPage: { '@type': 'ImageObject', url: `${BASE}img/og-image.png` },
   breadcrumb: { '@id': `${BASE}#migas` },
   significantLink: [
+    `${BASE}#promos`,
     `${BASE}#menu`,
     `${BASE}#aderezos`,
     `${BASE}#como-pedir`,
@@ -204,10 +237,11 @@ const MIGAS = {
   '@id': `${BASE}#migas`,
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE },
-    { '@type': 'ListItem', position: 2, name: 'Carta', item: `${BASE}#menu` },
-    { '@type': 'ListItem', position: 3, name: 'Aderezos', item: `${BASE}#aderezos` },
-    { '@type': 'ListItem', position: 4, name: 'Dónde estamos', item: `${BASE}#donde` },
-    { '@type': 'ListItem', position: 5, name: 'Preguntas frecuentes', item: `${BASE}#preguntas` },
+    { '@type': 'ListItem', position: 2, name: 'Promociones', item: `${BASE}#promos` },
+    { '@type': 'ListItem', position: 3, name: 'Carta', item: `${BASE}#menu` },
+    { '@type': 'ListItem', position: 4, name: 'Aderezos', item: `${BASE}#aderezos` },
+    { '@type': 'ListItem', position: 5, name: 'Dónde estamos', item: `${BASE}#donde` },
+    { '@type': 'ListItem', position: 6, name: 'Preguntas frecuentes', item: `${BASE}#preguntas` },
   ],
 };
 
@@ -217,6 +251,7 @@ const grafo = {
     ORGANIZACION,
     RESTAURANTE,
     CARTA,
+    PROMOCIONES,
     SITIO,
     PAGINA,
     MIGAS,

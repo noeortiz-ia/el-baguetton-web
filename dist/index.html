@@ -19,7 +19,7 @@
   <meta property="og:locale" content="es_MX" />
   <meta property="og:url" content="https://elbaguettonexpress.com.mx/" />
   <meta property="og:title" content="El Baguetton Express | Sándwiches y café en Valle Dorado" />
-  <meta property="og:description" content="Sándwiches, ensaladas y café con aderezos hechos en casa. Abrimos el 6 de noviembre en Valle Dorado, Mezcales, Nayarit." />
+  <meta property="og:description" content="Sándwiches, ensaladas y café con aderezos hechos en casa, en Valle Dorado, Mezcales. Promociones los lunes y viernes." />
   <meta property="og:image" content="https://elbaguettonexpress.com.mx/img/og-image.png?v=2" />
   <meta property="og:image:secure_url" content="https://elbaguettonexpress.com.mx/img/og-image.png?v=2" />
   <meta property="og:image:type" content="image/png" />
@@ -30,7 +30,7 @@
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="El Baguetton Express | Sándwiches y café en Valle Dorado" />
-  <meta name="twitter:description" content="Sándwiches, ensaladas y café con aderezos hechos en casa. Abrimos el 6 de noviembre en Valle Dorado, Mezcales, Nayarit." />
+  <meta name="twitter:description" content="Sándwiches, ensaladas y café con aderezos hechos en casa, en Valle Dorado, Mezcales. Promociones los lunes y viernes." />
   <meta name="twitter:image" content="https://elbaguettonexpress.com.mx/img/og-image.png?v=2" />
   <meta name="twitter:image:alt" content="Sándwich en baguette de El Baguetton Express" />
 
@@ -76,12 +76,11 @@
         "addressCountry": "MX"
       },
       "email": "elbaguettonexpress@gmail.com",
-      "telephone": "+523223706472",
       "contactPoint": [
         {
           "@type": "ContactPoint",
           "contactType": "customer service",
-          "telephone": "+523223706472",
+          "url": "https://wa.me/523223706472",
           "email": "elbaguettonexpress@gmail.com",
           "availableLanguage": [
             "es-MX"
@@ -104,6 +103,7 @@
         "https://elbaguettonexpress.com.mx/img/og-image.png",
         "https://elbaguettonexpress.com.mx/img/real/sandwich.jpg",
         "https://elbaguettonexpress.com.mx/img/real/ensalada.jpg",
+        "https://elbaguettonexpress.com.mx/img/real/promo-lunes-ensaladas.jpg",
         "https://elbaguettonexpress.com.mx/img/real/cafe.jpg",
         "https://elbaguettonexpress.com.mx/img/real/gal-1.jpg",
         "https://elbaguettonexpress.com.mx/img/real/gal-4.jpg"
@@ -111,7 +111,6 @@
       "logo": {
         "@id": "https://elbaguettonexpress.com.mx/#logo"
       },
-      "telephone": "+523223706472",
       "email": "elbaguettonexpress@gmail.com",
       "address": {
         "@type": "PostalAddress",
@@ -126,7 +125,7 @@
         "latitude": 20.7159547,
         "longitude": -105.2737517
       },
-      "hasMap": "https://www.google.com/maps?q=Valle+Nacional+106,+Valle+Dorado,+Mezcales,+Nayarit",
+      "hasMap": "https://www.google.com/maps?q=El+Baguetton+Express,+Valle+Nacional+106,+Valle+Dorado,+Mezcales,+Nayarit",
       "servesCuisine": [
         "Sándwiches",
         "Baguettes",
@@ -140,6 +139,9 @@
       },
       "hasMenu": {
         "@id": "https://elbaguettonexpress.com.mx/#carta"
+      },
+      "hasOfferCatalog": {
+        "@id": "https://elbaguettonexpress.com.mx/#promociones"
       },
       "openingHoursSpecification": [
         {
@@ -644,6 +646,37 @@
       ]
     },
     {
+      "@type": "OfferCatalog",
+      "@id": "https://elbaguettonexpress.com.mx/#promociones",
+      "name": "Promociones de El Baguetton Express",
+      "url": "https://elbaguettonexpress.com.mx/#promos",
+      "numberOfItems": 2,
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Lunes 3x2 en ensaladas",
+          "description": "Los lunes, en la compra de tres ensaladas pagas dos. Aplica en el local y por WhatsApp, todo el día, hasta agotar existencias.",
+          "category": "Promoción de lunes",
+          "priceCurrency": "MXN",
+          "availability": "https://schema.org/InStock",
+          "itemOffered": {
+            "@id": "https://elbaguettonexpress.com.mx/#carta"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Viernes café americano de regalo",
+          "description": "Los viernes, en la compra de tu baguette te regalamos el café americano. No aplica en Baguette Clásico.",
+          "category": "Promoción de viernes",
+          "priceCurrency": "MXN",
+          "availability": "https://schema.org/InStock",
+          "itemOffered": {
+            "@id": "https://elbaguettonexpress.com.mx/#carta"
+          }
+        }
+      ]
+    },
+    {
       "@type": "WebSite",
       "@id": "https://elbaguettonexpress.com.mx/#sitio",
       "url": "https://elbaguettonexpress.com.mx/",
@@ -674,6 +707,7 @@
         "@id": "https://elbaguettonexpress.com.mx/#migas"
       },
       "significantLink": [
+        "https://elbaguettonexpress.com.mx/#promos",
         "https://elbaguettonexpress.com.mx/#menu",
         "https://elbaguettonexpress.com.mx/#aderezos",
         "https://elbaguettonexpress.com.mx/#como-pedir",
@@ -695,24 +729,30 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Promociones",
+          "item": "https://elbaguettonexpress.com.mx/#promos"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Carta",
           "item": "https://elbaguettonexpress.com.mx/#menu"
         },
         {
           "@type": "ListItem",
-          "position": 3,
+          "position": 4,
           "name": "Aderezos",
           "item": "https://elbaguettonexpress.com.mx/#aderezos"
         },
         {
           "@type": "ListItem",
-          "position": 4,
+          "position": 5,
           "name": "Dónde estamos",
           "item": "https://elbaguettonexpress.com.mx/#donde"
         },
         {
           "@type": "ListItem",
-          "position": 5,
+          "position": 6,
           "name": "Preguntas frecuentes",
           "item": "https://elbaguettonexpress.com.mx/#preguntas"
         }
@@ -727,10 +767,18 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "¿Cuándo abren?",
+          "name": "¿Ya abrieron?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "El viernes 6 de noviembre de 2026, en Valle Nacional 106, Fracc. Valle Dorado, Mezcales, Nayarit."
+            "text": "Sí. Abrimos el 6 de noviembre de 2026 y ya estamos atendiendo en Valle Nacional 106, Fracc. Valle Dorado, Mezcales, Nayarit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué promociones tienen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Los lunes, 3x2 en ensaladas: pides tres y pagas dos, todo el día y hasta agotar existencias. Los viernes, en la compra de tu baguette te regalamos el café americano; no aplica en Baguette Clásico."
           }
         },
         {
@@ -809,7 +857,7 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "z9o7ck8hm0");
   </script>
-  <script type="module" crossorigin src="/assets/index-BIaupYry.js"></script>
+  <script type="module" crossorigin src="/assets/index-CVu57JOS.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-D30z3n5E.css">
 </head>
 <body>

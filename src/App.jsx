@@ -104,7 +104,7 @@ function usarCompartir() {
   /* el mensaje deja de anunciar la apertura en cuanto pasa la fecha */
   const porAbrir = Math.ceil((APERTURA - new Date()) / 86400000) > 0;
   const texto = porAbrir
-    ? 'El Baguetton Express abre el 6 de noviembre en Valle Dorado, Mezcales. Sándwiches en baguette, ensaladas, café y aderezos caseros.'
+    ? 'El Baguetton Express en Valle Dorado, Mezcales. Sándwiches en baguette, ensaladas, café y aderezos caseros. Promociones los lunes y viernes.'
     : 'El Baguetton Express, en Valle Dorado, Mezcales. Sándwiches en baguette, ensaladas, café y aderezos caseros.';
 
   const copiar = async () => {
@@ -973,10 +973,6 @@ export default function App() {
                     <a href={WA} target="_blank" rel="noreferrer">{WA_VISIBLE}</a>
                     <small>Pedidos y dudas · solo por WhatsApp</small>
                   </div>
-                </div>
-                <div className="dato">
-                  <h3 className="k">Apertura</h3>
-                  <div className="v">6 de noviembre</div>
                 </div>
               </div>
               <div data-reveal>
