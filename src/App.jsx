@@ -880,7 +880,7 @@ export default function App() {
             <p className="eyebrow">Precios</p>
             <h2>Carta y precios</h2>
             <p className="menu-intro" data-reveal>
-              Sándwiches en baguette, ensaladas, dulce, café y batidos.
+              Sándwiches en baguette, ensaladas, dulce, café, batidos y jugos.
               Todos los aderezos se hacen aquí.
             </p>
 

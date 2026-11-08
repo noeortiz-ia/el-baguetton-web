@@ -1,21 +1,22 @@
 /* Carta completa: fuente única para el sitio y para el schema del <head>.
-   Si cambia un precio o un platillo, se cambia AQUÍ y se corre `npm run build`. */
+   Si cambia un precio o un platillo, se cambia AQUÍ y se corre `npm run build`.
+   Última actualización: carta del 7 de noviembre de 2026. */
 
 const MENU = [
   {
     id: 'baguettones',
     t: 'Baguettones',
     s: 'Nuestros sándwiches en baguette',
-    nota: 'Todos, con opción en bagel o cuernito.',
+    nota: 'Plus, Pechugón, Pollero, Tunero, Quesero, Ensaladón y Chori-Vegano con opción en bagel o cuernito.',
     items: [
       { n: 'Clásico', p: 52, d: 'Jamón viena, salami, manchego y aderezo de la casa.' },
       { n: 'Plus', p: 85, d: 'Jamón de pierna de cerdo, manchego, salami, lechuga, jitomate y aderezo de la casa.' },
       { n: 'Pechugón', p: 85, d: 'Jamón de pechuga de pavo, manchego, salami, lechuga, jitomate y aderezo de la casa.' },
-      { n: 'Pollero', p: 105, d: 'Fajitas de pollo, manchego, lechuga, jitomate y aderezo de la casa.' },
+      { n: 'Pollero', p: 105, d: 'Fajitas de pollo jugoso, manchego, lechuga, jitomate y aderezo de la casa.' },
       { n: 'Pizzero', p: 85, d: 'Salsa de pizza, pepperoni, queso gratinado y aderezo de la casa.' },
       { n: 'Tunero', p: 105, d: 'Atún, manchego, lechuga, pepino, jitomate y aderezo de la casa.' },
       { n: 'Quesero', p: 105, d: 'Manchego, panela y queso regianito, lechuga, jitomate y aderezo de la casa.' },
-      { n: 'Ensaladón', p: 85, d: 'Zetas y calabazas cocinadas, lechuga, jitomate, zanahoria, betabel, germen, pepino y aderezo de la casa.' },
+      { n: 'Ensaladón', p: 85, d: 'Setas o champiñones y calabazas cocinadas, lechuga, jitomate, zanahoria, betabel, germen, pepino y aderezo de la casa.' },
       { n: 'Chori-Vegano', p: 95, d: 'Chorizo vegano 100% sin gluten, queso manchego, lechuga y aderezo de la casa.' },
     ],
   },
@@ -34,12 +35,12 @@ const MENU = [
     t: 'Ensaladas',
     s: 'Con el aderezo que tú elijas',
     items: [
-      { n: 'Baguetona', p: 120, d: 'Lechuga, fajitas de pollo salpimentadas, zanahoria, betabel, germen, jitomate cherry, pepino y croutones.' },
-      { n: 'Mexicana', p: 115, d: 'Lechuga, jitomate, aguacate, elote, queso panela y tortillitas horneadas con chile guajillo.' },
-      { n: 'La BBQ', p: 120, d: 'Lechuga, fajitas de pollo BBQ, brócoli, zanahoria, pepino, germen y tortillitas horneadas.' },
+      { n: 'Baguetona', p: 120, d: 'Lechuga, fajitas de pollo salpimentadas, zanahoria, betabel, germen, jitomate cherry, pepino, pollo salteado y croutones.' },
+      { n: 'Mexicana', p: 115, d: 'Lechuga, jitomate, aguacate, elote, cuadritos de queso panela y tortillitas horneadas con chile guajillo.' },
+      { n: 'La BBQ', p: 120, d: 'Lechuga, fajitas de pollo BBQ, brócoli, zanahoria, pepino, germen, pollo BBQ y tortillitas horneadas.' },
       { n: 'Cacahuata', p: 130, d: 'Lechuga, fajitas de pollo al cacahuate, brócoli, zanahoria, pepino, germen y cacahuates.' },
       { n: 'Remolacha Deli', p: 115, d: 'Betabel fileteado, vinagreta de hierbas, pistaches y requesón.' },
-      { n: 'La Primavera', p: 115, d: 'Lechuga, quinoa, fresa, cubos de panela y nuez caramelizada.' },
+      { n: 'La Primavera', p: 115, d: 'Lechuga, quinoa, fresa, cubos de panela y frutos secos caramelizados.' },
     ],
   },
   {
@@ -53,26 +54,36 @@ const MENU = [
     ],
   },
   {
+    id: 'batidos',
+    t: 'Batidos y licuados',
+    s: '940 ml, con leche entera, azúcar, canela y avena',
+    items: [
+      { n: 'Fresón', p: 75, d: 'Fresa, leche entera, azúcar, canela y avena.' },
+      { n: 'Chocobanana', p: 75, d: 'Plátano, cacao, leche entera, azúcar, canela y avena.' },
+      { n: 'Frutos Rojos', p: 80, d: 'Frutos rojos, leche entera, azúcar, canela y avena.' },
+      { n: 'Popeye', p: 75, d: 'Espinacas con plátano, leche entera, azúcar, canela y avena.' },
+      { n: 'Mangazo', p: 75, d: 'Mango, leche entera, azúcar, canela y avena.' },
+      { n: 'Hay Papaya de Celaya', p: 75, d: 'Papaya, leche entera, azúcar, canela y avena.' },
+    ],
+  },
+  {
+    id: 'jugos',
+    t: 'La juguería',
+    s: '495 ml, con jugo de naranja natural',
+    items: [
+      { n: 'Verde Que Te Quiero Verde', p: 65, d: 'Apio, jengibre, nopal y piña con jugo de naranja.' },
+      { n: 'Naranja Natural', p: 65, d: 'Jugo de naranja natural 100%. A veces sale acidito.' },
+      { n: 'Rojo Vivo', p: 65, d: 'Betabel y jugo de naranja.' },
+      { n: 'Linda Zanahoria', p: 65, d: 'Zanahoria y jugo de naranja.' },
+    ],
+  },
+  {
     id: 'bebidas',
     t: 'Las bebidas',
     s: '16 oz',
     items: [
-      { n: 'Café de Olla', p: 55, d: 'Con auténtico piloncillo.' },
+      { n: 'Café de Olla', p: 55, d: 'Con auténtico piloncillo y canela.' },
       { n: 'Café Americano', p: 50, d: 'Café americano.' },
-    ],
-  },
-  {
-    id: 'batidos',
-    t: 'Batidos y licuados',
-    s: 'Con leche entera, avena y canela',
-    nota: 'Jugos $65.',
-    items: [
-      { n: 'Fresón', p: 75, d: 'Fresa, azúcar, canela y avena.' },
-      { n: 'Chocobanana', p: 75, d: 'Plátano, cacao, azúcar, canela y avena.' },
-      { n: 'Frutos Rojos', p: 75, d: 'Frutos rojos, azúcar, canela y avena.' },
-      { n: 'Popeye', p: 75, d: 'Espinacas, azúcar, canela y avena.' },
-      { n: 'Mangazo', p: 75, d: 'Mango, azúcar, canela y avena.' },
-      { n: 'Hay Papaya de Celaya', p: 75, d: 'Papaya, azúcar, canela y avena.' },
     ],
   },
   {
@@ -88,7 +99,7 @@ const MENU = [
   {
     id: 'bionicos',
     t: 'Bionicos y frutas',
-    s: 'Escamochas',
+    s: 'En vaso de 500 ml',
     items: [
       { n: 'Biónico Baguetton', p: 80, d: 'Frutas varias con cremita dulce y granola.' },
       { n: 'Coctel de Frutas', p: 70, d: 'Frutas varias con miel y granola.' },
