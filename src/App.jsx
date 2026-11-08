@@ -646,14 +646,13 @@ export default function App() {
 
       <header className={`nav${pegado ? ' pegado' : ''}${dias > 0 ? ' con-cuenta' : ''}`}>
         <div className="nav-inner">
-          <a className="nav-logo" href="#top" aria-label="El Baguetton Express">
+          <a className="nav-logo" href="#que-servimos" aria-label="El Baguetton Express">
             <img src={`/img/logo-white.png${AV}`} alt="El Baguetton Express" />
           </a>
 
           <nav className="nav-links" aria-label="Secciones">
-            <a href="#que-servimos">Menú</a>
+            <a href="#menu">Menú</a>
             <a href="#promos">Promociones</a>
-            <a href="#menu">Precios</a>
             <a href="#aderezos">Aderezos</a>
             <a href="#galeria">Galería</a>
             <a href="#donde">Ubicación</a>
@@ -700,9 +699,8 @@ export default function App() {
             <span /><span />
           </button>
           <nav>
-            <a href="#que-servimos" onClick={cerrarMenu}>Menú</a>
+            <a href="#menu" onClick={cerrarMenu}>Menú</a>
             <a href="#promos" onClick={cerrarMenu}>Promociones</a>
-            <a href="#menu" onClick={cerrarMenu}>Precios</a>
             <a href="#aderezos" onClick={cerrarMenu}>Aderezos</a>
             <a href="#como-pedir" onClick={cerrarMenu}>Cómo pedir</a>
             <a href="#galeria" onClick={cerrarMenu}>Galería</a>
@@ -877,7 +875,6 @@ export default function App() {
 
         <section className="bloque menu-bloque" id="menu">
           <div className="wrap">
-            <p className="eyebrow">Precios</p>
             <h2>Carta y precios</h2>
             <p className="menu-intro" data-reveal>
               Sándwiches en baguette, ensaladas, dulce, café, batidos y jugos.
@@ -1031,8 +1028,8 @@ export default function App() {
               <a href={`mailto:${CORREO}`}>{CORREO}</a>
             </p>
             <nav className="pie-nav" aria-label="Secciones del sitio">
-              <a href="#que-servimos">Menú</a>
-              <a href="#menu">Carta completa</a>
+              <a href="#menu">Menú y precios</a>
+              <a href="#promos">Promociones</a>
               <a href="#aderezos">Aderezos</a>
               <a href="#como-pedir">Cómo pedir</a>
               <a href="#galeria">Galería</a>
