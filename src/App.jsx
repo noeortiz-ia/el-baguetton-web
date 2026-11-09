@@ -22,25 +22,25 @@ const AV = '?v=3';
 
 const SERVICIOS = [
   {
-    img: '/img/real/sandwich.jpg',
+    img: '/img/real/sandwich.webp',
     t: 'Sándwiches',
     d: 'En baguette, armados al momento.',
     ir: '#menu-baguettones',
   },
   {
-    img: '/img/real/ensalada.jpg',
+    img: '/img/real/ensalada.webp',
     t: 'Ensaladas',
     d: 'Frescas, con aderezo aparte.',
     ir: '#menu-ensaladas',
   },
   {
-    img: '/img/real/cafe.jpg',
+    img: '/img/real/cafe.webp',
     t: 'Café',
     d: 'Para acompañar o para llevar.',
     ir: '#menu-bebidas',
   },
   {
-    img: '/img/real/gal-4.jpg',
+    img: '/img/real/gal-4.webp',
     t: 'Dulce',
     d: 'Croissants, panqué y postres.',
     ir: '#menu-dulces',
@@ -60,13 +60,13 @@ const PASOS = [
 
 
 const MARQUESINA = [
-  { src: '/img/real/sandwich.jpg', t: 'Baguetton en baguette' },
-  { src: '/img/real/ensalada.jpg', t: 'Ensalada con aderezo aparte' },
-  { src: '/img/real/gal-2.jpg', t: 'Remolacha Deli' },
-  { src: '/img/real/gal-4.jpg', t: 'Rojo Pasión' },
-  { src: '/img/real/cafe.jpg', t: 'Café de olla' },
-  { src: '/img/real/gal-5.jpg', t: 'Panqué de mantequilla' },
-  { src: '/img/real/licuado-mango.jpg', t: 'Licuado de mango' },
+  { src: '/img/real/sandwich.webp', t: 'Baguetton en baguette' },
+  { src: '/img/real/ensalada.webp', t: 'Ensalada con aderezo aparte' },
+  { src: '/img/real/gal-2.webp', t: 'Remolacha Deli' },
+  { src: '/img/real/gal-4.webp', t: 'Rojo Pasión' },
+  { src: '/img/real/cafe.webp', t: 'Café de olla' },
+  { src: '/img/real/gal-5.webp', t: 'Panqué de mantequilla' },
+  { src: '/img/real/licuado-mango.webp', t: 'Licuado de mango' },
 ];
 
 const ADEREZOS_FICHA = [
@@ -88,16 +88,16 @@ const ADEREZOS = [
 
 
 const GALERIA = [
-  { src: '/img/real/gal-1.jpg', t: 'Mexicana', d: 'Lechuga, jitomate, aguacate, elote, queso panela y tortillitas horneadas con chile guajillo.' },
-  { src: '/img/real/gal-2.jpg', t: 'Remolacha Deli', d: 'Betabel fileteado, vinagreta de hierbas, pistaches y requesón.' },
-  { src: '/img/real/gal-3.jpg', t: 'Ensalada de pollo', d: 'Pollo a la plancha, lechuga, brócoli, zanahoria, pepino y germen de alfalfa.' },
-  { src: '/img/real/gal-4.jpg', t: 'Rojo Pasión', d: 'Cuernito calientito con compota casera de frutos rojos y queso doble crema.' },
-  { src: '/img/real/gal-5.jpg', t: 'Dulce de la casa', d: 'Panqué de mantequilla y panquesito de queso, del tamaño justo para el café.' },
-  { src: '/img/real/gal-6.jpg', t: 'El pan de la casa', d: 'Baguette de corteza dorada y miga suave: la base de todos los baguettones.' },
-  { src: '/img/real/gal-8.jpg', t: 'Escamocha', d: 'Fruta batida con yogur y cereales, servida bien fría.' },
-  { src: '/img/real/jugo-verde.jpg', t: 'Verde Que Te Quiero Verde', d: 'Apio, jengibre, nopal y piña con jugo de naranja. 495 ml.' },
-  { src: '/img/real/cafe-de-olla.jpg', t: 'Café de Olla', d: 'Café tostado con canela y piloncillo. 16 oz.' },
-  { src: '/img/real/licuado-mango.jpg', t: 'Licuado de mango', d: 'Mango con canela y avena, servido con trocitos de mango encima.' },
+  { src: '/img/real/gal-1.webp', t: 'Mexicana', d: 'Lechuga, jitomate, aguacate, elote, queso panela y tortillitas horneadas con chile guajillo.' },
+  { src: '/img/real/gal-2.webp', t: 'Remolacha Deli', d: 'Betabel fileteado, vinagreta de hierbas, pistaches y requesón.' },
+  { src: '/img/real/gal-3.webp', t: 'Ensalada de pollo', d: 'Pollo a la plancha, lechuga, brócoli, zanahoria, pepino y germen de alfalfa.' },
+  { src: '/img/real/gal-4.webp', t: 'Rojo Pasión', d: 'Cuernito calientito con compota casera de frutos rojos y queso doble crema.' },
+  { src: '/img/real/gal-5.webp', t: 'Dulce de la casa', d: 'Panqué de mantequilla y panquesito de queso, del tamaño justo para el café.' },
+  { src: '/img/real/gal-6.webp', t: 'El pan de la casa', d: 'Baguette de corteza dorada y miga suave: la base de todos los baguettones.' },
+  { src: '/img/real/gal-8.webp', t: 'Escamocha', d: 'Fruta batida con yogur y cereales, servida bien fría.' },
+  { src: '/img/real/jugo-verde.webp', t: 'Verde Que Te Quiero Verde', d: 'Apio, jengibre, nopal y piña con jugo de naranja. 495 ml.' },
+  { src: '/img/real/cafe-de-olla.webp', t: 'Café de Olla', d: 'Café tostado con canela y piloncillo. 16 oz.' },
+  { src: '/img/real/licuado-mango.webp', t: 'Licuado de mango', d: 'Mango con canela y avena, servido con trocitos de mango encima.' },
 ];
 
 function usarCompartir() {
@@ -624,7 +624,7 @@ export default function App() {
         <video
           ref={videoRef}
           src={bgSrc}
-          poster={`/img/hero.jpg${AV}`}
+          poster={`/img/hero.webp${AV}`}
           muted
           playsInline
           preload={esMovil ? 'none' : 'auto'}
@@ -632,7 +632,7 @@ export default function App() {
           onError={() => setVideoOk(false)}
           style={{ display: videoOk ? 'block' : 'none' }}
         />
-        {!videoOk && <img className="poster" src={`/img/hero.jpg${AV}`} alt="" />}
+        {!videoOk && <img className="poster" src={`/img/hero.webp${AV}`} alt="" />}
         <div className="bg-scrim" />
       </div>
 
@@ -800,7 +800,7 @@ export default function App() {
           <div className="wrap">
             <div className="aderezos-grid">
               <figure className="aderezos-foto" data-reveal>
-                <img src="/img/real/ensalada.jpg" alt="Ensalada servida en bowl" loading="lazy" />
+                <img src="/img/real/ensalada.webp" alt="Ensalada servida en bowl" loading="lazy" />
               </figure>
               <div className="aderezos-txt">
                 <p className="eyebrow" data-reveal>Aderezos</p>
@@ -844,7 +844,7 @@ export default function App() {
             <div className="promo-grid">
               <article className="promo-card" data-reveal>
                 <div className="promo-foto">
-                  <img src="/img/real/promo-lunes-ensaladas.jpg" alt="Tres ensaladas de El Baguetton Express" loading="lazy" />
+                  <img src="/img/real/promo-lunes-ensaladas.webp" alt="Tres ensaladas de El Baguetton Express" loading="lazy" />
                   <span className="promo-dia">Lunes</span>
                 </div>
                 <div className="promo-cuerpo">
@@ -857,7 +857,7 @@ export default function App() {
 
               <article className="promo-card" data-reveal>
                 <div className="promo-foto">
-                  <img src="/img/real/promo-viernes-cafe-v2.jpg" alt="Baguette y café americano de El Baguetton Express" loading="lazy" />
+                  <img src="/img/real/promo-viernes-cafe-v2.webp" alt="Baguette y café americano de El Baguetton Express" loading="lazy" />
                   <span className="promo-dia">Viernes</span>
                 </div>
                 <div className="promo-cuerpo">
