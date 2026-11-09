@@ -96,6 +96,7 @@ const GALERIA = [
   { src: '/img/real/gal-6.jpg', t: 'El pan de la casa', d: 'Baguette de corteza dorada y miga suave: la base de todos los baguettones.' },
   { src: '/img/real/gal-8.jpg', t: 'Escamocha', d: 'Fruta batida con yogur y cereales, servida bien fría.' },
   { src: '/img/real/jugo-verde.jpg', t: 'Verde Que Te Quiero Verde', d: 'Apio, jengibre, nopal y piña con jugo de naranja. 495 ml.' },
+  { src: '/img/real/cafe-de-olla.jpg', t: 'Café de Olla', d: 'Café tostado con canela y piloncillo. 16 oz.' },
   { src: '/img/real/licuado-mango.jpg', t: 'Licuado de mango', d: 'Mango con canela y avena, servido con trocitos de mango encima.' },
 ];
 
