@@ -95,6 +95,7 @@ const GALERIA = [
   { src: '/img/real/gal-5.jpg', t: 'Dulce de la casa', d: 'Panqué de mantequilla y panquesito de queso, del tamaño justo para el café.' },
   { src: '/img/real/gal-6.jpg', t: 'El pan de la casa', d: 'Baguette de corteza dorada y miga suave: la base de todos los baguettones.' },
   { src: '/img/real/gal-8.jpg', t: 'Escamocha', d: 'Fruta batida con yogur y cereales, servida bien fría.' },
+  { src: '/img/real/jugo-verde.jpg', t: 'Verde Que Te Quiero Verde', d: 'Apio, jengibre, nopal y piña con jugo de naranja. 495 ml.' },
   { src: '/img/real/licuado-mango.jpg', t: 'Licuado de mango', d: 'Mango con canela y avena, servido con trocitos de mango encima.' },
 ];
 
@@ -855,7 +856,7 @@ export default function App() {
 
               <article className="promo-card" data-reveal>
                 <div className="promo-foto">
-                  <img src="/img/real/promo-viernes-cafe.jpg" alt="Baguette y café americano de El Baguetton Express" loading="lazy" />
+                  <img src="/img/real/promo-viernes-cafe-v2.jpg" alt="Baguette y café americano de El Baguetton Express" loading="lazy" />
                   <span className="promo-dia">Viernes</span>
                 </div>
                 <div className="promo-cuerpo">
