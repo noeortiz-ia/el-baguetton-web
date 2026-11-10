@@ -119,7 +119,7 @@ const RESTAURANTE = {
   servesCuisine: ['Sándwiches', 'Baguettes', 'Ensaladas', 'Café'],
   priceRange: '$',
   currenciesAccepted: 'MXN',
-  paymentAccepted: 'Efectivo, Tarjeta de crédito, Tarjeta de débito, Mercado Pago',
+  paymentAccepted: 'Efectivo, Tarjeta de crédito, Tarjeta de débito, Carnet, Mercado Pago',
   menu: { '@id': `${BASE}#carta` },
   hasMenu: { '@id': `${BASE}#carta` },
   hasOfferCatalog: { '@id': `${BASE}#promociones` },

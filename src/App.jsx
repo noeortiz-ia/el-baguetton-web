@@ -976,10 +976,11 @@ export default function App() {
                 <span>Efectivo</span>
                 <span>Tarjeta de crédito</span>
                 <span>Tarjeta de débito</span>
+                <span>Carnet</span>
                 <span>Mercado Pago</span>
               </div>
               <p className="pagos-nota">
-                Visa y Mastercard, o Mercado Pago desde tu celular.
+                Visa, Mastercard y Carnet, o Mercado Pago desde tu celular.
               </p>
             </div>
           </div>
@@ -1076,7 +1077,7 @@ export default function App() {
           <div className="wrap">
             <img src={`/img/logo-white.png${AV}`} alt="El Baguetton Express" />
             <p>Valle Nacional 106 · Valle Dorado, Mezcales, Nayarit</p>
-            <p className="pie-pagos">Aceptamos tarjeta de crédito, débito y Mercado Pago.</p>
+            <p className="pie-pagos">Aceptamos tarjeta de crédito, débito, Carnet y Mercado Pago.</p>
             <p className="wa-footer">
               WhatsApp <a href={WA} target="_blank" rel="noreferrer">{WA_VISIBLE}</a>
               {' · '}

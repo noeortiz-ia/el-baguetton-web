@@ -232,11 +232,11 @@ const EN = {
   'Efectivo': 'Cash',
   'Tarjeta de crédito': 'Credit card',
   'Tarjeta de débito': 'Debit card',
-  'Visa y Mastercard, o Mercado Pago desde tu celular.': 'Visa and Mastercard, or Mercado Pago from your phone.',
-  'Aceptamos tarjeta de crédito, débito y Mercado Pago.': 'We accept credit cards, debit cards and Mercado Pago.',
+  'Visa, Mastercard y Carnet, o Mercado Pago desde tu celular.': 'Visa, Mastercard and Carnet, or Mercado Pago from your phone.',
+  'Aceptamos tarjeta de crédito, débito, Carnet y Mercado Pago.': 'We accept credit cards, debit cards, Carnet and Mercado Pago.',
   '¿Puedo pagar con tarjeta?': 'Can I pay by card?',
-  'Sí. Aceptamos tarjeta de crédito y débito —Visa y Mastercard— y Mercado Pago desde tu celular. También puedes pagar en efectivo.':
-    'Yes. We take credit and debit cards —Visa and Mastercard— and Mercado Pago from your phone. You can pay cash too.',
+  'Sí. Aceptamos tarjeta de crédito y débito —Visa, Mastercard y Carnet— y Mercado Pago desde tu celular. También puedes pagar en efectivo.':
+    'Yes. We take credit and debit cards —Visa, Mastercard and Carnet— and Mercado Pago from your phone. You can pay cash too.',
 
   /* preguntas */
   'Preguntas': 'Questions',
