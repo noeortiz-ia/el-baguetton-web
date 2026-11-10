@@ -227,6 +227,17 @@ const EN = {
   'Pedidos y dudas · solo por WhatsApp': 'Orders and questions · WhatsApp only',
   'Ubicación de El Baguetton Express en Valle Dorado': 'El Baguetton Express location in Valle Dorado',
 
+  /* formas de pago */
+  'Formas de pago': 'Payment methods',
+  'Efectivo': 'Cash',
+  'Tarjeta de crédito': 'Credit card',
+  'Tarjeta de débito': 'Debit card',
+  'Visa y Mastercard, o Mercado Pago desde tu celular.': 'Visa and Mastercard, or Mercado Pago from your phone.',
+  'Aceptamos tarjeta de crédito, débito y Mercado Pago.': 'We accept credit cards, debit cards and Mercado Pago.',
+  '¿Puedo pagar con tarjeta?': 'Can I pay by card?',
+  'Sí. Aceptamos tarjeta de crédito y débito —Visa y Mastercard— y Mercado Pago desde tu celular. También puedes pagar en efectivo.':
+    'Yes. We take credit and debit cards —Visa and Mastercard— and Mercado Pago from your phone. You can pay cash too.',
+
   /* preguntas */
   'Preguntas': 'Questions',
   'Preguntas frecuentes': 'Common questions',
@@ -270,8 +281,8 @@ const TITULO = {
 };
 
 const DESCRIPCION = {
-  es: 'Sándwiches, ensaladas y café con aderezos hechos en casa, en Valle Dorado, Mezcales. De lunes a viernes de 8 am a 8 pm y sábados de 8 am a 2 pm.',
-  en: 'Sandwiches, salads and coffee with dressings made in house, in Valle Dorado, Mezcales. Monday to Friday 8 am to 8 pm, Saturdays 8 am to 2 pm.',
+  es: 'Sándwiches, ensaladas y café con aderezos caseros en Valle Dorado, Mezcales. Aceptamos tarjeta y Mercado Pago. Lun a vie 8 am a 8 pm, sáb 8 am a 2 pm.',
+  en: 'Sandwiches, salads and coffee with house dressings in Valle Dorado, Mezcales. Cards and Mercado Pago accepted. Mon to Fri 8 am to 8 pm, Sat 8 am to 2 pm.',
 };
 
 const WA_ES = 'Hola, quiero información de El Baguetton Express.';

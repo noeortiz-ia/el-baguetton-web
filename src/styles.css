@@ -47,6 +47,31 @@ main{position:relative;z-index:1}
 
 .wrap{width:min(1180px,90vw);margin-inline:auto}
 
+/* ---------- formas de pago ---------- */
+.pagos{
+  margin-top:var(--s6);
+  border:1px solid rgba(244,238,226,.16);
+  border-radius:2px;
+  padding:var(--s5) var(--s5) var(--s4);
+  background:rgba(7,32,15,.35);
+}
+.pagos-k{
+  font-family:var(--sans,'Satoshi',sans-serif);font-weight:900;
+  font-size:13px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--dorado-claro,#F1D9A8);margin-bottom:18px;
+}
+.pagos-lista{display:flex;flex-wrap:wrap;gap:10px}
+.pagos-lista span{
+  font-family:var(--sans,'Satoshi',sans-serif);font-weight:700;
+  font-size:15px;letter-spacing:.02em;
+  padding:11px 18px;border-radius:999px;
+  background:rgba(244,238,226,.09);
+  border:1px solid rgba(244,238,226,.18);
+  color:var(--crema,#F4EEE2);
+}
+.pagos-nota{margin-top:16px;font-size:15px;line-height:1.5;color:rgba(244,238,226,.72)}
+.pie-pagos{margin-top:6px;font-size:14px;color:rgba(244,238,226,.62)}
+
 /* ---------- selector de idioma ---------- */
 .nav-inner{position:relative}
 .idioma{

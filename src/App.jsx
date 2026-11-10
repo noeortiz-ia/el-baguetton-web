@@ -969,6 +969,19 @@ export default function App() {
             <a className="btn btn-primario pedir-cta" href={WA} target="_blank" rel="noreferrer" data-reveal>
               Pedir por WhatsApp
             </a>
+
+            <div className="pagos" id="pagos" data-reveal>
+              <p className="pagos-k">Formas de pago</p>
+              <div className="pagos-lista">
+                <span>Efectivo</span>
+                <span>Tarjeta de crédito</span>
+                <span>Tarjeta de débito</span>
+                <span>Mercado Pago</span>
+              </div>
+              <p className="pagos-nota">
+                Visa y Mastercard, o Mercado Pago desde tu celular.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -1063,6 +1076,7 @@ export default function App() {
           <div className="wrap">
             <img src={`/img/logo-white.png${AV}`} alt="El Baguetton Express" />
             <p>Valle Nacional 106 · Valle Dorado, Mezcales, Nayarit</p>
+            <p className="pie-pagos">Aceptamos tarjeta de crédito, débito y Mercado Pago.</p>
             <p className="wa-footer">
               WhatsApp <a href={WA} target="_blank" rel="noreferrer">{WA_VISIBLE}</a>
               {' · '}
