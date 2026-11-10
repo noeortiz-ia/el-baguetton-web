@@ -49,7 +49,7 @@ const MENU = [
     s: 'Los empalagosos',
     items: [
       { n: 'Rojo Pasión', p: 65, d: 'Cuernito calientito con compota casera de frutos rojos y queso doble crema.' },
-      { n: 'Panqué Mantequilla', p: 65, d: 'Panqué de mantequilla 100% con naranja.' },
+      { n: 'Rebanada de panqué', p: 65, d: 'Rebanada de panqué de mantequilla 100% con naranja.' },
       { n: 'Cubilete Baguetton', p: 55, d: 'Panquesito de queso.' },
     ],
   },
