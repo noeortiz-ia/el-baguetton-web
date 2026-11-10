@@ -52,13 +52,6 @@ const EN = {
   'Ver Dulce en el menú': 'See Sweets on the menu',
 
   /* marquesina */
-  'Baguetton en baguette': 'Baguetton on baguette',
-  'Ensalada con aderezo aparte': 'Salad with dressing on the side',
-  'Remolacha Deli': 'Beet Deli',
-  'Rojo Pasión': 'Red Passion',
-  'Café de olla': 'Cinnamon pot coffee',
-  'Panqué de mantequilla': 'Butter panqué',
-  'Licuado de mango': 'Mango smoothie',
 
   /* aderezos */
   'Los aderezos se hacen aquí': 'The dressings are made here',
@@ -72,7 +65,7 @@ const EN = {
   'Ranch eneldo': 'Dill ranch',
   'Cremoso y con el eneldo bien marcado, de esos que se quedan en la hoja. El que va con casi todo.':
     'Creamy, with the dill coming through. The one that goes with almost everything.',
-  'Con el Clásico, el Pollero y cualquier ensalada.': 'With the Classic, the Chicken and any salad.',
+  'Con el Clásico, el Pollero y cualquier ensalada.': 'With the Clásico, the Pollero and any salad.',
   'Miel mostaza': 'Honey mustard',
   'Dulce de miel con el filo de la mostaza al final. No empalaga.':
     'Sweet from the honey, with the mustard bite at the end. It does not cloy.',
@@ -99,7 +92,6 @@ const EN = {
   'Hasta agotar existencias.': 'While supplies last.',
   'Viernes': 'Friday',
   'De regalo': 'On the house',
-  'Café americano': 'American coffee',
   'En la compra de tu baguette.': 'With any baguette.',
   'No aplica en Baguette Clásico.': 'Not valid on the Classic baguette.',
   'Pregunta por WhatsApp qué promoción hay hoy.': 'Ask on WhatsApp which deal is on today.',
@@ -111,128 +103,84 @@ const EN = {
   'Menú y precios': 'Menu and prices',
   'Sándwiches en baguette, ensaladas, dulce, café, batidos y jugos. Todos los aderezos se hacen aquí.':
     'Baguette sandwiches, salads, sweets, coffee, shakes and juices. Every dressing is made here.',
-  'Baguettones': 'Baguette sandwiches',
   'Nuestros sándwiches en baguette': 'Our baguette sandwiches',
-  'Clásico': 'Classic',
   'Jamón viena, salami, manchego y aderezo de la casa.': 'Viena ham, salami, manchego and house dressing.',
-  'Plus': 'Plus',
   'Jamón de pierna de cerdo, manchego, salami, lechuga, jitomate y aderezo de la casa.':
     'Pork leg ham, manchego, salami, lettuce, tomato and house dressing.',
-  'Pechugón': 'Turkey breast',
   'Jamón de pechuga de pavo, manchego, salami, lechuga, jitomate y aderezo de la casa.':
     'Turkey breast ham, manchego, salami, lettuce, tomato and house dressing.',
-  'Pollero': 'Chicken',
   'Fajitas de pollo jugoso, manchego, lechuga, jitomate y aderezo de la casa.':
     'Juicy chicken fajitas, manchego, lettuce, tomato and house dressing.',
-  'Pizzero': 'Pizza',
   'Salsa de pizza, pepperoni, queso gratinado y aderezo de la casa.':
     'Pizza sauce, pepperoni, melted cheese and house dressing.',
-  'Tunero': 'Tuna',
   'Atún, manchego, lechuga, pepino, jitomate y aderezo de la casa.':
     'Tuna, manchego, lettuce, cucumber, tomato and house dressing.',
-  'Quesero': 'Cheese',
   'Manchego, panela y queso regianito, lechuga, jitomate y aderezo de la casa.':
     'Manchego, panela and regianito cheese, lettuce, tomato and house dressing.',
-  'Ensaladón': 'Ensaladón',
   'Setas o champiñones y calabazas cocinadas, lechuga, jitomate, zanahoria, betabel, germen, pepino y aderezo de la casa.':
     'Mushrooms and cooked zucchini, lettuce, tomato, carrot, beet, sprouts, cucumber and house dressing.',
-  'Chori-Vegano': 'Vegan chorizo',
   'Chorizo vegano 100% sin gluten, queso manchego, lechuga y aderezo de la casa.':
     '100% gluten-free vegan chorizo, manchego, lettuce and house dressing.',
   'Plus, Pechugón, Pollero, Tunero, Quesero, Ensaladón y Chori-Vegano con opción en bagel o cuernito.':
-    'Plus, Turkey breast, Chicken, Tuna, Cheese, Ensaladón and Vegan chorizo can be made on a bagel or a cuernito.',
+    'Plus, Pechugón, Pollero, Tunero, Quesero, Ensaladón and Chori-Vegano can be made on a bagel or a cuernito.',
 
-  'Sin Prisas': 'Take your time',
   'Para comer con calma': 'For a slow meal',
-  'Bagel Huevón': 'Egg bagel',
   'Huevito cocinado, queso manchego, espinaca, jitomate, lechuga y aderezo de la casa.':
     'Cooked egg, manchego, spinach, tomato, lettuce and house dressing.',
-  'Pizzero Tropical': 'Tropical pizza',
   'Salsa de pizza, piña, durazno, queso gratinado y aderezo de la casa.':
     'Pizza sauce, pineapple, peach, melted cheese and house dressing.',
-  'Molletón': 'Mollete',
   'Frijolitos negros, queso gratinado, aderezo de la casa y pico de gallo.':
     'Black beans, melted cheese, house dressing and pico de gallo.',
 
   'Con el aderezo que tú elijas': 'With the dressing you choose',
-  'Baguetona': 'Baguetona',
   'Lechuga, fajitas de pollo salpimentadas, zanahoria, betabel, germen, jitomate cherry, pepino, pollo salteado y croutones.':
     'Lettuce, seasoned chicken fajitas, carrot, beet, sprouts, cherry tomato, cucumber, sautéed chicken and croutons.',
-  'Mexicana': 'Mexican',
   'Lechuga, jitomate, aguacate, elote, cuadritos de queso panela y tortillitas horneadas con chile guajillo.':
     'Lettuce, tomato, avocado, corn, panela cubes and baked tortilla chips with guajillo chile.',
-  'La BBQ': 'The BBQ',
   'Lechuga, fajitas de pollo BBQ, brócoli, zanahoria, pepino, germen, pollo BBQ y tortillitas horneadas.':
     'Lettuce, BBQ chicken fajitas, broccoli, carrot, cucumber, sprouts, BBQ chicken and baked tortilla chips.',
-  'Cacahuata': 'Peanut chicken',
   'Lechuga, fajitas de pollo al cacahuate, brócoli, zanahoria, pepino, germen y cacahuates.':
     'Lettuce, peanut chicken fajitas, broccoli, carrot, cucumber, sprouts and peanuts.',
   'Betabel fileteado, vinagreta de hierbas, pistaches y requesón.':
     'Sliced beet, herb vinaigrette, pistachios and ricotta.',
-  'La Primavera': 'Spring',
   'Lechuga, quinoa, fresa, cubos de panela y frutos secos caramelizados.':
     'Lettuce, quinoa, strawberry, panela cubes and caramelized nuts.',
 
-  'Dulces bocados': 'Sweet bites',
   'Los empalagosos': 'For the sweet tooth',
   'Cuernito calientito con compota casera de frutos rojos y queso doble crema.':
     'Warm cuernito with house red-berry compote and double cream cheese.',
-  'Rebanada de panqué': 'Butter panqué slice',
   'Rebanada de panqué de mantequilla 100% con naranja.':
     'Slice of 100% butter panqué with orange.',
-  'Cubilete Baguetton': 'Baguetton cup',
   'Panquesito de queso.': 'Cheese panquecito.',
 
-  'Batidos y licuados': 'Shakes and smoothies',
   '940 ml, con leche entera, azúcar, canela y avena': '940 ml, with whole milk, sugar, cinnamon and oats',
-  'Fresón': 'Strawberry',
   'Fresa, leche entera, azúcar, canela y avena.': 'Strawberry, whole milk, sugar, cinnamon and oats.',
-  'Chocobanana': 'Choco-banana',
   'Plátano, cacao, leche entera, azúcar, canela y avena.': 'Banana, cacao, whole milk, sugar, cinnamon and oats.',
   'Frutos Rojos': 'Mixed berries',
   'Frutos rojos, leche entera, azúcar, canela y avena.': 'Mixed berries, whole milk, sugar, cinnamon and oats.',
-  'Popeye': 'Popeye',
   'Espinacas con plátano, leche entera, azúcar, canela y avena.':
     'Spinach with banana, whole milk, sugar, cinnamon and oats.',
-  'Mangazo': 'Mango blast',
   'Mango, leche entera, azúcar, canela y avena.': 'Mango, whole milk, sugar, cinnamon and oats.',
-  'Hay Papaya de Celaya': 'Papaya',
   'Papaya, leche entera, azúcar, canela y avena.': 'Papaya, whole milk, sugar, cinnamon and oats.',
 
-  'La juguería': 'The juice bar',
   '495 ml, con jugo de naranja natural': '495 ml, with fresh orange juice',
-  'Verde Que Te Quiero Verde': 'Green Dream',
   'Apio, jengibre, nopal y piña con jugo de naranja.': 'Celery, ginger, nopal and pineapple with orange juice.',
-  'Naranja Natural': 'Fresh orange',
   'Jugo de naranja natural 100%. A veces sale acidito.':
     '100% fresh orange juice. Sometimes it comes out a little tart.',
-  'Rojo Vivo': 'Vivid red',
   'Betabel y jugo de naranja.': 'Beet and orange juice.',
-  'Linda Zanahoria': 'Carrot cooler',
   'Zanahoria y jugo de naranja.': 'Carrot and orange juice.',
 
-  'Las bebidas': 'Drinks',
-  'Café de Olla': 'Cinnamon pot coffee',
   'Con auténtico piloncillo y canela.': 'With real piloncillo and cinnamon.',
-  'Café Americano': 'American coffee',
   'Café americano.': 'American coffee.',
 
-  'El picoteo': 'Snacks',
   'Fresco, con limón y sal': 'Fresh, with lime and salt',
-  'Jícamas': 'Jicama',
   'Jícama fresca, rodajita de limón y sal.': 'Fresh jicama, a slice of lime and salt.',
-  'Pepinos': 'Cucumbers',
   'Pepino fresco, rodajita de limón y sal.': 'Fresh cucumber, a slice of lime and salt.',
-  'Apio y Zanahoria': 'Celery and carrot',
   'Bastones con rodajita de limón y sal.': 'Sticks with a slice of lime and salt.',
 
-  'Bionicos y frutas': 'Fruit bowls',
   'En vaso de 500 ml': '500 ml cup',
-  'Biónico Baguetton': 'Baguetton biónico',
   'Frutas varias con cremita dulce y granola.': 'Mixed fruit with sweet cream and granola.',
-  'Coctel de Frutas': 'Fruit cocktail',
   'Frutas varias con miel y granola.': 'Mixed fruit with honey and granola.',
-  'Escamochas': 'Escamocha',
   'Frutas varias batidas con yogur y cereales.': 'Mixed fruit blended with yogurt and cereal.',
 
   /* cómo pedir */
@@ -246,16 +194,12 @@ const EN = {
 
   /* galería */
   'Fotos del local y los platillos': 'Photos of the place and the food',
-  'Ensalada de pollo': 'Chicken salad',
   'Pollo a la plancha, lechuga, brócoli, zanahoria, pepino y germen de alfalfa.':
     'Grilled chicken, lettuce, broccoli, carrot, cucumber and alfalfa sprouts.',
-  'Dulce de la casa': 'House sweets',
   'Panqué de mantequilla y panquesito de queso, del tamaño justo para el café.':
     'Butter panqué and cheese panquecito, just the right size for coffee.',
-  'El pan de la casa': 'Our house bread',
   'Baguette de corteza dorada y miga suave: la base de todos los baguettones.':
     'Baguette with a golden crust and soft crumb: the base of every baguetton.',
-  'Escamocha': 'Escamocha',
   'Fruta batida con yogur y cereales, servida bien fría.': 'Blended fruit with yogurt and cereal, served cold.',
   'Apio, jengibre, nopal y piña con jugo de naranja. 495 ml.':
     'Celery, ginger, nopal and pineapple with orange juice. 495 ml.',
@@ -306,7 +250,7 @@ const EN = {
     'All of them. We make them here: dill ranch, honey mustard, Italian vinaigrette, tamarind and herb vinaigrette.',
   '¿Hay opciones sin carne?': 'Are there meat-free options?',
   'Sí: el Ensaladón, el Chori-Vegano (chorizo vegano 100% sin gluten), el Quesero y las ensaladas Remolacha Deli y La Primavera.':
-    'Yes: the Ensaladón, the Vegan chorizo (100% gluten-free), the Cheese and the Beet Deli and Spring salads.',
+    'Yes: the Ensaladón, the Chori-Vegano (100% gluten-free vegan chorizo), the Quesero and the Remolacha Deli and La Primavera salads.',
 
   /* cierre y pie */
   'Nos vemos en Valle Dorado': 'See you in Valle Dorado',
