@@ -6,6 +6,7 @@ import Lenis from 'lenis';
 import { avisarVista, escucharClics, observarSecciones, avisarFoto, avisarCompartir, avisarPlatillo } from './pixel';
 import MENU from './data/menu.js';
 import FAQ from './data/faq.js';
+import { aplicarIdioma, idiomaGuardado } from './i18n.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -239,6 +240,41 @@ function CompartirFlotante() {
           <path fill="none" stroke="currentColor" strokeWidth="1.9" d="M12 15.6V3.6m0 0L8.4 7.2M12 3.6l3.6 3.6M4.8 13.4v7h14.4v-7"/>
         </svg>
         <span>Compartir</span>
+      </button>
+    </div>
+  );
+}
+
+/* selector de idioma: pegado al encabezado, siempre a la vista */
+function SelectorIdioma() {
+  const [idioma, setIdioma] = useState(() => idiomaGuardado());
+
+  useEffect(() => {
+    aplicarIdioma(idioma);
+  }, [idioma]);
+
+  const cambiar = (nuevo) => {
+    if (nuevo === idioma) return;
+    setIdioma(nuevo);
+  };
+
+  return (
+    <div className="idioma" role="group" aria-label="Idioma / Language">
+      <button
+        type="button"
+        className={idioma === 'es' ? 'on' : ''}
+        aria-pressed={idioma === 'es'}
+        onClick={() => cambiar('es')}
+      >
+        ES
+      </button>
+      <button
+        type="button"
+        className={idioma === 'en' ? 'on' : ''}
+        aria-pressed={idioma === 'en'}
+        onClick={() => cambiar('en')}
+      >
+        EN
       </button>
     </div>
   );
@@ -687,6 +723,8 @@ export default function App() {
               <span /><span /><span />
             </button>
           </div>
+
+          <SelectorIdioma />
         </div>
       </header>
 
@@ -807,8 +845,9 @@ export default function App() {
                 <h2 data-reveal>Los aderezos se hacen aquí</h2>
                 <p className="cuerpo" data-reveal>
                   Todos. Se preparan en nuestra cocina, no llegan listos de ningún lado.
-                  Por eso una ensalada aquí no sabe como las demás. Y con cualquiera
-                  de los <a className="link-int" href="#menu">baguettones de la carta</a> te los sirven.
+                  Por eso una ensalada aquí no sabe como las demás. Y cualquiera de los{' '}
+                  <a className="link-int" href="#menu">baguettones de la carta</a>{' '}
+                  lleva el aderezo que tú elijas.
                 </p>
                 <p className="cuerpo" data-reveal>
                   Es lo que le cambia el sabor a todo: a la ensalada, al sándwich,
