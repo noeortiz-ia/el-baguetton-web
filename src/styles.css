@@ -879,3 +879,37 @@ footer .social a:hover{color:var(--crema)}
 @media (max-width:420px){
   .servimos .card h3{font-size:19px;letter-spacing:-.01em}
 }
+
+/* ---------- carrusel de piezas de promoción ---------- */
+.promo-carrusel{margin-top:var(--s5)}
+.promo-track{
+  display:flex;gap:20px;overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scrollbar-width:none;-ms-overflow-style:none;
+  padding-bottom:var(--s1);
+}
+.promo-track::-webkit-scrollbar{display:none}
+.promo-slide{
+  flex:0 0 auto;width:min(420px,78vw);
+  scroll-snap-align:start;
+  border:1px solid rgba(244,238,226,.14);
+  background:#0B3220;overflow:hidden;
+}
+.promo-slide img{width:100%;display:block;height:auto}
+.promo-nav{
+  display:flex;align-items:center;gap:16px;margin-top:var(--s4);
+}
+.promo-nav button{
+  width:44px;height:44px;border-radius:999px;
+  border:1px solid rgba(244,238,226,.28);
+  background:transparent;color:var(--crema,#F4EEE2);
+  font-size:22px;line-height:1;cursor:pointer;
+  display:grid;place-items:center;
+  transition:background .2s ease,border-color .2s ease;
+}
+.promo-nav button:hover:not(:disabled){background:rgba(241,217,168,.14);border-color:rgba(241,217,168,.6)}
+.promo-nav button:disabled{opacity:.3;cursor:default}
+.promo-nav span{
+  font-family:var(--sans,'Satoshi',sans-serif);font-weight:700;
+  font-size:15px;letter-spacing:.14em;color:rgba(244,238,226,.7);
+}

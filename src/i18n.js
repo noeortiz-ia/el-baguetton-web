@@ -44,6 +44,7 @@ const EN = {
   "Ver Ensaladas en el menú": "See salads on the menu",
   "Ver Café en el menú": "See coffee on the menu",
   "Ver Dulce en el menú": "See sweets on the menu",
+  "Lunes 3x2 en ensaladas": "Mondays: 3 for 2 on salads",
   "Los aderezos se hacen aquí": "The dressings are made right here",
   "Todos. Se preparan en nuestra cocina, no llegan listos de ningún lado. Por eso una ensalada aquí no sabe como las demás. Y cualquiera de los": "All of them. We make them in our own kitchen — none of them come out of a jar. That's why a salad here doesn't taste like everyone else's. And any of the",
   "baguettones de la carta": "baguettes on the menu",

@@ -284,6 +284,67 @@ function SelectorIdioma() {
   );
 }
 
+/* piezas de promoción, tal como se publican en redes */
+const PROMOS_IMG = [
+  {
+    src: '/img/promos/promo-lunes-3x2.webp',
+    t: 'Lunes 3x2 en ensaladas',
+  },
+];
+
+function PromosCarrusel({ piezas }) {
+  const track = useRef(null);
+  const [indice, setIndice] = useState(0);
+  const total = piezas.length;
+
+  const paso = () => {
+    const t = track.current;
+    if (!t) return 420;
+    const s = t.querySelector('.promo-slide');
+    return s ? s.getBoundingClientRect().width + 20 : 420;
+  };
+
+  const mover = (dir) => {
+    const t = track.current;
+    if (t) t.scrollBy({ left: dir * paso(), behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    const t = track.current;
+    if (!t) return;
+    const medir = () =>
+      setIndice(Math.min(total - 1, Math.max(0, Math.round(t.scrollLeft / paso()))));
+    t.addEventListener('scroll', medir, { passive: true });
+    return () => t.removeEventListener('scroll', medir);
+  }, [total]);
+
+  if (!total) return null;
+
+  return (
+    <div className="promo-carrusel">
+      <div className="promo-track" ref={track}>
+        {piezas.map((p) => (
+          <figure className="promo-slide" key={p.src}>
+            <img src={p.src} alt={p.t} loading="lazy" />
+          </figure>
+        ))}
+      </div>
+
+      {total > 1 && (
+        <div className="promo-nav">
+          <button type="button" onClick={() => mover(-1)} aria-label="Anterior" disabled={indice === 0}>
+            ‹
+          </button>
+          <span>{indice + 1} / {total}</span>
+          <button type="button" onClick={() => mover(1)} aria-label="Siguiente" disabled={indice === total - 1}>
+            ›
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function Galeria({ fotos }) {
   const track = useRef(null);
   const n = fotos.length;
@@ -883,6 +944,8 @@ export default function App() {
             <p className="promos-intro" data-reveal>
               Lunes 3x2 en ensaladas y viernes café americano de regalo. En el local o por WhatsApp.
             </p>
+
+            <PromosCarrusel piezas={PROMOS_IMG} />
 
             <div className="promo-grid">
               <article className="promo-card" data-reveal>
