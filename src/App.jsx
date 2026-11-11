@@ -290,6 +290,10 @@ const PROMOS_IMG = [
     src: '/img/promos/promo-lunes-3x2.webp',
     t: 'Lunes 3x2 en ensaladas',
   },
+  {
+    src: '/img/promos/promo-viernes-cafe.webp',
+    t: 'Viernes: café americano de regalo',
+  },
 ];
 
 function PromosCarrusel({ piezas }) {

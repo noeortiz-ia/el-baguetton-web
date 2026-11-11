@@ -890,12 +890,15 @@ footer .social a:hover{color:var(--crema)}
 }
 .promo-track::-webkit-scrollbar{display:none}
 .promo-slide{
-  flex:0 0 auto;width:min(420px,78vw);
+  flex:0 0 auto;
+  height:clamp(340px,44vw,540px);
   scroll-snap-align:start;
   border:1px solid rgba(244,238,226,.14);
   background:#0B3220;overflow:hidden;
 }
-.promo-slide img{width:100%;display:block;height:auto}
+/* las piezas vienen en proporciones distintas: se iguala la altura y
+   cada una conserva su ancho natural, sin recortar texto */
+.promo-slide img{height:100%;width:auto;display:block}
 .promo-nav{
   display:flex;align-items:center;gap:16px;margin-top:var(--s4);
 }
