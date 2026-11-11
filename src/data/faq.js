@@ -7,6 +7,7 @@ const FAQ = [
   { q: '¿Puedo pedir para llevar?', a: 'Sí, todo el menú se puede pedir para llevar. Nos escribes por WhatsApp y lo recoges.' },
   { q: '¿Puedo cambiar la baguette por bagel o cuernito?', a: 'Sí. Casi todos los baguettones se pueden pedir en bagel o en cuernito, solo avísanos al pedir.' },
   { q: '¿Los aderezos son caseros?', a: 'Todos. Se preparan aquí: ranch eneldo, miel mostaza, vinagreta italiana, tamarindo y vinagreta de hierbas.' },
+  { q: '¿Los puedo llamar por teléfono?', a: 'Sí. Llámanos al 329 116 9824 en horario de atención. Para pedidos, WhatsApp al 322 370 6472 es más rápido, porque ahí te mandamos la carta y confirmamos tu pedido.' },
   { q: '¿Puedo pagar con tarjeta?', a: 'Sí. Aceptamos tarjeta de crédito y débito —Visa, Mastercard y Carnet— y Mercado Pago desde tu celular. También puedes pagar en efectivo.' },
   { q: '¿Hay opciones sin carne?', a: 'Sí: el Ensaladón, el Chori-Vegano (chorizo vegano 100% sin gluten), el Quesero y las ensaladas Remolacha Deli y La Primavera.' },
 ];

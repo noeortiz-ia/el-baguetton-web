@@ -119,6 +119,7 @@ const RESTAURANTE = {
   servesCuisine: ['Sándwiches', 'Baguettes', 'Ensaladas', 'Café'],
   priceRange: '$',
   currenciesAccepted: 'MXN',
+  telephone: '+523291169824',
   paymentAccepted: 'Efectivo, Tarjeta de crédito, Tarjeta de débito, Carnet, Mercado Pago',
   menu: { '@id': `${BASE}#carta` },
   hasMenu: { '@id': `${BASE}#carta` },

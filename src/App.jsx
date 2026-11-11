@@ -14,6 +14,8 @@ const MAPA = '#donde';
 const WA_TXT = 'Hola, quiero información de El Baguetton Express.';
 const WA = `https://wa.me/523223706472?text=${encodeURIComponent(WA_TXT)}`;
 const WA_VISIBLE = '322 370 6472';
+const TEL_VISIBLE = '329 116 9824';
+const TEL = 'tel:+523291169824';
 /* mismo número, en formato para marcar */
 const FB = 'https://facebook.com/baguettonbahia';
 const YT = 'https://www.youtube.com/@ElBaguettonExpress';
@@ -1053,6 +1055,9 @@ export default function App() {
             <a className="btn btn-primario pedir-cta" href={WA} target="_blank" rel="noreferrer" data-reveal>
               Pedir por WhatsApp
             </a>
+            <p className="pedir-tel" data-reveal>
+              ¿Prefieres llamar? <a href={TEL}>{TEL_VISIBLE}</a>
+            </p>
 
             <div className="pagos" id="pagos" data-reveal>
               <p className="pagos-k">Formas de pago</p>
@@ -1107,7 +1112,14 @@ export default function App() {
                   <h3 className="k">WhatsApp</h3>
                   <div className="v">
                     <a href={WA} target="_blank" rel="noreferrer">{WA_VISIBLE}</a>
-                    <small>Pedidos y dudas · solo por WhatsApp</small>
+                    <small>Pedidos y dudas</small>
+                  </div>
+                </div>
+                <div className="dato">
+                  <h3 className="k">Teléfono</h3>
+                  <div className="v">
+                    <a href={TEL}>{TEL_VISIBLE}</a>
+                    <small>Llamadas en horario de atención</small>
                   </div>
                 </div>
               </div>
@@ -1164,6 +1176,8 @@ export default function App() {
             <p className="pie-pagos">Aceptamos tarjeta de crédito, débito, Carnet y Mercado Pago.</p>
             <p className="wa-footer">
               WhatsApp <a href={WA} target="_blank" rel="noreferrer">{WA_VISIBLE}</a>
+              {' · '}
+              Tel <a href={TEL}>{TEL_VISIBLE}</a>
               {' · '}
               <a href={`mailto:${CORREO}`}>{CORREO}</a>
             </p>
