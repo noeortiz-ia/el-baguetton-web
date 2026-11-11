@@ -31,6 +31,7 @@ const EN = {
   "Pide por WhatsApp": "Order on WhatsApp",
   "Cómo llegar": "Get directions",
   "Ver la galería": "See the gallery",
+  "Pedir": "Order",
   "Toca cualquier foto para verla en grande, pedir o compartirla.": "Tap any photo to see it full size, order or share it.",
   "Cerrar": "Close",
   "Qué hay en el menú": "What's on the menu",

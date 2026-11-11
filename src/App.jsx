@@ -11,8 +11,11 @@ import { aplicarIdioma, idiomaGuardado } from './i18n.js';
 gsap.registerPlugin(ScrollTrigger);
 
 const MAPA = '#donde';
-const WA_TXT = 'Hola, quiero información de El Baguetton Express.';
-const WA = `https://wa.me/523223706472?text=${encodeURIComponent(WA_TXT)}`;
+const WA_NUM = '523223706472';
+/* cada enlace lleva su mensaje escrito: el visitante nunca teclea nada */
+const waLink = (texto) => `https://wa.me/${WA_NUM}?text=${encodeURIComponent(texto)}`;
+const WA_TXT = 'Hola, quiero hacer un pedido de El Baguetton Express.';
+const WA = waLink(WA_TXT);
 const WA_VISIBLE = '322 370 6472';
 const TEL_VISIBLE = '329 116 9824';
 const TEL = 'tel:+523291169824';
@@ -296,6 +299,7 @@ const PROMOS = [
     titulo: 'Ensaladas',
     linea: 'Pides tres, pagas dos. Todo el día.',
     nota: 'Hasta agotar existencias.',
+    wa: 'Hola, quiero la promo del lunes: 3x2 en ensaladas.',
   },
   {
     img: '/img/promos/promo-viernes-cafe.webp',
@@ -305,6 +309,7 @@ const PROMOS = [
     titulo: 'Café americano',
     linea: 'En la compra de tu baguette.',
     nota: 'No aplica en Baguette Clásico.',
+    wa: 'Hola, quiero la promo del viernes: café americano de regalo con mi baguette.',
   },
 ];
 
@@ -345,7 +350,7 @@ function PromoFlip({ p }) {
           <p className="promo-nota">{p.nota}</p>
           <a
             className="promo-cta"
-            href={WA}
+            href={waLink(p.wa)}
             target="_blank"
             rel="noreferrer"
             onClick={(e) => e.stopPropagation()}
@@ -592,7 +597,7 @@ function Galeria({ fotos }) {
                 <div className="lb-acciones">
                   <a
                     className="lb-acc wa"
-                    href={WA}
+                    href={waLink(`Hola, quiero pedir: ${fotos[abierta].t}.`)}
                     target="_blank"
                     rel="noreferrer"
                     onClick={() => avisarCompartir('whatsapp')}
@@ -919,7 +924,7 @@ export default function App() {
               </a>
             </div>
 
-            <a className="cta-mini" href={WA} target="_blank" rel="noreferrer">
+            <a className="cta-mini" href={waLink('Hola, quiero hacer un pedido.')} target="_blank" rel="noreferrer">
               WhatsApp
             </a>
 
@@ -963,7 +968,7 @@ export default function App() {
             <a href={YT} target="_blank" rel="noreferrer" onClick={cerrarMenu}>YouTube</a>
           </div>
 
-          <a className="btn btn-primario" href={WA} target="_blank" rel="noreferrer" onClick={cerrarMenu}>
+          <a className="btn btn-primario" href={waLink('Hola, quiero hacer un pedido de El Baguetton Express.')} target="_blank" rel="noreferrer" onClick={cerrarMenu}>
             Pedir por WhatsApp
           </a>
         </div>
@@ -971,7 +976,7 @@ export default function App() {
 
       <a
         className="wa-flotante"
-        href={WA}
+        href={waLink('Hola, quiero hacer un pedido.')}
         target="_blank"
         rel="noreferrer"
         aria-label="Escribir por WhatsApp"
@@ -995,7 +1000,7 @@ export default function App() {
               Lun a vie de 8 am a 8 pm · sábado de 8 am a 2 pm.
             </p>
             <div className="acciones">
-              <a className="btn btn-primario" href={WA} target="_blank" rel="noreferrer">
+              <a className="btn btn-primario" href={waLink('Hola, quiero ver la carta y hacer un pedido.')} target="_blank" rel="noreferrer">
                 Pedir por WhatsApp
               </a>
               <a className="btn btn-ghost" href="#donde">
@@ -1132,6 +1137,18 @@ export default function App() {
                         <span className="m-pre">${it.p}</span>
                       </div>
                       {it.d && <p className="m-desc">{it.d}</p>}
+                      <a
+                        className="m-pedir"
+                        href={waLink(`Hola, quiero pedir: ${it.n}.`)}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`Pedir ${it.n} por WhatsApp`}
+                      >
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.4-.2-2.9.8.8-2.8-.2-.4A8 8 0 0 1 12 4z"/>
+                        </svg>
+                        <span>Pedir</span>
+                      </a>
                     </div>
                   ))}
                   {g.nota && <p className="m-nota">{g.nota}</p>}
@@ -1163,7 +1180,7 @@ export default function App() {
                 </div>
               ))}
             </div>
-            <a className="btn btn-primario pedir-cta" href={WA} target="_blank" rel="noreferrer" data-reveal>
+            <a className="btn btn-primario pedir-cta" href={waLink('Hola, quiero hacer un pedido. ¿Me pasan la carta?')} target="_blank" rel="noreferrer" data-reveal>
               Pedir por WhatsApp
             </a>
             <p className="pedir-tel" data-reveal>
@@ -1225,7 +1242,7 @@ export default function App() {
                 <div className="dato">
                   <h3 className="k">WhatsApp</h3>
                   <div className="v">
-                    <a href={WA} target="_blank" rel="noreferrer">{WA_VISIBLE}</a>
+                    <a href={waLink('Hola, quiero hacer un pedido para pasar por él a Valle Nacional 106.')} target="_blank" rel="noreferrer">{WA_VISIBLE}</a>
                     <small>Escríbenos</small>
                   </div>
                 </div>
@@ -1272,7 +1289,7 @@ export default function App() {
             <h2 data-reveal>{dias > 0 ? 'Nos vemos el 6 de noviembre' : 'Nos vemos en Valle Dorado'}</h2>
             <p data-reveal>Valle Nacional 106, Valle Dorado. Lun a vie de 8 am a 8 pm · sábado de 8 am a 2 pm.</p>
             <div className="acciones" data-reveal>
-              <a className="btn btn-primario" href={WA} target="_blank" rel="noreferrer">
+              <a className="btn btn-primario" href={waLink('Hola, quiero hacer un pedido. Voy a pasar a Valle Dorado.')} target="_blank" rel="noreferrer">
                 Pedir por WhatsApp
               </a>
               <a className="btn btn-ghost" href="#donde">
@@ -1289,7 +1306,7 @@ export default function App() {
             <p>Valle Nacional 106 · Valle Dorado, Mezcales, Nayarit</p>
             <p className="pie-pagos">Aceptamos tarjeta de crédito, débito, Carnet y Mercado Pago.</p>
             <p className="wa-footer">
-              WhatsApp <a href={WA} target="_blank" rel="noreferrer">{WA_VISIBLE}</a>
+              WhatsApp <a href={waLink('Hola, quiero hacer un pedido.')} target="_blank" rel="noreferrer">{WA_VISIBLE}</a>
               {' · '}
               Tel <a href={TEL}>{TEL_VISIBLE}</a>
               {' · '}

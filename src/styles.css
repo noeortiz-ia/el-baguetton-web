@@ -476,6 +476,17 @@ h2{
 .lb-acc svg{width:18px;height:18px;flex:0 0 auto}
 .lb-acc .oculto{display:none}
 
+/* pedir un platillo desde la carta, con el nombre ya escrito */
+.m-pedir{
+  display:inline-flex;align-items:center;gap:7px;margin-top:10px;
+  font-family:var(--font-display);font-weight:700;font-size:.7rem;
+  letter-spacing:.16em;text-transform:uppercase;text-decoration:none;
+  color:var(--dorado-claro);opacity:.72;
+  transition:opacity .2s ease,color .2s ease;
+}
+.m-pedir svg{width:14px;height:14px;flex:0 0 auto}
+.m-pedir:hover{opacity:1;color:var(--crema-dorada)}
+
 .galeria-hint{
   margin-top:12px;font-size:.95rem;line-height:1.5;
   color:rgba(244,238,226,.7);max-width:52ch;
