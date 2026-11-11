@@ -65,10 +65,25 @@ const ORGANIZACION = {
     {
       '@type': 'ContactPoint',
       contactType: 'customer service',
+      telephone: '+523291169824',
       url: 'https://wa.me/523223706472',
       email: CORREO,
       availableLanguage: ['es-MX'],
       areaServed: 'MX',
+      hoursAvailable: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          opens: '08:00',
+          closes: '20:00',
+        },
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Saturday'],
+          opens: '08:00',
+          closes: '14:00',
+        },
+      ],
     },
   ],
 };

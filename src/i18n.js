@@ -227,8 +227,8 @@ const TITULO = {
 };
 
 const DESCRIPCION = {
-  es: 'Sándwiches, ensaladas y café con aderezos caseros en Valle Dorado, Mezcales. Aceptamos tarjeta y Mercado Pago. Lun a vie 8 am a 8 pm, sáb 8 am a 2 pm.',
-  en: 'Baguette sandwiches, salads and coffee with dressings made in-house in Valle Dorado, Mezcales. We take cards and Mercado Pago. Mon–Fri 8 am–8 pm, Sat 8 am–2 pm.',
+  es: 'Sándwiches, ensaladas y café en Valle Dorado, Mezcales. Pide por WhatsApp 322 370 6472 o llama al 329 116 9824. Lun a vie 8 am a 8 pm.',
+  en: 'Baguette sandwiches, salads and coffee in Valle Dorado, Mezcales. Order on WhatsApp 322 370 6472 or call 329 116 9824. Mon–Fri 8 am–8 pm.',
 };
 
 const WA_ES = 'Hola, quiero información de El Baguetton Express.';
