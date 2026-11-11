@@ -365,6 +365,72 @@ function Galeria({ fotos }) {
   const [abierta, setAbierta] = useState(null);
   const [indice, setIndice] = useState(0);
   const [pausa, setPausa] = useState(false);
+  const [copiada, setCopiada] = useState(false);
+
+  /* cada foto tiene su propio enlace: /?foto=3#galeria */
+  const enlaceFoto = (i) => `https://elbaguettonexpress.com.mx/?foto=${i + 1}#galeria`;
+
+  const fijarUrl = (i) => {
+    try {
+      const u = new URL(window.location.href);
+      if (i === null) u.searchParams.delete('foto');
+      else u.searchParams.set('foto', String(i + 1));
+      u.hash = '#galeria';
+      window.history.replaceState(null, '', u);
+    } catch {
+      /* sin historial disponible: el enlace solo sirve dentro de la visita */
+    }
+  };
+
+  const abrir = (i) => {
+    setAbierta(i);
+    fijarUrl(i);
+  };
+
+  const cerrar = () => {
+    setAbierta(null);
+    fijarUrl(null);
+  };
+
+  /* si alguien entra con ?foto=5, se abre esa foto al llegar */
+  useEffect(() => {
+    const q = Number(new URLSearchParams(window.location.search).get('foto')) - 1;
+    if (!Number.isInteger(q) || q < 0 || q >= n) return;
+    const t = setTimeout(() => setAbierta(q), 300);
+    return () => clearTimeout(t);
+  }, [n]);
+
+  const compartirFoto = async () => {
+    if (abierta === null) return;
+    const f = fotos[abierta];
+    const texto = `${f.t} · El Baguetton Express, Valle Dorado, Mezcales`;
+    const url = enlaceFoto(abierta);
+    avisarCompartir('galeria');
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: 'El Baguetton Express', text: texto, url });
+        return;
+      } catch {
+        return;
+      }
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch {
+      /* algunos navegadores no dan permiso de portapapeles: se copia a la antigua */
+      const campo = document.createElement('textarea');
+      campo.value = url;
+      campo.setAttribute('readonly', '');
+      campo.style.position = 'fixed';
+      campo.style.top = '-1000px';
+      document.body.appendChild(campo);
+      campo.select();
+      try { document.execCommand('copy'); } catch { /* nada más que hacer */ }
+      campo.remove();
+    }
+    setCopiada(true);
+    setTimeout(() => setCopiada(false), 2200);
+  };
 
   const paso = () => {
     const t = track.current;
@@ -445,7 +511,7 @@ function Galeria({ fotos }) {
 
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === 'Escape') setAbierta(null);
+      if (e.key === 'Escape') cerrar();
       if (abierta === null) return;
       if (e.key === 'ArrowRight') setAbierta((i) => (i + 1) % n);
       if (e.key === 'ArrowLeft') setAbierta((i) => (i - 1 + n) % n);
@@ -469,7 +535,7 @@ function Galeria({ fotos }) {
               className="slide"
               key={`${copia}-${f.src}`}
               onClick={() => {
-                setAbierta(i);
+                abrir(i);
                 /* se mide en las tres copias del bucle: la visible puede ser cualquiera */
                 avisarFoto(f.t, 'galeria');
               }}
@@ -511,22 +577,58 @@ function Galeria({ fotos }) {
 
       {abierta !== null &&
         createPortal(
-          <div className="lightbox" onClick={() => setAbierta(null)}>
+          <div className="lightbox" onClick={cerrar}>
             <div className="lb-caja" onClick={(e) => e.stopPropagation()}>
               <img src={fotos[abierta].src} alt={fotos[abierta].t} />
               <div className="lb-info">
-                <div className="lb-txt">
-                  <h3>{fotos[abierta].t}</h3>
-                  <p>{fotos[abierta].d}</p>
+                <div className="lb-fila">
+                  <div className="lb-txt">
+                    <h3>{fotos[abierta].t}</h3>
+                    <p>{fotos[abierta].d}</p>
+                  </div>
+                  <span className="lb-cuenta">{abierta + 1} / {fotos.length}</span>
                 </div>
-                <span className="lb-cuenta">{abierta + 1} / {fotos.length}</span>
+
+                <div className="lb-acciones">
+                  <a
+                    className="lb-acc wa"
+                    href={WA}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => avisarCompartir('whatsapp')}
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.4-.2-2.9.8.8-2.8-.2-.4A8 8 0 0 1 12 4zm-3 4.2c-.2 0-.5.1-.7.4-.3.3-.9.9-.9 2s.7 2.2 1 2.5c.3.4 1.6 2.4 3.9 3.3 1.9.8 2.3.6 2.7.6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3l-1.4-.7c-.2-.1-.4-.1-.5.1l-.6.8c-.1.2-.3.2-.5.1-.2-.1-.9-.3-1.7-1-.6-.6-1-1.3-1.2-1.5-.1-.2 0-.3.1-.4l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.3 0-.4l-.6-1.4c-.2-.4-.3-.4-.5-.4h-.4z"/>
+                    </svg>
+                    <span>WhatsApp</span>
+                  </a>
+
+                  <a className="lb-acc" href={TEL} onClick={() => avisarCompartir('telefono')}>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M6.6 3.5h2.2l1.6 4-2 1.3a12 12 0 0 0 5.8 5.8l1.3-2 4 1.6v2.2a2.6 2.6 0 0 1-2.9 2.6C10.4 18.4 5.6 13.6 4 6.4A2.6 2.6 0 0 1 6.6 3.5z"/>
+                    </svg>
+                    <span>{TEL_VISIBLE}</span>
+                  </a>
+
+                  <button type="button" className="lb-acc" onClick={compartirFoto}>
+                    {copiada ? (
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" strokeWidth="2" d="M4.5 12.5l5 5 10-11"/></svg>
+                    ) : (
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M12 15.2V3.4m0 0L8.3 7.1M12 3.4l3.7 3.7M4.8 13.6v6.9h14.4v-6.9"/>
+                      </svg>
+                    )}
+                    <span className={copiada ? 'oculto' : undefined}>Compartir</span>
+                    <span className={copiada ? undefined : 'oculto'}>Enlace copiado</span>
+                  </button>
+                </div>
               </div>
             </div>
             <button
               type="button"
               className="cerrar"
               aria-label="Cerrar"
-              onClick={(e) => { e.stopPropagation(); setAbierta(null); }}
+              onClick={(e) => { e.stopPropagation(); cerrar(); }}
             >
               ×
             </button>
@@ -899,6 +1001,15 @@ export default function App() {
               <a className="btn btn-ghost" href="#donde">
                 Cómo llegar
               </a>
+              <a className="btn btn-galeria" href="#galeria">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="5.5" width="18" height="13.5" rx="1.6" fill="none" stroke="currentColor" strokeWidth="1.7"/>
+                  <circle cx="8.6" cy="10.2" r="1.5" fill="currentColor"/>
+                  <path fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" d="M4.6 17.4l4.6-4.3 3.4 3.1 2.6-2.4 4.2 3.9"/>
+                </svg>
+                Ver la galería
+                <span className="btn-n">{GALERIA.length}</span>
+              </a>
             </div>
             </div>
           </div>
@@ -1079,6 +1190,9 @@ export default function App() {
           <div className="wrap">
             <p className="eyebrow" data-reveal>Galería</p>
             <h2 data-reveal>Fotos del local y los platillos</h2>
+            <p className="galeria-hint" data-reveal>
+              Toca cualquier foto para verla en grande, pedir o compartirla.
+            </p>
             <Galeria fotos={GALERIA} />
           </div>
         </section>

@@ -243,6 +243,16 @@ main{position:relative;z-index:1}
 .btn-primario:hover{background:var(--crema-dorada);transform:translateY(-2px)}
 .btn-ghost{color:var(--crema);border:1px solid rgba(244,238,226,.4)}
 .btn-ghost:hover{border-color:var(--crema)}
+.btn-galeria{
+  color:var(--crema-dorada);border:1px solid rgba(241,217,168,.72);
+  background:rgba(171,114,42,.14);gap:12px;
+}
+.btn-galeria:hover{background:rgba(171,114,42,.26);border-color:var(--crema-dorada);transform:translateY(-2px)}
+.btn-galeria svg{width:19px;height:19px;flex:0 0 auto}
+.btn-galeria .btn-n{
+  font-size:.72rem;letter-spacing:.06em;padding:3px 9px;border-radius:999px;
+  background:rgba(241,217,168,.9);color:#07200F;
+}
 
 /* ---------- secciones ---------- */
 section.bloque{padding:clamp(72px,11vh,140px) 0}
@@ -447,10 +457,34 @@ h2{
   box-shadow:0 40px 110px rgba(0,0,0,.75), 0 0 0 1px rgba(244,238,226,.16);
 }
 .lb-info{
-  width:100%;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;
+  width:100%;display:flex;flex-direction:column;align-items:stretch;gap:18px;
   background:#07200f;border:1px solid rgba(244,238,226,.16);border-top:0;
-  border-radius:0 0 2px 2px;padding:20px 24px;
+  border-radius:0 0 2px 2px;padding:22px 24px;
 }
+.lb-fila{display:flex;align-items:flex-start;justify-content:space-between;gap:24px}
+
+/* acciones dentro del modal: pedir, llamar y compartir la foto */
+.lb-acciones{display:flex;gap:10px;flex-wrap:wrap;border-top:1px solid rgba(244,238,226,.12);padding-top:16px}
+.lb-acc{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:13px 22px;border-radius:999px;cursor:pointer;text-decoration:none;
+  border:1px solid rgba(244,238,226,.3);background:transparent;color:var(--crema);
+  font-family:var(--font-display);font-weight:700;font-size:.74rem;
+  letter-spacing:.13em;text-transform:uppercase;white-space:nowrap;
+  transition:background .25s ease,border-color .25s ease,transform .25s ease;
+}
+.lb-acc svg{width:18px;height:18px;flex:0 0 auto}
+.lb-acc .oculto{display:none}
+
+.galeria-hint{
+  margin-top:12px;font-size:.95rem;line-height:1.5;
+  color:rgba(244,238,226,.7);max-width:52ch;
+}
+.lb-acc:hover{transform:translateY(-1px)}
+.lb-acc.wa{background:var(--crema);color:var(--verde);border-color:transparent}
+.lb-acc.wa:hover{background:var(--crema-dorada)}
+.lb-acc:not(.wa):hover{border-color:rgba(244,238,226,.6);background:rgba(244,238,226,.06)}
+.lb-acc:focus-visible{outline:2px solid var(--crema-dorada);outline-offset:3px}
 .lb-txt h3{
   font-family:var(--font-display);font-weight:900;font-size:1rem;
   letter-spacing:.08em;text-transform:uppercase;color:var(--crema);
@@ -862,12 +896,20 @@ footer .social a:hover{color:var(--crema)}
   .flecha.der{right:-8px}
   .slide{flex:0 0 74vw}
   .slide-info p:not(.slide-tit){max-height:none;opacity:1;margin-top:8px}
-  .lb-info{flex-direction:column;gap:8px;padding:16px}
+  .lb-fila{flex-direction:column;gap:8px;padding:0}
+  .lb-info{gap:14px;padding:16px}
   .lb-cuenta{align-self:flex-end}
+  .lb-acciones{gap:8px;padding-top:14px}
+  .lb-acc{flex:1 1 auto;padding:12px 14px;font-size:.68rem;letter-spacing:.1em}
+  .lightbox img{max-height:60vh}
 }
 
 @media (max-width:620px){
   .menu-grid{columns:1}
+  /* en el modal, WhatsApp ocupa el ancho y teléfono/compartir van a la par */
+  .lb-acciones{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .lb-acc{width:100%;padding:13px 10px}
+  .lb-acc.wa{grid-column:1 / -1}
 }
 
 @media (prefers-reduced-motion:reduce){
