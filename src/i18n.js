@@ -168,6 +168,8 @@ const EN = {
   'Jugo de naranja natural 100%. A veces sale acidito.':
     '100% fresh orange juice. Sometimes it comes out a little tart.',
   'Betabel y jugo de naranja.': 'Beet and orange juice.',
+  'Betabel y jugo de naranja. 495 ml.': 'Beet and orange juice. 495 ml.',
+  'Fresa, leche entera, azúcar, canela y avena. 940 ml.': 'Strawberry, whole milk, sugar, cinnamon and oats. 940 ml.',
   'Zanahoria y jugo de naranja.': 'Carrot and orange juice.',
 
   'Con auténtico piloncillo y canela.': 'With real piloncillo and cinnamon.',
