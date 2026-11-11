@@ -1056,7 +1056,7 @@ export default function App() {
               Pedir por WhatsApp
             </a>
             <p className="pedir-tel" data-reveal>
-              ¿Prefieres llamar? <a href={TEL}>{TEL_VISIBLE}</a>
+              Teléfono <a href={TEL}>{TEL_VISIBLE}</a>
             </p>
 
             <div className="pagos" id="pagos" data-reveal>
@@ -1112,14 +1112,14 @@ export default function App() {
                   <h3 className="k">WhatsApp</h3>
                   <div className="v">
                     <a href={WA} target="_blank" rel="noreferrer">{WA_VISIBLE}</a>
-                    <small>Pedidos y dudas</small>
+                    <small>Escríbenos</small>
                   </div>
                 </div>
                 <div className="dato">
                   <h3 className="k">Teléfono</h3>
                   <div className="v">
                     <a href={TEL}>{TEL_VISIBLE}</a>
-                    <small>Llamadas en horario de atención</small>
+                    <small>Llámanos</small>
                   </div>
                 </div>
               </div>
