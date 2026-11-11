@@ -651,6 +651,33 @@ export default function App() {
     };
     document.addEventListener('click', onAnchor);
 
+    /* quien llega desde un enlace con #ancla (WhatsApp, redes, Google) tiene que
+       caer en esa sección: el navegador salta antes de que la página exista y
+       el scroll suave lo regresa al inicio, así que lo llevamos a mano */
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+    const irAlHash = () => {
+      const id = window.location.hash;
+      if (!id || id.length < 2 || id === '#top') return;
+      let el = null;
+      try {
+        el = document.querySelector(id);
+      } catch {
+        return;
+      }
+      if (!el) return;
+      const nav = document.querySelector('.nav');
+      const aire = (nav ? nav.getBoundingClientRect().height : 0) + 24;
+      lenis.scrollTo(el, { offset: -aire, immediate: true });
+    };
+
+    irAlHash();
+    const t1 = setTimeout(irAlHash, 120);
+    const t2 = setTimeout(irAlHash, 600);
+    const t3 = setTimeout(irAlHash, 1400);
+    window.addEventListener('load', irAlHash);
+    window.addEventListener('hashchange', irAlHash);
+
     const ctx = gsap.context(() => {
       const v = videoRef.current;
 
@@ -671,6 +698,9 @@ export default function App() {
 
     return () => {
       document.removeEventListener('click', onAnchor);
+      window.removeEventListener('load', irAlHash);
+      window.removeEventListener('hashchange', irAlHash);
+      clearTimeout(t1); clearTimeout(t2); clearTimeout(t3);
       cancelAnimationFrame(rafId);
       lenis.destroy();
       ctx.revert();
