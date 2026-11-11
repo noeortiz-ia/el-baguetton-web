@@ -873,3 +873,9 @@ footer .social a:hover{color:var(--crema)}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
 }
+
+/* evita que una palabra larga ("Sándwiches", "Sandwiches") se salga
+   de la tarjeta en pantallas muy angostas */
+@media (max-width:420px){
+  .servimos .card h3{font-size:19px;letter-spacing:-.01em}
+}
