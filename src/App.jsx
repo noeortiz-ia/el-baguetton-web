@@ -284,68 +284,75 @@ function SelectorIdioma() {
   );
 }
 
-/* piezas de promoción, tal como se publican en redes */
-const PROMOS_IMG = [
+/* promociones: al frente la pieza, al reverso la ficha con la condición */
+const PROMOS = [
   {
-    src: '/img/promos/promo-lunes-3x2.webp',
-    t: 'Lunes 3x2 en ensaladas',
+    img: '/img/promos/promo-lunes-3x2.webp',
+    alt: 'Lunes 3x2 en ensaladas',
+    dia: 'Lunes',
+    kicker: '3 x 2',
+    titulo: 'Ensaladas',
+    linea: 'Pides tres, pagas dos. Todo el día.',
+    nota: 'Hasta agotar existencias.',
   },
   {
-    src: '/img/promos/promo-viernes-cafe.webp',
-    t: 'Viernes: café americano de regalo',
+    img: '/img/promos/promo-viernes-cafe.webp',
+    alt: 'Viernes: café americano de regalo',
+    dia: 'Viernes',
+    kicker: 'De regalo',
+    titulo: 'Café americano',
+    linea: 'En la compra de tu baguette.',
+    nota: 'No aplica en Baguette Clásico.',
   },
 ];
 
-function PromosCarrusel({ piezas }) {
-  const track = useRef(null);
-  const [indice, setIndice] = useState(0);
-  const total = piezas.length;
-
-  const paso = () => {
-    const t = track.current;
-    if (!t) return 420;
-    const s = t.querySelector('.promo-slide');
-    return s ? s.getBoundingClientRect().width + 20 : 420;
-  };
-
-  const mover = (dir) => {
-    const t = track.current;
-    if (t) t.scrollBy({ left: dir * paso(), behavior: 'smooth' });
-  };
-
-  useEffect(() => {
-    const t = track.current;
-    if (!t) return;
-    const medir = () =>
-      setIndice(Math.min(total - 1, Math.max(0, Math.round(t.scrollLeft / paso()))));
-    t.addEventListener('scroll', medir, { passive: true });
-    return () => t.removeEventListener('scroll', medir);
-  }, [total]);
-
-  if (!total) return null;
+function PromoFlip({ p }) {
+  const [volteada, setVolteada] = useState(false);
 
   return (
-    <div className="promo-carrusel">
-      <div className="promo-track" ref={track}>
-        {piezas.map((p) => (
-          <figure className="promo-slide" key={p.src}>
-            <img src={p.src} alt={p.t} loading="lazy" />
-          </figure>
-        ))}
-      </div>
-
-      {total > 1 && (
-        <div className="promo-nav">
-          <button type="button" onClick={() => mover(-1)} aria-label="Anterior" disabled={indice === 0}>
-            ‹
-          </button>
-          <span>{indice + 1} / {total}</span>
-          <button type="button" onClick={() => mover(1)} aria-label="Siguiente" disabled={indice === total - 1}>
-            ›
-          </button>
+    <article
+      className={`promo-flip${volteada ? ' volteada' : ''}`}
+      role="button"
+      tabIndex={0}
+      aria-pressed={volteada}
+      aria-label={`${p.dia}: ${p.titulo}`}
+      onClick={() => setVolteada((v) => !v)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          setVolteada((v) => !v);
+        }
+      }}
+    >
+      <div className="flip-inner">
+        <div className="cara cara-frente">
+          <img src={p.img} alt={p.alt} loading="lazy" />
+          <span className="promo-dia">{p.dia}</span>
+          <span className="flip-hint" aria-hidden="true">
+            Ver condiciones
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M5 12h13M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
         </div>
-      )}
-    </div>
+
+        <div className="cara cara-atras">
+          <p className="promo-kicker">{p.kicker}</p>
+          <h3>{p.titulo}</h3>
+          <p className="promo-linea">{p.linea}</p>
+          <p className="promo-nota">{p.nota}</p>
+          <a
+            className="promo-cta"
+            href={WA}
+            target="_blank"
+            rel="noreferrer"
+            onClick={(e) => e.stopPropagation()}
+          >
+            Pedir por WhatsApp
+          </a>
+        </div>
+      </div>
+    </article>
   );
 }
 
@@ -949,34 +956,10 @@ export default function App() {
               Lunes 3x2 en ensaladas y viernes café americano de regalo. En el local o por WhatsApp.
             </p>
 
-            <PromosCarrusel piezas={PROMOS_IMG} />
-
             <div className="promo-grid">
-              <article className="promo-card" data-reveal>
-                <div className="promo-foto">
-                  <img src="/img/real/promo-lunes-ensaladas.webp" alt="Tres ensaladas de El Baguetton Express" loading="lazy" />
-                  <span className="promo-dia">Lunes</span>
-                </div>
-                <div className="promo-cuerpo">
-                  <p className="promo-kicker">3 x 2</p>
-                  <h3>Ensaladas</h3>
-                  <p className="promo-linea">Pides tres, pagas dos. Todo el día.</p>
-                  <p className="promo-nota">Hasta agotar existencias.</p>
-                </div>
-              </article>
-
-              <article className="promo-card" data-reveal>
-                <div className="promo-foto">
-                  <img src="/img/real/promo-viernes-cafe-v2.webp" alt="Baguette y café americano de El Baguetton Express" loading="lazy" />
-                  <span className="promo-dia">Viernes</span>
-                </div>
-                <div className="promo-cuerpo">
-                  <p className="promo-kicker">De regalo</p>
-                  <h3>Café americano</h3>
-                  <p className="promo-linea">En la compra de tu baguette.</p>
-                  <p className="promo-nota">No aplica en Baguette Clásico.</p>
-                </div>
-              </article>
+              {PROMOS.map((p) => (
+                <PromoFlip key={p.img} p={p} />
+              ))}
             </div>
 
             <p className="promo-pie" data-reveal>
