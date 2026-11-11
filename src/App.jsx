@@ -96,7 +96,7 @@ const GALERIA = [
   { src: '/img/real/gal-5.webp', t: 'Dulce de la casa', d: 'Panqué de mantequilla y panquesito de queso, del tamaño justo para el café.' },
   { src: '/img/real/panquecitos.webp', t: 'Panquecito de mantequilla', d: 'Panqué de mantequilla 100% con naranja, recién horneado.' },
   { src: '/img/real/gal-6.webp', t: 'El pan de la casa', d: 'Baguette de corteza dorada y miga suave: la base de todos los baguettones.' },
-  { src: '/img/real/bagel.webp', t: 'Baguetton en bagel', d: 'Los baguettones también se pueden pedir en bagel.' },
+  { src: '/img/real/chori-vegano-bagel.webp', t: 'Chori-Vegano en bagel', d: 'Chorizo vegano 100% sin gluten, queso manchego, lechuga y aderezo de la casa.' },
   { src: '/img/real/gal-8.webp', t: 'Escamocha', d: 'Fruta batida con yogur y cereales, servida bien fría.' },
   { src: '/img/real/jugo-verde.webp', t: 'Verde Que Te Quiero Verde', d: 'Apio, jengibre, nopal y piña con jugo de naranja. 495 ml.' },
   { src: '/img/real/rojo-vivo.webp', t: 'Rojo Vivo', d: 'Betabel y jugo de naranja. 495 ml.' },
