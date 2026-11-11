@@ -1003,9 +1003,6 @@ export default function App() {
               <a className="btn btn-primario" href={waLink('Hola, quiero ver la carta y hacer un pedido.')} target="_blank" rel="noreferrer">
                 Pedir por WhatsApp
               </a>
-              <a className="btn btn-ghost" href="#donde">
-                Cómo llegar
-              </a>
               <a className="btn btn-galeria" href="#galeria">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <rect x="3" y="5.5" width="18" height="13.5" rx="1.6" fill="none" stroke="currentColor" strokeWidth="1.7"/>
@@ -1242,7 +1239,7 @@ export default function App() {
                 <div className="dato">
                   <h3 className="k">WhatsApp</h3>
                   <div className="v">
-                    <a href={waLink('Hola, quiero hacer un pedido para pasar por él a Valle Nacional 106.')} target="_blank" rel="noreferrer">{WA_VISIBLE}</a>
+                    <a href={waLink('Hola, quiero hacer un pedido. ¿Cómo llego al local?')} target="_blank" rel="noreferrer">{WA_VISIBLE}</a>
                     <small>Escríbenos</small>
                   </div>
                 </div>
@@ -1289,7 +1286,7 @@ export default function App() {
             <h2 data-reveal>{dias > 0 ? 'Nos vemos el 6 de noviembre' : 'Nos vemos en Valle Dorado'}</h2>
             <p data-reveal>Valle Nacional 106, Valle Dorado. Lun a vie de 8 am a 8 pm · sábado de 8 am a 2 pm.</p>
             <div className="acciones" data-reveal>
-              <a className="btn btn-primario" href={waLink('Hola, quiero hacer un pedido. Voy a pasar a Valle Dorado.')} target="_blank" rel="noreferrer">
+              <a className="btn btn-primario" href={waLink('Hola, quiero hacer un pedido.')} target="_blank" rel="noreferrer">
                 Pedir por WhatsApp
               </a>
               <a className="btn btn-ghost" href="#donde">
