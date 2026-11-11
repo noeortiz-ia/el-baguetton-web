@@ -364,12 +364,8 @@ function PromoFlip({ p }) {
 }
 
 function Galeria({ fotos }) {
-  const track = useRef(null);
   const n = fotos.length;
-  const COPIAS = 3;                     /* tres juegos: el de en medio es el visible */
   const [abierta, setAbierta] = useState(null);
-  const [indice, setIndice] = useState(0);
-  const [pausa, setPausa] = useState(false);
   const [copiada, setCopiada] = useState(false);
 
   /* cada foto tiene su propio enlace: /?foto=3#galeria */
@@ -401,111 +397,9 @@ function Galeria({ fotos }) {
   useEffect(() => {
     const q = Number(new URLSearchParams(window.location.search).get('foto')) - 1;
     if (!Number.isInteger(q) || q < 0 || q >= n) return;
-    const t = setTimeout(() => setAbierta(q), 300);
+    const t = setTimeout(() => setAbierta(q), 320);
     return () => clearTimeout(t);
   }, [n]);
-
-  const compartirFoto = async () => {
-    if (abierta === null) return;
-    const f = fotos[abierta];
-    const texto = `${f.t} · El Baguetton Express, Valle Dorado, Mezcales`;
-    const url = enlaceFoto(abierta);
-    avisarCompartir('galeria');
-    if (navigator.share) {
-      try {
-        await navigator.share({ title: 'El Baguetton Express', text: texto, url });
-        return;
-      } catch {
-        return;
-      }
-    }
-    try {
-      await navigator.clipboard.writeText(url);
-    } catch {
-      /* algunos navegadores no dan permiso de portapapeles: se copia a la antigua */
-      const campo = document.createElement('textarea');
-      campo.value = url;
-      campo.setAttribute('readonly', '');
-      campo.style.position = 'fixed';
-      campo.style.top = '-1000px';
-      document.body.appendChild(campo);
-      campo.select();
-      try { document.execCommand('copy'); } catch { /* nada más que hacer */ }
-      campo.remove();
-    }
-    setCopiada(true);
-    setTimeout(() => setCopiada(false), 2200);
-  };
-
-  const paso = () => {
-    const t = track.current;
-    if (!t) return 336;
-    const s = t.querySelector('.slide');
-    return s ? s.getBoundingClientRect().width + 16 : 336;
-  };
-  const anchoJuego = () => n * paso();
-
-  /* deja el carrusel en el juego de en medio, sin animación */
-  const centrar = () => {
-    const t = track.current;
-    if (!t) return;
-    t.scrollLeft = anchoJuego();
-    setIndice(0);
-  };
-
-  const mover = (dir) => {
-    const t = track.current;
-    if (!t) return;
-    t.scrollBy({ left: dir * paso(), behavior: 'smooth' });
-  };
-
-  const irA = (i) => {
-    const t = track.current;
-    if (!t) return;
-    const p = paso(), juego = anchoJuego();
-    /* salta al clon más cercano para no recorrer todo el carrusel */
-    const base = i * p + Math.round((t.scrollLeft - i * p) / juego) * juego;
-    t.scrollTo({ left: base, behavior: 'smooth' });
-  };
-
-  useEffect(() => {
-    const t = track.current;
-    if (!t) return;
-    let reposo;
-    const medir = () => {
-      const p = paso(), juego = anchoJuego();
-      setIndice(((Math.round(t.scrollLeft / p) % n) + n) % n);
-      /* al pasar de un extremo al otro, salta un juego completo: el salto es invisible */
-      clearTimeout(reposo);
-      reposo = setTimeout(() => {
-        if (t.scrollLeft < juego * 0.5) t.scrollLeft += juego;
-        else if (t.scrollLeft > juego * 1.5) t.scrollLeft -= juego;
-      }, 160);
-    };
-    const arranque = requestAnimationFrame(() => {
-      centrar();
-      medir();
-    });
-    t.addEventListener('scroll', medir, { passive: true });
-    window.addEventListener('resize', () => { centrar(); });
-    return () => {
-      cancelAnimationFrame(arranque);
-      clearTimeout(reposo);
-      t.removeEventListener('scroll', medir);
-    };
-  }, []);
-
-  /* avance automático continuo */
-  useEffect(() => {
-    if (pausa || abierta !== null) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const id = setInterval(() => {
-      const t = track.current;
-      if (!t) return;
-      t.scrollBy({ left: paso(), behavior: 'smooth' });
-    }, 3200);
-    return () => clearInterval(id);
-  }, [pausa, abierta]);
 
   useEffect(() => {
     if (abierta === null) return;
@@ -525,60 +419,55 @@ function Galeria({ fotos }) {
     return () => window.removeEventListener('keydown', onKey);
   }, [abierta, n]);
 
+  const compartirFoto = async () => {
+    if (abierta === null) return;
+    const f = fotos[abierta];
+    const texto = `${f.t} · El Baguetton Express, Valle Dorado, Mezcales`;
+    const url = enlaceFoto(abierta);
+    avisarCompartir('galeria');
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: 'El Baguetton Express', text: texto, url });
+        return;
+      } catch {
+        return;
+      }
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch {
+      const campo = document.createElement('textarea');
+      campo.value = url;
+      campo.setAttribute('readonly', '');
+      campo.style.position = 'fixed';
+      campo.style.top = '-1000px';
+      document.body.appendChild(campo);
+      campo.select();
+      try { document.execCommand('copy'); } catch { /* nada más que hacer */ }
+      campo.remove();
+    }
+    setCopiada(true);
+    setTimeout(() => setCopiada(false), 2200);
+  };
+
   return (
-    <div
-      className="carrusel"
-      data-reveal
-      onMouseEnter={() => setPausa(true)}
-      onMouseLeave={() => setPausa(false)}
-      onTouchStart={() => setPausa(true)}
-    >
-      <div className="carrusel-track" ref={track}>
-        {Array.from({ length: COPIAS }).flatMap((_, copia) =>
-          fotos.map((f, i) => (
-            <figure
-              className="slide"
-              key={`${copia}-${f.src}`}
-              onClick={() => {
-                abrir(i);
-                /* se mide en las tres copias del bucle: la visible puede ser cualquiera */
-                avisarFoto(f.t, 'galeria');
-              }}
-              aria-hidden={copia === 1 ? undefined : 'true'}
-            >
-              {/* solo la copia de en medio lleva encabezado y texto alternativo:
-                  las otras dos son clones para el bucle y no se indexan */}
-              <img src={f.src} alt={copia === 1 ? f.t : ''} loading="lazy" />
-              <figcaption className="slide-info">
-                {copia === 1 ? <h3>{f.t}</h3> : <p className="slide-tit">{f.t}</p>}
-                <p>{f.d}</p>
-              </figcaption>
-            </figure>
-          ))
-        )}
-      </div>
-
-      <button type="button" className="flecha izq" onClick={() => mover(-1)} aria-label="Anterior">
-        ‹
-      </button>
-      <button type="button" className="flecha der" onClick={() => mover(1)} aria-label="Siguiente">
-        ›
-      </button>
-
-      <div className="carrusel-pie">
-        <div className="puntos">
-          {fotos.map((f, i) => (
-            <button
-              type="button"
-              key={f.src}
-              className={`punto${i === indice ? ' activo' : ''}`}
-              onClick={() => irA(i)}
-              aria-label={`Foto ${i + 1}`}
-            />
-          ))}
-        </div>
-        <span className="carrusel-cuenta">{indice + 1} / {n}</span>
-      </div>
+    <div className="masonry" data-reveal>
+      {fotos.map((f, i) => (
+        <figure className="mosaico" key={f.src}>
+          <button
+            type="button"
+            className="mosaico-btn"
+            onClick={() => { abrir(i); avisarFoto(f.t, 'galeria'); }}
+            aria-label={`Ver ${f.t} en grande`}
+          >
+            <img src={f.src} alt={f.t} loading={i < 4 ? 'eager' : 'lazy'} decoding="async" />
+            <figcaption className="mosaico-pie">
+              <span className="mosaico-nom">{f.t}</span>
+              <span className="mosaico-ver">Ver en grande</span>
+            </figcaption>
+          </button>
+        </figure>
+      ))}
 
       {abierta !== null &&
         createPortal(
