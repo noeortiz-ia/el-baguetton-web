@@ -10,7 +10,7 @@
      public/feed/resumen.json
 */
 
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import MENU from '../src/data/menu.js';
@@ -35,6 +35,7 @@ const slug = (s) =>
 const limpiar = (s) => String(s || '').replace(/\s+/g, ' ').trim();
 
 const productos = [];
+const faltantes = [];
 const pendientes = [];
 
 for (const grupo of MENU) {
@@ -51,7 +52,12 @@ for (const grupo of MENU) {
       categoria: CATEGORIA_GOOGLE[grupo.id] || 'Food, Beverages & Tobacco > Food Items',
     };
     if (foto) {
-      productos.push({ ...base, imagen: `${BASE}/img/real/${foto}` });
+      // Meta solo acepta JPEG o PNG: se usa la copia en JPG de 600 px mínimo
+      const jpg = foto.replace(/\.[a-z]+$/i, '.jpg');
+      if (!existsSync(join(raiz, 'public', 'img', 'feed', jpg))) {
+        faltantes.push(jpg);
+      }
+      productos.push({ ...base, imagen: `${BASE}/img/feed/${jpg}` });
     } else {
       pendientes.push(base);
     }
@@ -158,3 +164,7 @@ const resumen = {
 writeFileSync(join(salida, 'resumen.json'), JSON.stringify(resumen, null, 2) + '\n', 'utf8');
 
 console.log(`feed: ${productos.length} productos · ${pendientes.length} sin foto`);
+if (faltantes.length) {
+  console.log(`AVISO: falta el JPG de feed (Meta solo acepta JPEG/PNG) para: ${faltantes.join(', ')}`);
+  console.log('       se generan con el script de fotos de feed antes de publicar.');
+}

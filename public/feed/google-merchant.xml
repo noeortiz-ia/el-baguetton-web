@@ -9,7 +9,7 @@
       <g:title>Clásico · El Baguetton Express</g:title>
       <g:description>Jamón viena, salami, manchego y aderezo de la casa. Sándwiches en baguette.</g:description>
       <g:link>https://elbaguettonexpress.com.mx/menu/#p-clasico</g:link>
-      <g:image_link>https://elbaguettonexpress.com.mx/img/real/sandwich.webp</g:image_link>
+      <g:image_link>https://elbaguettonexpress.com.mx/img/feed/sandwich.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:price>52.00 MXN</g:price>
       <g:condition>new</g:condition>
@@ -25,7 +25,7 @@
       <g:title>Chori-Vegano · El Baguetton Express</g:title>
       <g:description>Chorizo vegano 100% sin gluten, queso manchego, lechuga y aderezo de la casa. Sándwiches en baguette.</g:description>
       <g:link>https://elbaguettonexpress.com.mx/menu/#p-chori-vegano</g:link>
-      <g:image_link>https://elbaguettonexpress.com.mx/img/real/chori-vegano-bagel.webp</g:image_link>
+      <g:image_link>https://elbaguettonexpress.com.mx/img/feed/chori-vegano-bagel.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:price>95.00 MXN</g:price>
       <g:condition>new</g:condition>
@@ -41,7 +41,7 @@
       <g:title>Baguetona · El Baguetton Express</g:title>
       <g:description>Lechuga, fajitas de pollo salpimentadas, zanahoria, betabel, germen, jitomate cherry, pepino, pollo salteado y croutones. Ensaladas.</g:description>
       <g:link>https://elbaguettonexpress.com.mx/menu/#p-baguetona</g:link>
-      <g:image_link>https://elbaguettonexpress.com.mx/img/real/baguetona.webp</g:image_link>
+      <g:image_link>https://elbaguettonexpress.com.mx/img/feed/baguetona.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:price>120.00 MXN</g:price>
       <g:condition>new</g:condition>
@@ -57,7 +57,7 @@
       <g:title>Mexicana · El Baguetton Express</g:title>
       <g:description>Lechuga, jitomate, aguacate, elote, cuadritos de queso panela y tortillitas horneadas con chile guajillo. Ensaladas.</g:description>
       <g:link>https://elbaguettonexpress.com.mx/menu/#p-mexicana</g:link>
-      <g:image_link>https://elbaguettonexpress.com.mx/img/real/mexicana-v2.webp</g:image_link>
+      <g:image_link>https://elbaguettonexpress.com.mx/img/feed/mexicana-v2.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:price>115.00 MXN</g:price>
       <g:condition>new</g:condition>
@@ -73,7 +73,7 @@
       <g:title>Remolacha Deli · El Baguetton Express</g:title>
       <g:description>Betabel fileteado, vinagreta de hierbas, pistaches y requesón. Ensaladas.</g:description>
       <g:link>https://elbaguettonexpress.com.mx/menu/#p-remolacha-deli</g:link>
-      <g:image_link>https://elbaguettonexpress.com.mx/img/real/gal-2.webp</g:image_link>
+      <g:image_link>https://elbaguettonexpress.com.mx/img/feed/gal-2.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:price>115.00 MXN</g:price>
       <g:condition>new</g:condition>
@@ -89,7 +89,7 @@
       <g:title>La Primavera · El Baguetton Express</g:title>
       <g:description>Lechuga, quinoa, fresa, cubos de panela y frutos secos caramelizados. Ensaladas.</g:description>
       <g:link>https://elbaguettonexpress.com.mx/menu/#p-la-primavera</g:link>
-      <g:image_link>https://elbaguettonexpress.com.mx/img/real/la-primavera.webp</g:image_link>
+      <g:image_link>https://elbaguettonexpress.com.mx/img/feed/la-primavera.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:price>115.00 MXN</g:price>
       <g:condition>new</g:condition>
@@ -105,7 +105,7 @@
       <g:title>Rojo Pasión · El Baguetton Express</g:title>
       <g:description>Cuernito calientito con compota casera de frutos rojos y queso doble crema. Dulces y panadería.</g:description>
       <g:link>https://elbaguettonexpress.com.mx/menu/#p-rojo-pasion</g:link>
-      <g:image_link>https://elbaguettonexpress.com.mx/img/real/gal-4.webp</g:image_link>
+      <g:image_link>https://elbaguettonexpress.com.mx/img/feed/gal-4.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:price>65.00 MXN</g:price>
       <g:condition>new</g:condition>
@@ -121,7 +121,7 @@
       <g:title>Rebanada de panqué · El Baguetton Express</g:title>
       <g:description>Rebanada de panqué de mantequilla 100% con naranja. Dulces y panadería.</g:description>
       <g:link>https://elbaguettonexpress.com.mx/menu/#p-rebanada-de-panque</g:link>
-      <g:image_link>https://elbaguettonexpress.com.mx/img/real/panquecitos.webp</g:image_link>
+      <g:image_link>https://elbaguettonexpress.com.mx/img/feed/panquecitos.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:price>65.00 MXN</g:price>
       <g:condition>new</g:condition>
@@ -137,7 +137,7 @@
       <g:title>Fresón · El Baguetton Express</g:title>
       <g:description>Fresa, leche entera, azúcar, canela y avena. Batidos y licuados.</g:description>
       <g:link>https://elbaguettonexpress.com.mx/menu/#p-freson</g:link>
-      <g:image_link>https://elbaguettonexpress.com.mx/img/real/freson.webp</g:image_link>
+      <g:image_link>https://elbaguettonexpress.com.mx/img/feed/freson.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:price>75.00 MXN</g:price>
       <g:condition>new</g:condition>
@@ -153,7 +153,7 @@
       <g:title>Mangazo · El Baguetton Express</g:title>
       <g:description>Mango, leche entera, azúcar, canela y avena. Batidos y licuados.</g:description>
       <g:link>https://elbaguettonexpress.com.mx/menu/#p-mangazo</g:link>
-      <g:image_link>https://elbaguettonexpress.com.mx/img/real/licuado-mango.webp</g:image_link>
+      <g:image_link>https://elbaguettonexpress.com.mx/img/feed/licuado-mango.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:price>75.00 MXN</g:price>
       <g:condition>new</g:condition>
@@ -169,7 +169,7 @@
       <g:title>Verde Que Te Quiero Verde · El Baguetton Express</g:title>
       <g:description>Apio, jengibre, nopal y piña con jugo de naranja. Jugos naturales.</g:description>
       <g:link>https://elbaguettonexpress.com.mx/menu/#p-verde-que-te-quiero-verde</g:link>
-      <g:image_link>https://elbaguettonexpress.com.mx/img/real/jugo-verde.webp</g:image_link>
+      <g:image_link>https://elbaguettonexpress.com.mx/img/feed/jugo-verde.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:price>65.00 MXN</g:price>
       <g:condition>new</g:condition>
@@ -185,7 +185,7 @@
       <g:title>Rojo Vivo · El Baguetton Express</g:title>
       <g:description>Betabel y jugo de naranja. Jugos naturales.</g:description>
       <g:link>https://elbaguettonexpress.com.mx/menu/#p-rojo-vivo</g:link>
-      <g:image_link>https://elbaguettonexpress.com.mx/img/real/rojo-vivo.webp</g:image_link>
+      <g:image_link>https://elbaguettonexpress.com.mx/img/feed/rojo-vivo.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:price>65.00 MXN</g:price>
       <g:condition>new</g:condition>
@@ -201,7 +201,7 @@
       <g:title>Café de Olla · El Baguetton Express</g:title>
       <g:description>Con auténtico piloncillo y canela. Café.</g:description>
       <g:link>https://elbaguettonexpress.com.mx/menu/#p-cafe-de-olla</g:link>
-      <g:image_link>https://elbaguettonexpress.com.mx/img/real/cafe-de-olla.webp</g:image_link>
+      <g:image_link>https://elbaguettonexpress.com.mx/img/feed/cafe-de-olla.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:price>55.00 MXN</g:price>
       <g:condition>new</g:condition>
@@ -217,7 +217,7 @@
       <g:title>Café Americano · El Baguetton Express</g:title>
       <g:description>Café americano. Café.</g:description>
       <g:link>https://elbaguettonexpress.com.mx/menu/#p-cafe-americano</g:link>
-      <g:image_link>https://elbaguettonexpress.com.mx/img/real/cafe.webp</g:image_link>
+      <g:image_link>https://elbaguettonexpress.com.mx/img/feed/cafe.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:price>50.00 MXN</g:price>
       <g:condition>new</g:condition>
@@ -233,7 +233,7 @@
       <g:title>Biónico Baguetton · El Baguetton Express</g:title>
       <g:description>Frutas varias con cremita dulce y granola. Bionicos y frutas.</g:description>
       <g:link>https://elbaguettonexpress.com.mx/menu/#p-bionico-baguetton</g:link>
-      <g:image_link>https://elbaguettonexpress.com.mx/img/real/gal-8.webp</g:image_link>
+      <g:image_link>https://elbaguettonexpress.com.mx/img/feed/gal-8.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:price>80.00 MXN</g:price>
       <g:condition>new</g:condition>
