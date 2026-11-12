@@ -438,6 +438,7 @@ h2{
   z-index:9999;
   background:#04140B;
   display:flex;align-items:center;justify-content:center;
+  overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
   padding:clamp(20px,5vw,72px);
   animation:lbIn .22s ease-out;
 }
@@ -550,10 +551,17 @@ h2{
   letter-spacing:.22em;color:var(--dorado-claro);
 }
 .lightbox .cerrar{
-  position:absolute;top:clamp(12px,2vw,28px);right:clamp(12px,2vw,28px);
+  position:fixed;
+  top:calc(env(safe-area-inset-top, 0px) + 14px);
+  right:calc(env(safe-area-inset-right, 0px) + 14px);
+  z-index:12;
   width:48px;height:48px;border-radius:50%;
-  border:1px solid rgba(244,238,226,.35);background:transparent;
+  display:grid;place-items:center;padding:0 0 2px;
+  background:rgba(7,32,15,.9);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  border:1px solid rgba(244,238,226,.45);
   color:var(--crema);font-size:26px;line-height:1;cursor:pointer;
+  box-shadow:0 6px 24px rgba(0,0,0,.45);
 }
 .lightbox .cerrar:hover{background:rgba(244,238,226,.12)}
 .lb-flecha{
@@ -956,7 +964,9 @@ footer .social a:hover{color:var(--crema)}
   .lb-cuenta{align-self:flex-end}
   .lb-acciones{gap:8px;padding-top:14px}
   .lb-acc{flex:1 1 auto;padding:12px 14px;font-size:.68rem;letter-spacing:.1em}
-  .lightbox img{max-height:60vh}
+  .lightbox img{max-height:56vh}
+  .lightbox{align-items:flex-start;padding:84px 14px 32px}
+  .lb-caja{margin:0 auto}
 }
 
 @media (max-width:620px){
