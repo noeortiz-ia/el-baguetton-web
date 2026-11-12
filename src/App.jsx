@@ -97,6 +97,7 @@ const GALERIA = [
   { src: '/img/real/gal-1.webp', t: 'Mexicana', d: 'Lechuga, jitomate, aguacate, elote, queso panela y tortillitas horneadas con chile guajillo.' },
   { src: '/img/real/gal-2.webp', t: 'Remolacha Deli', d: 'Betabel fileteado, vinagreta de hierbas, pistaches y requesón.' },
   { src: '/img/real/gal-3.webp', t: 'Ensalada de pollo', d: 'Pollo a la plancha, lechuga, brócoli, zanahoria, pepino y germen de alfalfa.' },
+  { src: '/img/real/la-primavera.webp', t: 'La Primavera', d: 'Lechuga, quinoa, fresa, cubos de panela y frutos secos caramelizados.' },
   { src: '/img/real/gal-4.webp', t: 'Rojo Pasión', d: 'Cuernito calientito con compota casera de frutos rojos y queso doble crema.' },
   { src: '/img/real/gal-5.webp', t: 'Dulce de la casa', d: 'Panqué de mantequilla y panquesito de queso, del tamaño justo para el café.' },
   { src: '/img/real/panquecitos.webp', t: 'Panquecito de mantequilla', d: 'Panqué de mantequilla 100% con naranja, recién horneado.' },
