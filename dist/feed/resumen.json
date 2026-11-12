@@ -2,8 +2,8 @@
   "generado": "2026-11-12",
   "moneda": "MXN",
   "total_carta": 39,
-  "en_feed": 15,
-  "sin_foto": 24,
+  "en_feed": 16,
+  "sin_foto": 23,
   "feeds": {
     "meta": "https://elbaguettonexpress.com.mx/feed/meta-catalogo.csv",
     "google": "https://elbaguettonexpress.com.mx/feed/google-merchant.xml"
@@ -19,7 +19,6 @@
     "Bagel Huevón",
     "Pizzero Tropical",
     "Molletón",
-    "La BBQ",
     "Cacahuata",
     "Cubilete Baguetton",
     "Chocobanana",

@@ -70,6 +70,7 @@ const PASOS = [
 const MARQUESINA = [
   { src: '/img/real/sandwich.webp', t: 'Baguetton en baguette' },
   { src: '/img/real/ensalada.webp', t: 'Ensalada con aderezo aparte' },
+  { src: '/img/real/la-bbq.webp', t: 'La BBQ', d: 'Lechuga, fajitas de pollo BBQ, brócoli, zanahoria, pepino, germen y tortillitas horneadas.' },
   { src: '/img/real/gal-2.webp', t: 'Remolacha Deli' },
   { src: '/img/real/gal-4.webp', t: 'Rojo Pasión' },
   { src: '/img/real/cafe.webp', t: 'Café de olla' },
