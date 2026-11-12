@@ -1,0 +1,40 @@
+{
+  "generado": "2026-11-12",
+  "moneda": "MXN",
+  "total_carta": 39,
+  "en_feed": 12,
+  "sin_foto": 27,
+  "feeds": {
+    "meta": "https://elbaguettonexpress.com.mx/feed/meta-catalogo.csv",
+    "google": "https://elbaguettonexpress.com.mx/feed/google-merchant.xml"
+  },
+  "pendientes_foto": [
+    "Plus",
+    "Pechugón",
+    "Pollero",
+    "Pizzero",
+    "Tunero",
+    "Quesero",
+    "Ensaladón",
+    "Bagel Huevón",
+    "Pizzero Tropical",
+    "Molletón",
+    "La BBQ",
+    "Cacahuata",
+    "Remolacha Deli",
+    "Rojo Pasión",
+    "Cubilete Baguetton",
+    "Chocobanana",
+    "Frutos Rojos",
+    "Popeye",
+    "Hay Papaya de Celaya",
+    "Naranja Natural",
+    "Linda Zanahoria",
+    "Jícamas",
+    "Pepinos",
+    "Apio y Zanahoria",
+    "Biónico Baguetton",
+    "Coctel de Frutas",
+    "Escamochas"
+  ]
+}

@@ -1041,3 +1041,97 @@ footer .social a:hover{color:var(--crema)}
 }
 .pedir-tel a{color:var(--crema-dorada);text-decoration:none;border-bottom:1px solid rgba(241,217,168,.45);padding-bottom:1px}
 .pedir-tel a:hover{color:#fff;border-color:#fff}
+
+/* ---------- sitio en varias páginas (nov 2026) ---------- */
+
+/* cabecera corta de las páginas internas */
+.cabecera-pagina{
+  position:relative;z-index:2;
+  background:
+    radial-gradient(120% 90% at 80% 0%, rgba(171,114,42,.28) 0%, rgba(171,114,42,0) 60%),
+    var(--verde-profundo);
+  padding:calc(var(--s7) + 24px) 0 var(--s6);
+  border-bottom:1px solid rgba(244,238,226,.12);
+}
+.cabecera-pagina .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+.cabecera-pagina h1{
+  font-family:var(--font-display);font-weight:900;
+  font-size:clamp(2.4rem,5.4vw,4.4rem);line-height:.98;letter-spacing:-.03em;
+  text-transform:uppercase;color:var(--crema);margin:var(--s2) 0 0;
+}
+.cabecera-pagina .lead{
+  margin-top:var(--s3);max-width:62ch;
+  font-size:clamp(1rem,1.2vw,1.16rem);line-height:1.6;color:rgba(244,238,226,.82);
+}
+.migas{
+  display:flex;align-items:center;gap:10px;
+  font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(244,238,226,.55);
+}
+.migas a{color:var(--crema-dorada);text-decoration:none}
+.migas a:hover{color:#fff}
+
+/* enlace activo en la barra */
+.nav-links a.activo{color:var(--crema)}
+.nav-links a.activo::after{width:100%}
+
+/* destacados de la portada */
+.destacados{background:var(--crema);color:var(--verde)}
+.destacados .eyebrow{color:var(--dorado)}
+.destacados h2{color:var(--verde)}
+.dest-grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:var(--s2);margin-top:var(--s5);
+}
+.dest{
+  display:flex;flex-direction:column;gap:8px;
+  padding:var(--s3);border:1px solid rgba(9,64,30,.14);border-radius:6px;
+  text-decoration:none;color:var(--verde);background:#fff;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+}
+.dest:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(9,64,30,.12);border-color:rgba(9,64,30,.3)}
+.dest h3{
+  font-family:var(--font-display);font-weight:900;font-size:1.24rem;
+  letter-spacing:-.01em;text-transform:uppercase;
+}
+.dest p{font-size:.92rem;line-height:1.5;color:var(--neutro)}
+.dest-p{
+  margin-top:auto;padding-top:10px;
+  font-family:var(--font-display);font-weight:700;color:var(--dorado);
+}
+.dest-cta{margin-top:var(--s5)}
+
+/* ancla de platillo: que no quede debajo de la barra fija */
+.m-it{scroll-margin-top:120px}
+.m-it:target{
+  background:rgba(171,114,42,.10);
+  box-shadow:inset 3px 0 0 var(--dorado);
+  border-radius:4px;
+}
+
+@media (max-width:900px){
+  .dest-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cabecera-pagina{padding:calc(var(--s6) + 56px) 0 var(--s5)}
+}
+@media (max-width:620px){
+  .dest-grid{grid-template-columns:1fr}
+}
+
+/* platillos con foto real dentro de la carta */
+.m-it.con-foto{
+  display:grid;grid-template-columns:88px minmax(0,1fr);column-gap:14px;
+  align-items:start;
+}
+.m-it.con-foto .m-foto{
+  grid-row:1 / span 3;width:88px;height:88px;border-radius:6px;overflow:hidden;
+  background:rgba(9,64,30,.06);
+}
+.m-it.con-foto .m-foto img{width:100%;height:100%;object-fit:cover}
+.m-it.con-foto .m-cab,
+.m-it.con-foto .m-desc,
+.m-it.con-foto .m-pedir{grid-column:2}
+.m-it.con-foto .m-pedir{margin-top:8px}
+@media (max-width:620px){
+  .m-it.con-foto{grid-template-columns:64px minmax(0,1fr);column-gap:10px}
+  .m-it.con-foto .m-foto{width:64px;height:64px}
+}

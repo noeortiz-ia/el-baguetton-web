@@ -4,8 +4,10 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import { avisarVista, escucharClics, observarSecciones, avisarFoto, avisarCompartir, avisarPlatillo } from './pixel';
+import { RUTA, NAV, PAGINAS, CABECERAS, DESTACADOS, slug } from './paginas.js';
 import MENU from './data/menu.js';
 import FAQ from './data/faq.js';
+import { FOTOS } from './data/feed.js';
 import { aplicarIdioma, idiomaGuardado } from './i18n.js';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -31,25 +33,25 @@ const SERVICIOS = [
     img: '/img/real/sandwich.webp',
     t: 'Sándwiches',
     d: 'En baguette, armados al momento.',
-    ir: '#menu-baguettones',
+    ir: `${RUTA.menu}#menu-baguettones`,
   },
   {
     img: '/img/real/ensalada.webp',
     t: 'Ensaladas',
     d: 'Frescas, con aderezo aparte.',
-    ir: '#menu-ensaladas',
+    ir: `${RUTA.menu}#menu-ensaladas`,
   },
   {
     img: '/img/real/cafe.webp',
     t: 'Café',
     d: 'Para acompañar o para llevar.',
-    ir: '#menu-bebidas',
+    ir: `${RUTA.menu}#menu-bebidas`,
   },
   {
     img: '/img/real/gal-4.webp',
     t: 'Dulce',
     d: 'Croissants, panqué y postres.',
-    ir: '#menu-dulces',
+    ir: `${RUTA.menu}#menu-dulces`,
   },
 ];
 
@@ -551,7 +553,7 @@ function Galeria({ fotos }) {
   );
 }
 
-export default function App() {
+export default function App({ page = 'home' }) {
   const videoRef = useRef(null);
   const [videoOk, setVideoOk] = useState(false);
   const [bgSrc] = useState(() =>
@@ -563,6 +565,7 @@ export default function App() {
   const [estado, setEstado] = useState('cerrado');
   const [menuAbierto, setMenuAbierto] = useState(false);
   const cerrarMenu = () => setMenuAbierto(false);
+  const v = (s) => (PAGINAS[page] || PAGINAS.home).secciones.includes(s);
 
   /* seguimiento: vista de la ficha, recorrido por secciones y clics de conversión */
   useEffect(() => {
@@ -762,7 +765,7 @@ export default function App() {
 
   return (
     <>
-      <div className="bg-layer" aria-hidden="true">
+      {v('hero') && (<div className="bg-layer" aria-hidden="true">
         <video
           ref={videoRef}
           src={bgSrc}
@@ -776,7 +779,7 @@ export default function App() {
         />
         {!videoOk && <img className="poster" src={`/img/hero.webp${AV}`} alt="" />}
         <div className="bg-scrim" />
-      </div>
+      </div>)}
 
       {dias > 0 && (
         <div className="cuenta">
@@ -790,16 +793,15 @@ export default function App() {
 
       <header className={`nav${pegado ? ' pegado' : ''}${dias > 0 ? ' con-cuenta' : ''}`}>
         <div className="nav-inner">
-          <a className="nav-logo" href="#que-servimos" aria-label="El Baguetton Express">
+          <a className="nav-logo" href={RUTA.home} aria-label="El Baguetton Express">
             <img src={`/img/logo-white.png${AV}`} alt="El Baguetton Express" />
           </a>
 
           <nav className="nav-links" aria-label="Secciones">
-            <a href="#menu">Menú</a>
-            <a href="#promos">Promociones</a>
-            <a href="#aderezos">Aderezos</a>
-            <a href="#galeria">Galería</a>
-            <a href="#donde">Ubicación</a>
+            {NAV.map((n) => (
+              <a key={n.id} href={n.r} className={page === n.id ? 'activo' : undefined}>{n.t}</a>
+            ))}
+            <a href={`${RUTA.home}#aderezos`}>Aderezos</a>
           </nav>
 
           <div className="nav-acciones">
@@ -845,13 +847,12 @@ export default function App() {
             <span /><span />
           </button>
           <nav>
-            <a href="#menu" onClick={cerrarMenu}>Menú</a>
-            <a href="#promos" onClick={cerrarMenu}>Promociones</a>
-            <a href="#aderezos" onClick={cerrarMenu}>Aderezos</a>
-            <a href="#como-pedir" onClick={cerrarMenu}>Cómo pedir</a>
-            <a href="#galeria" onClick={cerrarMenu}>Galería</a>
-            <a href="#preguntas" onClick={cerrarMenu}>Preguntas</a>
-            <a href="#donde" onClick={cerrarMenu}>Ubicación</a>
+            {NAV.map((n) => (
+              <a key={n.id} href={n.r} onClick={cerrarMenu}>{n.t}</a>
+            ))}
+            <a href={`${RUTA.home}#aderezos`} onClick={cerrarMenu}>Aderezos</a>
+            <a href={`${RUTA.menu}#como-pedir`} onClick={cerrarMenu}>Cómo pedir</a>
+            <a href={`${RUTA.ubicacion}#preguntas`} onClick={cerrarMenu}>Preguntas</a>
           </nav>
           <div className="menu-redes">
             <a href={FB} target="_blank" rel="noreferrer" onClick={cerrarMenu}>Facebook</a>
@@ -880,8 +881,23 @@ export default function App() {
 
       <CompartirFlotante />
 
-      <main>
-        <section className="hero">
+      <main>        {v('cabecera') && (
+          <section className="cabecera-pagina">
+            <div className="wrap">
+              <nav className="migas" aria-label="Ruta">
+                <a href={RUTA.home}>{CABECERAS[page].volver}</a>
+                <span aria-hidden="true">/</span>
+                <span>{CABECERAS[page].titulo}</span>
+              </nav>
+              <p className="eyebrow">{CABECERAS[page].kicker}</p>
+              <h1>{CABECERAS[page].titulo}</h1>
+              <p className="lead">{CABECERAS[page].lead}</p>
+            </div>
+          </section>
+        )}
+
+
+        {v('hero') && (<>        <section className="hero">
           <div className="hero-sticky">
             <div className="hero-inner">
             <p className="kicker">Valle Dorado · Mezcales, Nayarit</p>
@@ -894,7 +910,7 @@ export default function App() {
               <a className="btn btn-primario" href={waLink('Hola, quiero ver la carta y hacer un pedido.')} target="_blank" rel="noreferrer">
                 Pedir por WhatsApp
               </a>
-              <a className="btn btn-galeria" href="#galeria">
+              <a className="btn btn-galeria" href={RUTA.galeria}>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <rect x="3" y="5.5" width="18" height="13.5" rx="1.6" fill="none" stroke="currentColor" strokeWidth="1.7"/>
                   <circle cx="8.6" cy="10.2" r="1.5" fill="currentColor"/>
@@ -906,9 +922,8 @@ export default function App() {
             </div>
             </div>
           </div>
-        </section>
-
-        <section className="bloque servimos" id="que-servimos">
+        </section></>)}
+        {v('servicios') && (<>        <section className="bloque servimos" id="que-servimos">
           <div className="wrap">
             <h2 data-reveal>Qué hay en el menú</h2>
             <div className="grid">
@@ -933,9 +948,8 @@ export default function App() {
               ))}
             </div>
           </div>
-        </section>
-
-        <section className="marquesina" aria-hidden="true">
+        </section></>)}
+        {v('marquesina') && (<>        <section className="marquesina" aria-hidden="true">
           <div className="marquesina-track">
             {[...MARQUESINA, ...MARQUESINA].map((f, i) => (
               <figure key={`${f.src}-${i}`} title={f.t}>
@@ -944,9 +958,8 @@ export default function App() {
               </figure>
             ))}
           </div>
-        </section>
-
-        <section className="bloque aderezos" id="aderezos">
+        </section></>)}
+        {v('aderezos') && (<>        <section className="bloque aderezos" id="aderezos">
           <div className="wrap">
             <div className="aderezos-grid">
               <figure className="aderezos-foto" data-reveal>
@@ -958,7 +971,7 @@ export default function App() {
                 <p className="cuerpo" data-reveal>
                   Todos. Se preparan en nuestra cocina, no llegan listos de ningún lado.
                   Por eso una ensalada aquí no sabe como las demás. Y cualquiera de los{' '}
-                  <a className="link-int" href="#menu">baguettones de la carta</a>{' '}
+                  <a className="link-int" href={RUTA.menu}>baguettones de la carta</a>{' '}
                   lleva el aderezo que tú elijas.
                 </p>
                 <p className="cuerpo" data-reveal>
@@ -982,9 +995,29 @@ export default function App() {
               </div>
             </div>
           </div>
-        </section>
+        </section></>)}
 
-        <section className="bloque promos" id="promos">
+        {v('destacados') && (
+          <section className="bloque destacados" id="destacados">
+            <div className="wrap">
+              <p className="eyebrow" data-reveal>De la carta</p>
+              <h2 data-reveal>Lo que más se pide</h2>
+              <div className="dest-grid">
+                {MENU.flatMap((g) => g.items)
+                  .filter((it) => DESTACADOS.includes(it.n))
+                  .map((it) => (
+                    <a className="dest" key={it.n} href={`${RUTA.menu}#p-${slug(it.n)}`} data-reveal>
+                      <h3>{it.n}</h3>
+                      <p>{it.d}</p>
+                      <span className="dest-p">${it.p}</span>
+                    </a>
+                  ))}
+              </div>
+              <a className="btn btn-ghost dest-cta" href={RUTA.menu} data-reveal>Ver la carta completa</a>
+            </div>
+          </section>
+        )}
+        {v('promos') && (<>        <section className="bloque promos" id="promos">
           <div className="wrap">
             <p className="eyebrow" data-reveal>Lunes y viernes</p>
             <h2 data-reveal>Promociones</h2>
@@ -1002,9 +1035,8 @@ export default function App() {
               Pregunta por WhatsApp qué promoción hay hoy.
             </p>
           </div>
-        </section>
-
-        <section className="bloque menu-bloque" id="menu">
+        </section></>)}
+        {v('menu') && (<>        <section className="bloque menu-bloque" id="menu">
           <div className="wrap">
             <h2>Carta y precios</h2>
             <p className="menu-intro" data-reveal>
@@ -1018,7 +1050,12 @@ export default function App() {
                   <h3>{g.t}</h3>
                   {g.s && <p className="m-sub">{g.s}</p>}
                   {g.items.map((it) => (
-                    <div className="m-it" key={it.n}>
+                    <div className={`m-it${FOTOS[it.n] ? ' con-foto' : ''}`} key={it.n} id={`p-${slug(it.n)}`} data-producto={it.n}>
+                      {FOTOS[it.n] && (
+                        <figure className="m-foto">
+                          <img src={`/img/real/${FOTOS[it.n]}`} alt={it.n} loading="lazy" />
+                        </figure>
+                      )}
                       <div className="m-cab">
                         <span className="m-nom">{it.n}</span>
                         <span className="m-pun" aria-hidden="true" />
@@ -1053,9 +1090,8 @@ export default function App() {
               </div>
             </div>
           </div>
-        </section>
-
-        <section className="bloque pedir" id="como-pedir">
+        </section></>)}
+        {v('pedir') && (<>        <section className="bloque pedir" id="como-pedir">
           <div className="wrap">
             <p className="eyebrow" data-reveal>Pedidos</p>
             <h2 data-reveal>Cómo pedir</h2>
@@ -1089,9 +1125,8 @@ export default function App() {
               </p>
             </div>
           </div>
-        </section>
-
-        <section className="bloque galeria-bloque" id="galeria">
+        </section></>)}
+        {v('galeria') && (<>        <section className="bloque galeria-bloque" id="galeria">
           <div className="wrap">
             <p className="eyebrow" data-reveal>Galería</p>
             <h2 data-reveal>Fotos del local y los platillos</h2>
@@ -1100,9 +1135,8 @@ export default function App() {
             </p>
             <Galeria fotos={GALERIA} />
           </div>
-        </section>
-
-        <section className="bloque donde" id="donde">
+        </section></>)}
+        {v('donde') && (<>        <section className="bloque donde" id="donde">
           <div className="wrap">
             <p className="eyebrow" data-reveal>Ubicación</p>
             <h2 data-reveal>Dónde estamos</h2>
@@ -1155,9 +1189,8 @@ export default function App() {
               </div>
             </div>
           </div>
-        </section>
-
-        <section className="bloque faq" id="preguntas">
+        </section></>)}
+        {v('faq') && (<>        <section className="bloque faq" id="preguntas">
           <div className="wrap">
             <p className="eyebrow" data-reveal>Preguntas</p>
             <h2 data-reveal>Preguntas frecuentes</h2>
@@ -1170,9 +1203,8 @@ export default function App() {
               ))}
             </div>
           </div>
-        </section>
-
-        <section className="cierre">
+        </section></>)}
+        {v('cierre') && (<>        <section className="cierre">
           <div className="wrap">
             <h2 data-reveal>{dias > 0 ? 'Nos vemos el 6 de noviembre' : 'Nos vemos en Valle Dorado'}</h2>
             <p data-reveal>Valle Nacional 106, Valle Dorado. Lun a vie de 8 am a 8 pm · sábado de 8 am a 2 pm.</p>
@@ -1180,14 +1212,13 @@ export default function App() {
               <a className="btn btn-primario" href={waLink('Hola, quiero hacer un pedido.')} target="_blank" rel="noreferrer">
                 Pedir por WhatsApp
               </a>
-              <a className="btn btn-ghost" href="#donde">
+              <a className="btn btn-ghost" href={RUTA.ubicacion}>
                 Cómo llegar
               </a>
             </div>
             <Compartir />
           </div>
-        </section>
-
+        </section></>)}
         <footer>
           <div className="wrap">
             <img src={`/img/logo-white.png${AV}`} alt="El Baguetton Express" />
@@ -1201,13 +1232,13 @@ export default function App() {
               <a href={`mailto:${CORREO}`}>{CORREO}</a>
             </p>
             <nav className="pie-nav" aria-label="Secciones del sitio">
-              <a href="#menu">Menú y precios</a>
-              <a href="#promos">Promociones</a>
-              <a href="#aderezos">Aderezos</a>
-              <a href="#como-pedir">Cómo pedir</a>
-              <a href="#galeria">Galería</a>
-              <a href="#preguntas">Preguntas</a>
-              <a href="#donde">Dónde estamos</a>
+              <a href={RUTA.menu}>Menú y precios</a>
+              <a href={RUTA.promociones}>Promociones</a>
+              <a href={RUTA.galeria}>Galería</a>
+              <a href={RUTA.ubicacion}>Dónde estamos</a>
+              <a href={`${RUTA.home}#aderezos`}>Aderezos</a>
+              <a href={`${RUTA.menu}#como-pedir`}>Cómo pedir</a>
+              <a href={`${RUTA.ubicacion}#preguntas`}>Preguntas</a>
             </nav>
             <p className="pie-legal">
               <a href="/privacidad.html">Aviso de privacidad</a>

@@ -222,6 +222,17 @@ const EN = {
   "Instagram": "Instagram",
   "YouTube": "YouTube",
   "WhatsApp": "WhatsApp",
+  "Carta": "Menu",
+  "Inicio": "Home",
+  "Lo que más se pide": "What people order most",
+  "Ver la carta completa": "See the full menu",
+  "De la carta": "From the menu",
+  "Lunes y viernes": "Mondays and Fridays",
+  "Sándwiches en baguette, ensaladas, dulce, café, batidos y jugos. Todos los aderezos se hacen aquí.": "Baguette sandwiches, salads, sweets, coffee, smoothies and juices. All dressings are made here.",
+  "Lunes 3x2 en todas las ensaladas y viernes café americano de regalo con tu baguette.": "Mondays 3-for-2 on all salads and Fridays free American coffee with your baguette.",
+  "Valle Nacional 106, Fracción Valle Dorado, Mezcales, Nayarit. Lun a vie de 8 am a 8 pm · sábado de 8 am a 2 pm.": "Valle Nacional 106, Fracción Valle Dorado, Mezcales, Nayarit. Mon–Fri 8 am–8 pm · Saturday 8 am–2 pm.",
+  "Menú y precios": "Menu and prices",
+
 };
 
 const TITULO = {

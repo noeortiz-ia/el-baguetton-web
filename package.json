@@ -5,9 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "build": "node scripts/gen-schema.mjs && vite build",
+    "build": "node scripts/gen-schema.mjs && node scripts/gen-paginas.mjs && node scripts/gen-feeds.mjs && node scripts/gen-sitemap.mjs && vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "schema": "node scripts/gen-schema.mjs"
+    "schema": "node scripts/gen-schema.mjs",
+    "paginas": "node scripts/gen-paginas.mjs",
+    "feeds": "node scripts/gen-feeds.mjs",
+    "sitemap": "node scripts/gen-sitemap.mjs"
   },
   "dependencies": {
     "gsap": "^3.12.5",
