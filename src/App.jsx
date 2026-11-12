@@ -70,7 +70,7 @@ const PASOS = [
 const MARQUESINA = [
   { src: '/img/real/sandwich.webp', t: 'Baguetton en baguette' },
   { src: '/img/real/ensalada.webp', t: 'Ensalada con aderezo aparte' },
-  { src: '/img/real/la-bbq.webp', t: 'La BBQ', d: 'Lechuga, fajitas de pollo BBQ, brócoli, zanahoria, pepino, germen y tortillitas horneadas.' },
+  { src: '/img/real/la-bbq.webp', t: 'La BBQ' },
   { src: '/img/real/gal-2.webp', t: 'Remolacha Deli' },
   { src: '/img/real/gal-4.webp', t: 'Rojo Pasión' },
   { src: '/img/real/cafe.webp', t: 'Café de olla' },
@@ -98,6 +98,7 @@ const ADEREZOS = [
 
 const GALERIA = [
   { src: '/img/real/mexicana-v2.webp', t: 'Mexicana', d: 'Lechuga, jitomate, aguacate, elote, queso panela y tortillitas horneadas con chile guajillo.' },
+  { src: '/img/real/la-bbq.webp', t: 'La BBQ', d: 'Lechuga, fajitas de pollo BBQ, brócoli, zanahoria, pepino, germen y tortillitas horneadas.' },
   { src: '/img/real/gal-2.webp', t: 'Remolacha Deli', d: 'Betabel fileteado, vinagreta de hierbas, pistaches y requesón.' },
   { src: '/img/real/gal-3.webp', t: 'Ensalada de pollo', d: 'Pollo a la plancha, lechuga, brócoli, zanahoria, pepino y germen de alfalfa.' },
   { src: '/img/real/la-primavera.webp', t: 'La Primavera', d: 'Lechuga, quinoa, fresa, cubos de panela y frutos secos caramelizados.' },
