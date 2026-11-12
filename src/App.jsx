@@ -7,7 +7,7 @@ import { avisarVista, escucharClics, observarSecciones, avisarFoto, avisarCompar
 import { RUTA, NAV, PAGINAS, CABECERAS, DESTACADOS, slug } from './paginas.js';
 import MENU from './data/menu.js';
 import FAQ from './data/faq.js';
-import { FOTOS } from './data/feed.js';
+import { FOTOS, thumb, thumbGrande } from './data/feed.js';
 import { aplicarIdioma, idiomaGuardado } from './i18n.js';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -106,7 +106,8 @@ const GALERIA = [
   { src: '/img/real/panquecitos.webp', t: 'Panquecito de mantequilla', d: 'Panqué de mantequilla 100% con naranja, recién horneado.' },
   { src: '/img/real/gal-6.webp', t: 'El pan de la casa', d: 'Baguette de corteza dorada y miga suave: la base de todos los baguettones.' },
   { src: '/img/real/chori-vegano-bagel.webp', t: 'Chori-Vegano en bagel', d: 'Chorizo vegano 100% sin gluten, queso manchego, lechuga y aderezo de la casa.' },
-  { src: '/img/real/gal-8.webp', t: 'Escamocha', d: 'Fruta batida con yogur y cereales, servida bien fría.' },
+  { src: '/img/real/gal-7.webp', t: 'Del horno', d: 'Panqué de mantequilla recién horneado.' },
+  { src: '/img/real/gal-8.webp', t: 'Biónico Baguetton', d: 'Frutas varias con cremita dulce y granola.' },
   { src: '/img/real/jugo-verde.webp', t: 'Verde Que Te Quiero Verde', d: 'Apio, jengibre, nopal y piña con jugo de naranja. 495 ml.' },
   { src: '/img/real/rojo-vivo.webp', t: 'Rojo Vivo', d: 'Betabel y jugo de naranja. 495 ml.' },
   { src: '/img/real/cafe-de-olla.webp', t: 'Café de Olla', d: 'Café tostado con canela y piloncillo. 16 oz.' },
@@ -464,7 +465,7 @@ function Galeria({ fotos }) {
             onClick={() => { abrir(i); avisarFoto(f.t, 'galeria'); }}
             aria-label={`Ver ${f.t} en grande`}
           >
-            <img src={f.src} alt={f.t} loading={i < 4 ? 'eager' : 'lazy'} decoding="async" />
+            <img src={thumbGrande(f.src.split('/').pop())} alt={f.t} loading={i < 4 ? 'eager' : 'lazy'} decoding="async" />
             <figcaption className="mosaico-pie">
               <span className="mosaico-nom">{f.t}</span>
               <span className="mosaico-ver">Ver en grande</span>
@@ -477,7 +478,7 @@ function Galeria({ fotos }) {
         createPortal(
           <div className="lightbox" onClick={cerrar}>
             <div className="lb-caja" onClick={(e) => e.stopPropagation()}>
-              <img src={fotos[abierta].src} alt={fotos[abierta].t} />
+              <img src={fotos[abierta].src} alt={fotos[abierta].t} decoding="async" />
               <div className="lb-info">
                 <div className="lb-fila">
                   <div className="lb-txt">
@@ -1053,7 +1054,7 @@ export default function App({ page = 'home' }) {
                     <div className={`m-it${FOTOS[it.n] ? ' con-foto' : ''}`} key={it.n} id={`p-${slug(it.n)}`} data-producto={it.n}>
                       {FOTOS[it.n] && (
                         <figure className="m-foto">
-                          <img src={`/img/real/${FOTOS[it.n]}`} alt={it.n} loading="lazy" />
+                          <img src={thumb(FOTOS[it.n])} alt={it.n} width="88" height="88" loading="lazy" decoding="async" />
                         </figure>
                       )}
                       <div className="m-cab">

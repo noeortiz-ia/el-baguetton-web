@@ -69,6 +69,22 @@
       <g:custom_label_1>mostrador</g:custom_label_1>
     </item>
     <item>
+      <g:id>baguetton-remolacha-deli</g:id>
+      <g:title>Remolacha Deli · El Baguetton Express</g:title>
+      <g:description>Betabel fileteado, vinagreta de hierbas, pistaches y requesón. Ensaladas.</g:description>
+      <g:link>https://elbaguettonexpress.com.mx/menu/#p-remolacha-deli</g:link>
+      <g:image_link>https://elbaguettonexpress.com.mx/img/real/gal-2.webp</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>115.00 MXN</g:price>
+      <g:condition>new</g:condition>
+      <g:brand>El Baguetton Express</g:brand>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>Food, Beverages &amp; Tobacco &gt; Food Items</g:google_product_category>
+      <g:product_type>Comida preparada &gt; Ensaladas</g:product_type>
+      <g:custom_label_0>Ensaladas</g:custom_label_0>
+      <g:custom_label_1>mostrador</g:custom_label_1>
+    </item>
+    <item>
       <g:id>baguetton-la-primavera</g:id>
       <g:title>La Primavera · El Baguetton Express</g:title>
       <g:description>Lechuga, quinoa, fresa, cubos de panela y frutos secos caramelizados. Ensaladas.</g:description>
@@ -82,6 +98,22 @@
       <g:google_product_category>Food, Beverages &amp; Tobacco &gt; Food Items</g:google_product_category>
       <g:product_type>Comida preparada &gt; Ensaladas</g:product_type>
       <g:custom_label_0>Ensaladas</g:custom_label_0>
+      <g:custom_label_1>mostrador</g:custom_label_1>
+    </item>
+    <item>
+      <g:id>baguetton-rojo-pasion</g:id>
+      <g:title>Rojo Pasión · El Baguetton Express</g:title>
+      <g:description>Cuernito calientito con compota casera de frutos rojos y queso doble crema. Dulces y panadería.</g:description>
+      <g:link>https://elbaguettonexpress.com.mx/menu/#p-rojo-pasion</g:link>
+      <g:image_link>https://elbaguettonexpress.com.mx/img/real/gal-4.webp</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>65.00 MXN</g:price>
+      <g:condition>new</g:condition>
+      <g:brand>El Baguetton Express</g:brand>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>Food, Beverages &amp; Tobacco &gt; Food Items &gt; Baked Goods</g:google_product_category>
+      <g:product_type>Comida preparada &gt; Dulces y panadería</g:product_type>
+      <g:custom_label_0>Dulces bocados</g:custom_label_0>
       <g:custom_label_1>mostrador</g:custom_label_1>
     </item>
     <item>
@@ -194,6 +226,22 @@
       <g:google_product_category>Food, Beverages &amp; Tobacco &gt; Beverages</g:google_product_category>
       <g:product_type>Comida preparada &gt; Café</g:product_type>
       <g:custom_label_0>Las bebidas</g:custom_label_0>
+      <g:custom_label_1>mostrador</g:custom_label_1>
+    </item>
+    <item>
+      <g:id>baguetton-bionico-baguetton</g:id>
+      <g:title>Biónico Baguetton · El Baguetton Express</g:title>
+      <g:description>Frutas varias con cremita dulce y granola. Bionicos y frutas.</g:description>
+      <g:link>https://elbaguettonexpress.com.mx/menu/#p-bionico-baguetton</g:link>
+      <g:image_link>https://elbaguettonexpress.com.mx/img/real/gal-8.webp</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>80.00 MXN</g:price>
+      <g:condition>new</g:condition>
+      <g:brand>El Baguetton Express</g:brand>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>Food, Beverages &amp; Tobacco &gt; Food Items</g:google_product_category>
+      <g:product_type>Comida preparada &gt; Bionicos y frutas</g:product_type>
+      <g:custom_label_0>Bionicos y frutas</g:custom_label_0>
       <g:custom_label_1>mostrador</g:custom_label_1>
     </item>
   </channel>

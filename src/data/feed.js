@@ -15,6 +15,9 @@ export const FOTOS = {
   'Verde Que Te Quiero Verde': 'jugo-verde.webp',
   'Rojo Vivo': 'rojo-vivo.webp',
   'Rebanada de panqué': 'panquecitos.webp',
+  'Biónico Baguetton': 'gal-8.webp',
+  'Rojo Pasión': 'gal-4.webp',
+  'Remolacha Deli': 'gal-2.webp',
 };
 
 /* categoría de Google por grupo de la carta */
@@ -42,3 +45,10 @@ export const FAMILIA = {
   picoteo: 'Picoteo',
   bionicos: 'Bionicos y frutas',
 };
+
+/* miniatura de 320 px para la carta: la foto completa se reserva a la galería y al feed */
+export const thumb = (archivo) => `/img/thumb/${String(archivo).replace(/\.[a-z]+$/i, '')}.webp`;
+
+/* versión de 640 px para el mosaico de la galería: la completa solo se pide al abrir el visor */
+export const thumbGrande = (archivo) =>
+  `/img/thumb640/${String(archivo).replace(/\.[a-z]+$/i, '')}.webp`;
