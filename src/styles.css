@@ -1135,3 +1135,10 @@ footer .social a:hover{color:var(--crema)}
   .m-it.con-foto{grid-template-columns:64px minmax(0,1fr);column-gap:10px}
   .m-it.con-foto .m-foto{width:64px;height:64px}
 }
+
+/* dato de la carta: evita repetir el titular de la cabecera */
+.menu-meta{
+  font-family:var(--font-display);font-weight:700;font-size:.78rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--dorado);
+  margin-bottom:var(--s4);
+}

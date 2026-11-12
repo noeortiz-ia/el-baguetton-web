@@ -885,9 +885,7 @@ export default function App({ page = 'home' }) {
           <section className="cabecera-pagina">
             <div className="wrap">
               <nav className="migas" aria-label="Ruta">
-                <a href={RUTA.home}>{CABECERAS[page].volver}</a>
-                <span aria-hidden="true">/</span>
-                <span>{CABECERAS[page].titulo}</span>
+                <a href={RUTA.home}>&larr; {CABECERAS[page].volver}</a>
               </nav>
               <p className="eyebrow">{CABECERAS[page].kicker}</p>
               <h1>{CABECERAS[page].titulo}</h1>
@@ -1019,11 +1017,15 @@ export default function App({ page = 'home' }) {
         )}
         {v('promos') && (<>        <section className="bloque promos" id="promos">
           <div className="wrap">
-            <p className="eyebrow" data-reveal>Lunes y viernes</p>
-            <h2 data-reveal>Promociones</h2>
-            <p className="promos-intro" data-reveal>
-              Lunes 3x2 en ensaladas y viernes café americano de regalo. En el local o por WhatsApp.
-            </p>
+            {page !== 'promociones' && (
+              <>
+                <p className="eyebrow" data-reveal>Lunes y viernes</p>
+                <h2 data-reveal>Promociones</h2>
+                <p className="promos-intro" data-reveal>
+                  Lunes 3x2 en ensaladas y viernes café americano de regalo. En el local o por WhatsApp.
+                </p>
+              </>
+            )}
 
             <div className="promo-grid">
               {PROMOS.map((p) => (
@@ -1036,12 +1038,10 @@ export default function App({ page = 'home' }) {
             </p>
           </div>
         </section></>)}
-        {v('menu') && (<>        <section className="bloque menu-bloque" id="menu">
+        {v('menu') && (<>        <section className="bloque menu-bloque" id="menu" aria-label="Carta">
           <div className="wrap">
-            <h2>Carta y precios</h2>
-            <p className="menu-intro" data-reveal>
-              Sándwiches en baguette, ensaladas, dulce, café, batidos y jugos.
-              Todos los aderezos se hacen aquí.
+            <p className="menu-meta">
+              {MENU.length} secciones · {MENU.reduce((n, g) => n + g.items.length, 0)} platillos
             </p>
 
             <div className="menu-grid">
@@ -1126,20 +1126,19 @@ export default function App({ page = 'home' }) {
             </div>
           </div>
         </section></>)}
-        {v('galeria') && (<>        <section className="bloque galeria-bloque" id="galeria">
+        {v('galeria') && (<>        <section className="bloque galeria-bloque" id="galeria" aria-label="Galería de fotos">
           <div className="wrap">
-            <p className="eyebrow" data-reveal>Galería</p>
-            <h2 data-reveal>Fotos del local y los platillos</h2>
-            <p className="galeria-hint" data-reveal>
-              Toca cualquier foto para verla en grande, pedir o compartirla.
-            </p>
             <Galeria fotos={GALERIA} />
           </div>
         </section></>)}
         {v('donde') && (<>        <section className="bloque donde" id="donde">
           <div className="wrap">
-            <p className="eyebrow" data-reveal>Ubicación</p>
-            <h2 data-reveal>Dónde estamos</h2>
+            {page !== 'ubicacion' && (
+              <>
+                <p className="eyebrow" data-reveal>Ubicación</p>
+                <h2 data-reveal>Dónde estamos</h2>
+              </>
+            )}
             <div className="dos">
               <div data-reveal>
                 <div className="dato">
