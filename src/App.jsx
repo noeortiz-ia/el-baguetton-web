@@ -924,14 +924,12 @@ export default function App({ page = 'home' }) {
               <a className="btn btn-primario" href={waLink('Hola, quiero ver la carta y hacer un pedido.')} target="_blank" rel="noreferrer">
                 Pedir por WhatsApp
               </a>
-              <a className="btn btn-galeria" href={RUTA.galeria}>
+              <a className="btn btn-galeria" href={RUTA.menu}>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <rect x="3" y="5.5" width="18" height="13.5" rx="1.6" fill="none" stroke="currentColor" strokeWidth="1.7"/>
-                  <circle cx="8.6" cy="10.2" r="1.5" fill="currentColor"/>
-                  <path fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" d="M4.6 17.4l4.6-4.3 3.4 3.1 2.6-2.4 4.2 3.9"/>
+                  <path fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" d="M4 6.5h16M4 12h16M4 17.5h11"/>
+                  <circle cx="19.6" cy="17.5" r="1.5" fill="currentColor"/>
                 </svg>
-                Ver la galería
-                <span className="btn-n">{GALERIA.length}</span>
+                Ver Menú
               </a>
             </div>
             </div>
