@@ -565,8 +565,21 @@ export default function App({ page = 'home' }) {
   const [dias, setDias] = useState(() => Math.ceil((APERTURA - new Date()) / 86400000));
   const [estado, setEstado] = useState('cerrado');
   const [menuAbierto, setMenuAbierto] = useState(false);
+  const [fotoPlatillo, setFotoPlatillo] = useState(null);
   const cerrarMenu = () => setMenuAbierto(false);
   const v = (s) => (PAGINAS[page] || PAGINAS.home).secciones.includes(s);
+
+  useEffect(() => {
+    if (!fotoPlatillo) return undefined;
+    const esc = (e) => { if (e.key === 'Escape') setFotoPlatillo(null); };
+    document.addEventListener('keydown', esc);
+    const antes = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', esc);
+      document.body.style.overflow = antes;
+    };
+  }, [fotoPlatillo]);
 
   /* seguimiento: vista de la ficha, recorrido por secciones y clics de conversión */
   useEffect(() => {
@@ -1054,7 +1067,15 @@ export default function App({ page = 'home' }) {
                     <div className={`m-it${FOTOS[it.n] ? ' con-foto' : ''}`} key={it.n} id={`p-${slug(it.n)}`} data-producto={it.n}>
                       {FOTOS[it.n] && (
                         <figure className="m-foto">
-                          <img src={thumb(FOTOS[it.n])} alt={it.n} width="88" height="88" loading="lazy" decoding="async" />
+                          <button
+                            type="button"
+                            className="m-foto-btn"
+                            onClick={() => { setFotoPlatillo({ ...it, foto: FOTOS[it.n] }); avisarFoto(it.n, 'carta'); }}
+                            aria-label={`Ver la foto de ${it.n}`}
+                          >
+                            <img src={thumb(FOTOS[it.n])} alt={it.n} width="88" height="88" loading="lazy" decoding="async" />
+                            <span className="m-foto-lupa" aria-hidden="true">+</span>
+                          </button>
                         </figure>
                       )}
                       <div className="m-cab">
@@ -1251,6 +1272,41 @@ export default function App({ page = 'home' }) {
           </div>
         </footer>
       </main>
+
+      {fotoPlatillo &&
+        createPortal(
+          <div className="lightbox lb-platillo" onClick={() => setFotoPlatillo(null)}>
+            <div className="lb-caja" onClick={(e) => e.stopPropagation()}>
+              <button type="button" className="cerrar" onClick={() => setFotoPlatillo(null)} aria-label="Cerrar">&times;</button>
+              <img src={`/img/real/${fotoPlatillo.foto}`} alt={fotoPlatillo.n} decoding="async" />
+              <div className="lb-info">
+                <div className="lb-fila">
+                  <div className="lb-txt">
+                    <h3>{fotoPlatillo.n}</h3>
+                    <p>{fotoPlatillo.d}</p>
+                  </div>
+                  <span className="lb-precio">${fotoPlatillo.p}</span>
+                </div>
+                <div className="lb-acciones">
+                  <a
+                    className="lb-acc wa"
+                    href={waLink(`Hola, quiero pedir: ${fotoPlatillo.n}.`)}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => avisarCompartir('whatsapp')}
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.4-.2-2.9.8.8-2.8-.2-.4A8 8 0 0 1 12 4z"/></svg>
+                    <span>Pedir por WhatsApp</span>
+                  </a>
+                  <a className="lb-acc" href={TEL} onClick={() => avisarCompartir('telefono')}>
+                    <span>Llamar 329 116 9824</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>,
+          document.body
+        )}
     </>
   );
 }
