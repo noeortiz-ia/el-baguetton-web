@@ -10,7 +10,8 @@
     "schema": "node scripts/gen-schema.mjs",
     "paginas": "node scripts/gen-paginas.mjs",
     "feeds": "node scripts/gen-feeds.mjs",
-    "sitemap": "node scripts/gen-sitemap.mjs"
+    "sitemap": "node scripts/gen-sitemap.mjs",
+    "og": "python3 scripts/gen-og.py"
   },
   "dependencies": {
     "gsap": "^3.12.5",
