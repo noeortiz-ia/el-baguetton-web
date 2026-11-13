@@ -110,6 +110,7 @@ const GALERIA = [
   { src: '/img/real/chori-vegano-bagel.webp', t: 'Chori-Vegano en bagel', d: 'Chorizo vegano 100% sin gluten, queso manchego, lechuga y aderezo de la casa.' },
   { src: '/img/real/gal-7.webp', t: 'Del horno', d: 'Panqué de mantequilla recién horneado.' },
   { src: '/img/real/gal-8.webp', t: 'Biónico Baguetton', d: 'Frutas varias con cremita dulce y granola.' },
+  { src: '/img/real/coctel-frutas.webp', t: 'Coctel de Frutas', d: 'Frutas varias con miel y granola.' },
   { src: '/img/real/jugo-verde.webp', t: 'Verde Que Te Quiero Verde', d: 'Apio, jengibre, nopal y piña con jugo de naranja. 495 ml.' },
   { src: '/img/real/rojo-vivo.webp', t: 'Rojo Vivo', d: 'Betabel y jugo de naranja. 495 ml.' },
   { src: '/img/real/cafe-de-olla.webp', t: 'Café de Olla', d: 'Café tostado con canela y piloncillo. 16 oz.' },

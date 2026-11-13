@@ -260,5 +260,21 @@
       <g:custom_label_0>Bionicos y frutas</g:custom_label_0>
       <g:custom_label_1>mostrador</g:custom_label_1>
     </item>
+    <item>
+      <g:id>baguetton-coctel-de-frutas</g:id>
+      <g:title>Coctel de Frutas · El Baguetton Express</g:title>
+      <g:description>Frutas varias con miel y granola. Bionicos y frutas.</g:description>
+      <g:link>https://elbaguettonexpress.com.mx/menu/#p-coctel-de-frutas</g:link>
+      <g:image_link>https://elbaguettonexpress.com.mx/img/feed/coctel-frutas.jpg</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>70.00 MXN</g:price>
+      <g:condition>new</g:condition>
+      <g:brand>El Baguetton Express</g:brand>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>Food, Beverages &amp; Tobacco &gt; Food Items</g:google_product_category>
+      <g:product_type>Comida preparada &gt; Bionicos y frutas</g:product_type>
+      <g:custom_label_0>Bionicos y frutas</g:custom_label_0>
+      <g:custom_label_1>mostrador</g:custom_label_1>
+    </item>
   </channel>
 </rss>
