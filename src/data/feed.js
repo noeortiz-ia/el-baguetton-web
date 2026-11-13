@@ -19,7 +19,6 @@ export const FOTOS = {
   'Rojo Pasión': 'gal-4.webp',
   'Remolacha Deli': 'gal-2.webp',
   'La BBQ': 'la-bbq.webp',
-  'Coctel de Frutas': 'coctel-frutas.webp',
 };
 
 /* categoría de Google por grupo de la carta */

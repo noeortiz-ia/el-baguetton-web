@@ -2,8 +2,8 @@
   "generado": "2026-11-13",
   "moneda": "MXN",
   "total_carta": 39,
-  "en_feed": 17,
-  "sin_foto": 22,
+  "en_feed": 16,
+  "sin_foto": 23,
   "feeds": {
     "meta": "https://elbaguettonexpress.com.mx/feed/meta-catalogo.csv",
     "google": "https://elbaguettonexpress.com.mx/feed/google-merchant.xml"
@@ -30,6 +30,7 @@
     "Jícamas",
     "Pepinos",
     "Apio y Zanahoria",
+    "Coctel de Frutas",
     "Escamochas"
   ]
 }
