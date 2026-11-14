@@ -30,7 +30,7 @@ const AV = '?v=3';
 
 const SERVICIOS = [
   {
-    img: '/img/real/sandwich.webp',
+    img: '/img/real/clasico.webp',
     t: 'Sándwiches',
     d: 'En baguette, armados al momento.',
     ir: `${RUTA.menu}#menu-baguettones`,
@@ -68,7 +68,7 @@ const PASOS = [
 
 
 const MARQUESINA = [
-  { src: '/img/real/sandwich.webp', t: 'Baguetton en baguette' },
+  { src: '/img/real/clasico.webp', t: 'Baguetton en baguette' },
   { src: '/img/real/ensalada.webp', t: 'Ensalada con aderezo aparte' },
   { src: '/img/real/la-bbq.webp', t: 'La BBQ' },
   { src: '/img/real/gal-2.webp', t: 'Remolacha Deli' },

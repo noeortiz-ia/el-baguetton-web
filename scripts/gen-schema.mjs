@@ -29,7 +29,7 @@ const REDES = [
 
 const IMAGENES = [
   `${BASE}img/og-image.png`,
-  `${BASE}img/real/sandwich.jpg`,
+  `${BASE}img/real/clasico.jpg`,
   `${BASE}img/real/ensalada.jpg`,
   `${BASE}img/real/promo-lunes-ensaladas.jpg`,
   `${BASE}img/real/cafe.jpg`,

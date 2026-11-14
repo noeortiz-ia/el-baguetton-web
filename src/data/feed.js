@@ -3,7 +3,7 @@
    `foto` es el archivo dentro de /public/img/real/. */
 
 export const FOTOS = {
-  'Clásico': 'sandwich.webp',
+  'Clásico': 'clasico.webp',
   'Chori-Vegano': 'chori-vegano-bagel.webp',
   'Baguetona': 'baguetona.webp',
   'Mexicana': 'mexicana-v2.webp',
