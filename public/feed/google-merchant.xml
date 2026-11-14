@@ -21,6 +21,22 @@
       <g:custom_label_1>mostrador</g:custom_label_1>
     </item>
     <item>
+      <g:id>baguetton-plus</g:id>
+      <g:title>Plus · El Baguetton Express</g:title>
+      <g:description>Jamón de pierna de cerdo, manchego, salami, lechuga, jitomate y aderezo de la casa. Sándwiches en baguette.</g:description>
+      <g:link>https://elbaguettonexpress.com.mx/menu/#p-plus</g:link>
+      <g:image_link>https://elbaguettonexpress.com.mx/img/feed/plus.jpg</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>85.00 MXN</g:price>
+      <g:condition>new</g:condition>
+      <g:brand>El Baguetton Express</g:brand>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>Food, Beverages &amp; Tobacco &gt; Food Items</g:google_product_category>
+      <g:product_type>Comida preparada &gt; Sándwiches en baguette</g:product_type>
+      <g:custom_label_0>Baguettones</g:custom_label_0>
+      <g:custom_label_1>mostrador</g:custom_label_1>
+    </item>
+    <item>
       <g:id>baguetton-chori-vegano</g:id>
       <g:title>Chori-Vegano · El Baguetton Express</g:title>
       <g:description>Chorizo vegano 100% sin gluten, queso manchego, lechuga y aderezo de la casa. Sándwiches en baguette.</g:description>

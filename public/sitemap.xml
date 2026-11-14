@@ -10,6 +10,9 @@
       <image:loc>https://elbaguettonexpress.com.mx/img/real/clasico.webp</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://elbaguettonexpress.com.mx/img/real/plus.webp</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://elbaguettonexpress.com.mx/img/real/chori-vegano-bagel.webp</image:loc>
     </image:image>
     <image:image>
@@ -26,9 +29,6 @@
     </image:image>
     <image:image>
       <image:loc>https://elbaguettonexpress.com.mx/img/real/cafe.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://elbaguettonexpress.com.mx/img/real/licuado-mango.webp</image:loc>
     </image:image>
   </url>
   <url>
@@ -54,6 +54,9 @@
       <image:loc>https://elbaguettonexpress.com.mx/img/real/clasico.webp</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://elbaguettonexpress.com.mx/img/real/plus.webp</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://elbaguettonexpress.com.mx/img/real/chori-vegano-bagel.webp</image:loc>
     </image:image>
     <image:image>
@@ -70,9 +73,6 @@
     </image:image>
     <image:image>
       <image:loc>https://elbaguettonexpress.com.mx/img/real/cafe.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://elbaguettonexpress.com.mx/img/real/licuado-mango.webp</image:loc>
     </image:image>
   </url>
   <url>

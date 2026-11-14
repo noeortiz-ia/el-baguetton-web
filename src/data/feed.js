@@ -4,6 +4,7 @@
 
 export const FOTOS = {
   'Clásico': 'clasico.webp',
+  'Plus': 'plus.webp',
   'Chori-Vegano': 'chori-vegano-bagel.webp',
   'Baguetona': 'baguetona.webp',
   'Mexicana': 'mexicana-v2.webp',
