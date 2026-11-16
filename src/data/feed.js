@@ -20,6 +20,7 @@ export const FOTOS = {
   'Rojo Pasión': 'gal-4.webp',
   'Remolacha Deli': 'gal-2.webp',
   'La BBQ': 'la-bbq.webp',
+  'Cacahuata': 'cacahuata.webp',
 };
 
 /* categoría de Google por grupo de la carta */
