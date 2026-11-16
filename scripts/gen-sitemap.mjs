@@ -28,7 +28,6 @@ const urls = paginas
     const fotos =
       p.ruta === '/' || p.ruta === '/galeria/'
         ? Object.values(FOTOS)
-            .slice(0, 8)
             .map((f) => img(`/img/real/${f}`, ''))
             .join('\n')
         : '';
