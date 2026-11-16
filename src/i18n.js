@@ -350,6 +350,8 @@ export function aplicarIdioma(idioma) {
   idiomaActual = idioma === 'en' ? 'en' : 'es';
   escribirNodos(document.body, idiomaActual);
   pintarMeta(idiomaActual);
+  /* el cintillo y cualquier bloque dinámico se enteran del cambio */
+  window.dispatchEvent(new CustomEvent('baguetton-idioma', { detail: idiomaActual }));
   try {
     localStorage.setItem('baguetton-idioma', idiomaActual);
   } catch {

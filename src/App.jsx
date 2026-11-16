@@ -9,6 +9,7 @@ import MENU from './data/menu.js';
 import FAQ from './data/faq.js';
 import { FOTOS, thumb, thumbGrande } from './data/feed.js';
 import { aplicarIdioma, idiomaGuardado } from './i18n.js';
+import { textoCintillo } from './cintillo.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -261,10 +262,38 @@ function CompartirFlotante() {
   );
 }
 
-/* selector de idioma: pegado al encabezado, siempre a la vista */
+/* cintillo de la promo del día: va fijo arriba, encima del encabezado */
+function Cintillo() {
+  const [idioma, setIdioma] = useState(() => idiomaGuardado());
+  const [info, setInfo] = useState(() => textoCintillo(new Date(), idiomaGuardado()));
+
+  useEffect(() => {
+    const refrescar = () => setInfo(textoCintillo(new Date(), idioma));
+    refrescar();
+    const reloj = setInterval(refrescar, 600000);
+    const alCambiarIdioma = (e) => setIdioma(e.detail === 'en' ? 'en' : 'es');
+    window.addEventListener('baguetton-idioma', alCambiarIdioma);
+    return () => {
+      clearInterval(reloj);
+      window.removeEventListener('baguetton-idioma', alCambiarIdioma);
+    };
+  }, [idioma]);
+
+  return (
+    <div className={`cintillo${info.esHoy ? ' hoy' : ''}`}>
+      <a className="cintillo-linea" href={RUTA.promociones}>
+        <span className="cintillo-punto" aria-hidden="true" />
+        <b>{info.etiqueta}</b>
+        <span className="cintillo-texto">{info.texto}</span>
+        <span className="cintillo-detalle">{info.detalle}</span>
+      </a>
+      <a className="cintillo-cta" href={RUTA.promociones}>{info.cta}</a>
+    </div>
+  );
+}
+
 function SelectorIdioma() {
   const [idioma, setIdioma] = useState(() => idiomaGuardado());
-
   useEffect(() => {
     aplicarIdioma(idioma);
   }, [idioma]);
@@ -807,7 +836,9 @@ export default function App({ page = 'home' }) {
         </div>
       )}
 
-      <header className={`nav${pegado ? ' pegado' : ''}${dias > 0 ? ' con-cuenta' : ''}`}>
+      <Cintillo />
+
+      <header className={`nav con-cintillo${pegado ? ' pegado' : ''}${dias > 0 ? ' con-cuenta' : ''}`}>
         <div className="nav-inner">
           <a className="nav-logo" href={RUTA.home} aria-label="El Baguetton Express">
             <img src={`/img/logo-white.png${AV}`} alt="El Baguetton Express" />
