@@ -279,6 +279,27 @@ function Cintillo() {
     };
   }, [idioma]);
 
+  /* el alto real de las barras fijas (cintillo + encabezado): así ninguna
+     página mete su contenido debajo del logo. Se mide en reposo. */
+  useEffect(() => {
+    const medir = () => {
+      if (window.scrollY > 8) return;
+      const nav = document.querySelector('.nav');
+      if (!nav) return;
+      const alto = Math.round(nav.getBoundingClientRect().bottom);
+      document.documentElement.style.setProperty('--alto-barras', `${alto}px`);
+    };
+    medir();
+    const tras = setTimeout(medir, 500);
+    window.addEventListener('resize', medir);
+    window.addEventListener('orientationchange', medir);
+    return () => {
+      clearTimeout(tras);
+      window.removeEventListener('resize', medir);
+      window.removeEventListener('orientationchange', medir);
+    };
+  }, []);
+
   return (
     <div className={`cintillo${info.esHoy ? ' hoy' : ''}`}>
       <a className="cintillo-linea" href={RUTA.promociones}>

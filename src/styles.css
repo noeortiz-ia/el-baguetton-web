@@ -1102,7 +1102,7 @@ footer .social a:hover{color:var(--crema)}
   background:
     radial-gradient(120% 90% at 80% 0%, rgba(171,114,42,.28) 0%, rgba(171,114,42,0) 60%),
     var(--verde-profundo);
-  padding:calc(var(--s7) + 24px) 0 var(--s6);
+  padding:calc(var(--alto-barras, 160px) + var(--s4)) 0 var(--s6);
   border-bottom:1px solid rgba(244,238,226,.12);
 }
 .cabecera-pagina .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
@@ -1163,7 +1163,7 @@ footer .social a:hover{color:var(--crema)}
 
 @media (max-width:900px){
   .dest-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .cabecera-pagina{padding:calc(var(--s6) + 56px) 0 var(--s5)}
+  .cabecera-pagina{padding:calc(var(--alto-barras, 144px) + var(--s3)) 0 var(--s5)}
 }
 @media (max-width:620px){
   .dest-grid{grid-template-columns:1fr}
